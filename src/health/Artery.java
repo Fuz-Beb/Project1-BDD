@@ -15,12 +15,12 @@ public class Artery
     private double endRadius;
     private double length;
 
-    // Comfort Constructor
+    // Comfort constructor
     public Artery(Attributes attrs)
     {
 
     }
-    
+
     // Getters / Setters
 
     /**
