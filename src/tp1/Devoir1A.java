@@ -1,8 +1,8 @@
-// Travail fait par :
-//   Bobet Pierrick - 17 131 792
-//   Bouteloup R�my - 17 132 265
-
 package tp1;
+
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
 
 import java.io.File;
 import java.lang.System;

@@ -1,8 +1,8 @@
-// Travail fait par :
-//   Bobet Pierrick - 17 131 792
-//   Bouteloup R�my - 17 132 265
-
 package tp1;
+
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
 
 /**
  * L'exception IFT287Exception est levee lorsqu'une transaction est inadequate.
