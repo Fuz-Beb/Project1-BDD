@@ -20,6 +20,7 @@ import health.Organ;
 import health.Organs;
 import health.SalivaryDuct;
 import health.Systems;
+import health.System;
 import health.To;
 import health.Vein;
 
@@ -115,7 +116,11 @@ public class FindConstructor
                 new Organ(attrs);
                 break;
             default:
+<<<<<<< HEAD
                 System.err.println("Error with the choice of the constructor");
+=======
+                throw new IFT287Exception("Error with the choice of the constructor");
+>>>>>>> a3cbb8205bd0a43d4396b91ed5ff4c0ea500a455
         }
     }
 }

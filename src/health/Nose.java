@@ -12,7 +12,11 @@ public class Nose
     private String name;
     private int id;
 
+<<<<<<< HEAD
     // Comfort constructor
+=======
+    // Comfort Constructor
+>>>>>>> a3cbb8205bd0a43d4396b91ed5ff4c0ea500a455
     public Nose(Attributes attrs)
     {
 

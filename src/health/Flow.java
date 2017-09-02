@@ -1,17 +1,27 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+import java.util.HashMap;
+
+import org.xml.sax.Attributes;
+
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class Flow
 {
     // Attributes
     private int id;
     private String name;
-    
+
+    // Comfort Constructor
+    public Flow(Attributes attrs)
+    {
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the id
      */
@@ -19,13 +29,16 @@ public class Flow
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the name
      */
@@ -33,8 +46,10 @@ public class Flow
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {

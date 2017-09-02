@@ -18,7 +18,7 @@ public class AirConnectible
     // Comfort Constructor
     public AirConnectible(Attributes attributes)
     {
-        // TODO Auto-generated constructor stub
+
     }
 
     // Getters / Setters

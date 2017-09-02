@@ -1,17 +1,25 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+import org.xml.sax.Attributes;
+
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class Organ
 {
     private String name;
     private int id;
     private int systemID;
-    
+
+    // Comfort Constructor
+    public Organ(Attributes attrs)
+    {
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -19,13 +27,16 @@ public class Organ
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -33,13 +44,16 @@ public class Organ
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the systemID
      */
@@ -47,8 +61,10 @@ public class Organ
     {
         return systemID;
     }
+
     /**
-     * @param systemID the systemID to set
+     * @param systemID
+     *            the systemID to set
      */
     public void setSystemID(int systemID)
     {
