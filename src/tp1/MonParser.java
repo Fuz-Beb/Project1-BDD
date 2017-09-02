@@ -1,3 +1,7 @@
+// Travail fait par :
+//   Bobet Pierrick - 17 131 792
+//   Bouteloup R�my - 17 132 265
+
 package tp1;
 
 import java.lang.System;

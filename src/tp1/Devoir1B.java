@@ -1,6 +1,6 @@
 // Travail fait par :
-//   NomEquipier1 - Matricule
-//   NomEquipier2 - Matricule
+//   Bobet Pierrick - 17 131 792
+//   Bouteloup R�my - 17 132 265
 
 package tp1;
 
