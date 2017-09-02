@@ -16,11 +16,7 @@ public class Alveoli
     // Comfort Constructor
     public Alveoli(Attributes attributes)
     {
-<<<<<<< HEAD
-        // TODO Auto-generated constructor stub
-=======
 
->>>>>>> a3cbb8205bd0a43d4396b91ed5ff4c0ea500a455
     }
 
     // Getters / Setters

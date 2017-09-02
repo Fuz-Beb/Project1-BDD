@@ -13,11 +13,7 @@ public class Capillaries
     private int id;
     private int volume;
 
-<<<<<<< HEAD
     // Comfort constructor
-=======
-    // Comfort Constructor
->>>>>>> a3cbb8205bd0a43d4396b91ed5ff4c0ea500a455
     public Capillaries(Attributes attrs)
     {
 
