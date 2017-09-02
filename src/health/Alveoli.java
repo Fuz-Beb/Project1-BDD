@@ -1,5 +1,7 @@
 package health;
 
+import org.xml.sax.Attributes;
+
 //Travail fait par :
 //Bobet Pierrick - 17 131 792
 //Bouteloup Remy - 17 132 265
@@ -10,6 +12,13 @@ public class Alveoli
     private String name;
     private int id;
     private int volume;
+    
+    // Comfort Constructor
+    
+    public Alveoli(Attributes attributes)
+    {
+        // TODO Auto-generated constructor stub
+    }    
     
     // Getters / Setters
     
