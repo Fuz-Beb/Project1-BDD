@@ -2,28 +2,27 @@ package health;
 
 import org.xml.sax.Attributes;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class AirConnectible
-{    
+{
     // Attributes
     private String name;
     private int id;
     private double startRadius;
     private double endRadius;
     private double length;
-        
+
     // Comfort Constructor
-    
     public AirConnectible(Attributes attributes)
     {
         // TODO Auto-generated constructor stub
     }
-    
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -31,13 +30,16 @@ public class AirConnectible
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -45,13 +47,16 @@ public class AirConnectible
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the startRadius
      */
@@ -59,13 +64,16 @@ public class AirConnectible
     {
         return startRadius;
     }
+
     /**
-     * @param startRadius the startRadius to set
+     * @param startRadius
+     *            the startRadius to set
      */
     public void setStartRadius(double startRadius)
     {
         this.startRadius = startRadius;
     }
+
     /**
      * @return the endRadius
      */
@@ -73,13 +81,16 @@ public class AirConnectible
     {
         return endRadius;
     }
+
     /**
-     * @param endRadius the endRadius to set
+     * @param endRadius
+     *            the endRadius to set
      */
     public void setEndRadius(double endRadius)
     {
         this.endRadius = endRadius;
     }
+
     /**
      * @return the length
      */
@@ -87,11 +98,13 @@ public class AirConnectible
     {
         return length;
     }
+
     /**
-     * @param length the length to set
+     * @param length
+     *            the length to set
      */
     public void setLength(double length)
     {
         this.length = length;
-    } 
+    }
 }

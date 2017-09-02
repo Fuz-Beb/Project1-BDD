@@ -1,5 +1,7 @@
 package health;
 
+import org.xml.sax.Attributes;
+
 //Travail fait par :
 //Bobet Pierrick - 17 131 792
 //Bouteloup Remy - 17 132 265
@@ -10,6 +12,11 @@ public class Ventricle
     private String name;
     private int id;
     private int volume;
+    
+    // Comfort constructor
+    public Ventricle(Attributes attrs) {
+    	
+    }
     
     // Getters / Setters
     

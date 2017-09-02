@@ -1,8 +1,10 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+import org.xml.sax.Attributes;
+
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class SalivaryDuct
 {
@@ -11,9 +13,15 @@ public class SalivaryDuct
     private int id;
     private double length;
     private int volume;
-    
+
+    // Comfort constructor
+    public SalivaryDuct(Attributes attrs)
+    {
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -21,13 +29,16 @@ public class SalivaryDuct
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -35,13 +46,16 @@ public class SalivaryDuct
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the length
      */
@@ -49,13 +63,16 @@ public class SalivaryDuct
     {
         return length;
     }
+
     /**
-     * @param length the volume to set
+     * @param length
+     *            the volume to set
      */
     public void setLength(double length)
     {
         this.length = length;
     }
+
     /**
      * @return the volume
      */
@@ -63,8 +80,10 @@ public class SalivaryDuct
     {
         return volume;
     }
+
     /**
-     * @param volume the volume to set
+     * @param volume
+     *            the volume to set
      */
     public void setVolume(int volume)
     {

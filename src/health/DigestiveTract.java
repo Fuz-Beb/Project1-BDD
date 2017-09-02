@@ -6,23 +6,24 @@ import org.xml.sax.Attributes;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class Alveoli
+public class DigestiveTract
 {
     // Attributes
     private String name;
     private int id;
-    private int volume;
+    private double length;
+    private double volume;
 
-    // Comfort Constructor
-    public Alveoli(Attributes attributes)
+    // Comfort constructor
+    public DigestiveTract(Attributes attrs)
     {
-        // TODO Auto-generated constructor stub
+
     }
 
     // Getters / Setters
 
     /**
-     * @return the name
+     * @return String
      */
     public String getName()
     {
@@ -31,7 +32,6 @@ public class Alveoli
 
     /**
      * @param name
-     *            the name to set
      */
     public void setName(String name)
     {
@@ -39,7 +39,7 @@ public class Alveoli
     }
 
     /**
-     * @return the id
+     * @return int
      */
     public int getId()
     {
@@ -48,7 +48,6 @@ public class Alveoli
 
     /**
      * @param id
-     *            the id to set
      */
     public void setId(int id)
     {
@@ -56,18 +55,33 @@ public class Alveoli
     }
 
     /**
+     * @return the length
+     */
+    public double getLength()
+    {
+        return length;
+    }
+
+    /**
+     * @param length
+     */
+    public void setLength(double length)
+    {
+        this.length = length;
+    }
+
+    /**
      * @return the volume
      */
-    public int getVolume()
+    public double getVolume()
     {
         return volume;
     }
 
     /**
      * @param volume
-     *            the volume to set
      */
-    public void setVolume(int volume)
+    public void setVolume(double volume)
     {
         this.volume = volume;
     }
