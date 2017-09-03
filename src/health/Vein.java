@@ -1,8 +1,10 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+import org.xml.sax.Attributes;
+
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class Vein
 {
@@ -12,9 +14,15 @@ public class Vein
     private double startRadius;
     private double endRadius;
     private double length;
-    
+
+    // Comfort Constructor
+    public Vein(Attributes attrs)
+    {
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -22,13 +30,16 @@ public class Vein
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -36,13 +47,16 @@ public class Vein
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the startRadius
      */
@@ -50,13 +64,16 @@ public class Vein
     {
         return startRadius;
     }
+
     /**
-     * @param startRadius the startRadius to set
+     * @param startRadius
+     *            the startRadius to set
      */
     public void setStartRadius(double startRadius)
     {
         this.startRadius = startRadius;
     }
+
     /**
      * @return the endRadius
      */
@@ -64,13 +81,16 @@ public class Vein
     {
         return endRadius;
     }
+
     /**
-     * @param endRadius the endRadius to set
+     * @param endRadius
+     *            the endRadius to set
      */
     public void setEndRadius(double endRadius)
     {
         this.endRadius = endRadius;
     }
+
     /**
      * @return the length
      */
@@ -78,11 +98,13 @@ public class Vein
     {
         return length;
     }
+
     /**
-     * @param length the length to set
+     * @param length
+     *            the length to set
      */
     public void setLength(double length)
     {
         this.length = length;
-    } 
+    }
 }

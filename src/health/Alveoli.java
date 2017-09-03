@@ -2,9 +2,9 @@ package health;
 
 import org.xml.sax.Attributes;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class Alveoli
 {
@@ -12,16 +12,16 @@ public class Alveoli
     private String name;
     private int id;
     private int volume;
-    
+
     // Comfort Constructor
-    
+
     public Alveoli(Attributes attributes)
     {
-        // TODO Auto-generated constructor stub
-    }    
-    
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -29,13 +29,16 @@ public class Alveoli
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -43,13 +46,16 @@ public class Alveoli
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the volume
      */
@@ -57,8 +63,10 @@ public class Alveoli
     {
         return volume;
     }
+
     /**
-     * @param volume the volume to set
+     * @param volume
+     *            the volume to set
      */
     public void setVolume(int volume)
     {

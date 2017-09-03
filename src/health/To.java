@@ -1,8 +1,8 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class To
 {
@@ -10,7 +10,7 @@ public class To
     private int id;
 
     // Getters / Setters
-    
+
     /**
      * @return the id
      */
@@ -20,12 +20,11 @@ public class To
     }
 
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
-    
-    
 }

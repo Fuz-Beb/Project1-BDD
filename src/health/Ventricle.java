@@ -1,8 +1,10 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+import org.xml.sax.Attributes;
+
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 public class Ventricle
 {
@@ -10,9 +12,15 @@ public class Ventricle
     private String name;
     private int id;
     private int volume;
-    
+
+    // Comfort Constructor
+    public Ventricle(Attributes attrs)
+    {
+
+    }
+
     // Getters / Setters
-    
+
     /**
      * @return the name
      */
@@ -20,13 +28,16 @@ public class Ventricle
     {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @param name
+     *            the name to set
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return the id
      */
@@ -34,13 +45,16 @@ public class Ventricle
     {
         return id;
     }
+
     /**
-     * @param id the id to set
+     * @param id
+     *            the id to set
      */
     public void setId(int id)
     {
         this.id = id;
     }
+
     /**
      * @return the volume
      */
@@ -48,8 +62,10 @@ public class Ventricle
     {
         return volume;
     }
+
     /**
-     * @param volume the volume to set
+     * @param volume
+     *            the volume to set
      */
     public void setVolume(int volume)
     {
