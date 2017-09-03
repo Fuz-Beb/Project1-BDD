@@ -21,13 +21,13 @@ public class MainBody
     private HashMap<Integer, Flow> flowTab;
     private HashMap<Integer, Connectible> connectibleTab;
     private HashMap<Integer, Connectible> connectionsTab;
-    
+
     // Comfort Constructor
     public MainBody(Attributes attrs) throws IFT287Exception
     {
         systemsTab = new HashMap<Integer, Systems>();
         organsTab = new HashMap<Integer, Organs>();
-        
+
         if (attrs != null)
         {
             name = attrs.getValue(0);
@@ -138,7 +138,6 @@ public class MainBody
     }
 
     // Methods
-
     public void addSystems(Systems systems)
     {
         systemsTab.put(systemsTab.size() - 1, systems);
@@ -172,5 +171,20 @@ public class MainBody
     public void addAtrium(Atrium atrium)
     {
         getLastConnectible().get(getLastConnectible().size() - 1).addAtrium(atrium);
+    }
+
+    public void addStomachTract(StomachTract stomachTract)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addStomachTract(stomachTract);
+    }
+
+    public void addDuodenumTract(DuodenumTract duodenumTract)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addDuodenumTract(duodenumTract);
+    }
+
+    public void addRectumTract(RectumTract rectumTract)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addRectumTract(rectumTract);
     }
 }
