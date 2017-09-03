@@ -38,6 +38,34 @@ public class MainBody
             throw new IFT287Exception("MainBody : bad attributes");
         }
     }
+    
+    /**
+     * @return HashMap<Integer, System> 
+     */
+    public HashMap<Integer, System> getLastSystem() {
+        return systemsTab.get(systemsTab.size() - 1).getSystemTab();
+    }
+    
+    /**
+     * @return HashMap<Integer, Flow>
+     */
+    public HashMap<Integer, Flow> getLastFlow() {
+        return getLastSystem().get(getLastSystem().size() - 1).getFlowTab();
+    }
+    
+    /**
+     * @return HashMap<Integer, Connectible>
+     */
+    public HashMap<Integer, Connectible> getLastConnectible() {
+        return getLastFlow().get(getLastFlow().size() - 1).getTabConnectible();
+    }
+    
+    /**
+     * @return Connections
+     */
+    public HashMap<Integer, Connections> getLastConnections() {
+        return getLastFlow().get(getLastFlow().size() - 1).getTabConnections();
+    }
 
     // Getters / Setters
 
@@ -127,33 +155,22 @@ public class MainBody
     }
 
     public void addFlow(Flow flow)
-    {    
-        systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
-        systemTab.get(systemTab.size() - 1).addFlow(flow);
+    {
+        getLastSystem().get(getLastSystem().size() - 1).addFlow(flow);
     }
 
     public void addConnectible(Connectible connectible)
-    {     
-        systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
-        flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        
-        flowTab.get(flowTab.size() - 1).addConnectible(connectible);
+    { 
+        getLastFlow().get(getLastFlow().size() - 1).addConnectible(connectible);
     }
 
     public void addConnections(Connections connections)
-    {
-        systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
-        flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        
-        flowTab.get(flowTab.size() - 1).addConnections(connections);
+    { 
+        getLastFlow().get(getLastFlow().size() - 1).addConnections(connections);
     }
 
     public void addAtrium(Atrium atrium)
     {
-        systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
-        flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        //connectibleTab.get(connectibleTab.size() - 1).
-        
-        //flowTab.get(flowTab.size() - 1).addConnections(connections);
+        getLastConnectible().get(getLastConnectible().size() - 1).addAtrium(atrium);
     }
 }

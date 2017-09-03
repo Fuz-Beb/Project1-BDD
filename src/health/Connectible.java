@@ -340,4 +340,9 @@ public class Connectible
     {
         this.salivaryDuctTab = salivaryDuctTab;
     }
+
+    public void addAtrium(Atrium atrium)
+    {
+        atriumTab.put(atriumTab.size(), atrium);
+    }
 }
