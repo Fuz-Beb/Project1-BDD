@@ -39,7 +39,6 @@ public class FindConstructor
 {
     // Attributes
     private static MainBody mainBody;
-    private static String qNameEx;
     
     // Comfort Constructor
     FindConstructor(String qName, Attributes attrs) throws IFT287Exception
