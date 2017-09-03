@@ -39,7 +39,6 @@ public class FindConstructor
 {
     // Attributes
     private static MainBody mainBody;
-    private static String qNameEx;
     
     // Comfort Constructor
     FindConstructor(String qName, Attributes attrs) throws IFT287Exception
@@ -65,7 +64,7 @@ public class FindConstructor
                 mainBody.addConnectible(new Connectible(attrs));
                 break;
             case "Connections":
-                mainBody.addConnections(new Connections(attrs));
+                mainBody.addConnections(new Connections());
                 break;
             case "Atrium":
                 mainBody.addAtrium(new Atrium(attrs));
