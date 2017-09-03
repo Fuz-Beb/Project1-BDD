@@ -39,7 +39,9 @@ public class FindConstructor
 {
     // Attributes
     private static MainBody mainBody;
-    
+
+    // Methods
+
     public void findConstructor(String qName, Attributes attrs) throws IFT287Exception
     {
         switch (qName)
@@ -102,31 +104,31 @@ public class FindConstructor
                 mainBody.addRectumTract(new RectumTract(attrs));
                 break;
             case "BiDuct":
-                new BiDuct(attrs);
+                mainBody.addBiDuct(new BiDuct(attrs));
                 break;
             case "Duct":
-                new Duct(attrs);
+                mainBody.addDuct(new Duct(attrs));
                 break;
             case "DuctOverflowableJunction":
-                new DuctOverflowableJunction(attrs);
+                mainBody.addDuctOverflowableJunction(new DuctOverflowableJunction(attrs));
                 break;
             case "DeversingDuct":
-                new DeversingDuct(attrs);
+                mainBody.addDeversingDuct(new DeversingDuct(attrs));
                 break;
             case "InnerGallbladder":
-                new InnerGallbladder(attrs);
+                mainBody.addInnerGallbladder(new InnerGallbladder(attrs));
                 break;
             case "SalivaryDuct":
-                new SalivaryDuct(attrs);
+                mainBody.addSalivaryDuct(new SalivaryDuct(attrs));
                 break;
             case "Connection":
-                new Connection(attrs);
+                mainBody.addConnection(new Connection(attrs));
                 break;
             case "To":
-                new To(attrs);
+                mainBody.addTo(new To(attrs));
                 break;
             case "Organ":
-                new Organ(attrs);
+                mainBody.addOrgan(new Organ(attrs));
                 break;
             default:
                 throw new IFT287Exception("Error with the choice of the constructor");

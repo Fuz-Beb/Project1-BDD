@@ -360,51 +360,52 @@ public class Connectible
     }
 
     // Methods
+
     public void addAtrium(Atrium atrium)
     {
         atriumTab.put(atriumTab.size(), atrium);
     }
-    
+
     public void addVentricle(Ventricle ventricle)
     {
         ventricleTab.put(ventricleTab.size(), ventricle);
     }
-    
+
     public void addArtery(Artery artery)
     {
         arteryTab.put(arteryTab.size(), artery);
     }
-    
+
     public void addVein(Vein vein)
     {
         veinTab.put(veinTab.size(), vein);
     }
-    
+
     public void addCapillaries(Capillaries capillaries)
     {
         capillariesTab.put(capillariesTab.size(), capillaries);
     }
-    
+
     public void addNose(Nose nose)
     {
         noseTab.put(noseTab.size(), nose);
     }
-    
+
     public void addAirConnectible(AirConnectible airConnectible)
     {
         airConnectibleTab.put(airConnectibleTab.size(), airConnectible);
     }
-    
+
     public void addAlveoli(Alveoli alveoli)
     {
         alveoliTab.put(alveoliTab.size(), alveoli);
     }
-    
+
     public void addDigestiveTract(DigestiveTract digestiveTract)
     {
         digestiveTractTab.put(digestiveTractTab.size(), digestiveTract);
     }
-    
+
     public void addStomachTract(StomachTract stomachTract)
     {
         stomachTractTab.put(stomachTractTab.size(), stomachTract);
@@ -418,5 +419,35 @@ public class Connectible
     public void addRectumTract(RectumTract rectumTract)
     {
         rectumTractTab.put(rectumTractTab.size(), rectumTract);
+    }
+
+    public void addBiduct(BiDuct biDuct)
+    {
+        biductTab.put(biductTab.size(), biDuct);
+    }
+
+    public void addDuct(Duct duct)
+    {
+        ductTab.put(ductTab.size(), duct);
+    }
+
+    public void addDuctOverflowableJunction(DuctOverflowableJunction ductOverflowableJunction)
+    {
+        ductOverflowableJunctionTab.put(ductOverflowableJunctionTab.size(), ductOverflowableJunction);
+    }
+
+    public void addDeversingDuct(DeversingDuct deversingDuct)
+    {
+        deversingDuctTab.put(deversingDuctTab.size(), deversingDuct);
+    }
+
+    public void addInnerGallbladder(InnerGallbladder innerGallbladder)
+    {
+        innerGallbladderTab.put(innerGallbladderTab.size(), innerGallbladder);
+    }
+
+    public void addSalivaryDuct(SalivaryDuct salivaryDuct)
+    {
+        salivaryDuctTab.put(salivaryDuctTab.size(), salivaryDuct);
     }
 }

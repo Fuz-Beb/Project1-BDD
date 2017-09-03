@@ -35,4 +35,11 @@ public class Organs
     {
         this.organTab = organTab;
     }
+
+    // Methods
+
+    public void addOrgan(Organ organ)
+    {
+        organTab.put(organTab.size(), organ);
+    }
 }

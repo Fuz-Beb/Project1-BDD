@@ -66,4 +66,9 @@ public class Connection
     {
         this.toTab = toTab;
     }
+
+    public void addTo(To to)
+    {
+        toTab.put(toTab.size(), to);
+    }
 }
