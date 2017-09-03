@@ -88,7 +88,7 @@ public class SalivaryDuct
     /**
      * @return the volume
      */
-    public int getVolume()
+    public double getVolume()
     {
         return volume;
     }

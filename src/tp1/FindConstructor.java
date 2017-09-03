@@ -37,34 +37,38 @@ import health.Ventricle;
 
 public class FindConstructor
 {
+    // Attributes
+    private static MainBody mainBody;
+    private static String qNameEx;
+    
     // Comfort Constructor
     FindConstructor(String qName, Attributes attrs) throws IFT287Exception
     {
         switch (qName)
         {
             case "MainBody":
-                new MainBody(attrs);
+                mainBody = new MainBody(attrs);
                 break;
             case "Systems":
-                new Systems(attrs);
+                mainBody.addSystems(new Systems());
                 break;
             case "Organs":
-                new Organs(attrs);
+                mainBody.addOrgans(new Organs());
                 break;
             case "System":
-                new System(attrs);
+                mainBody.addSystem(new System(attrs));
                 break;
             case "Flow":
-                new Flow(attrs);
+                mainBody.addFlow(new Flow(attrs));
                 break;
             case "Connectible":
-                new Connectible(attrs);
+                mainBody.addConnectible(new Connectible(attrs));
                 break;
             case "Connections":
-                new Connections(attrs);
+                mainBody.addConnections(new Connections(attrs));
                 break;
             case "Atrium":
-                new Atrium(attrs);
+                mainBody.addAtrium(new Atrium(attrs));
                 break;
             case "Ventricule":
                 new Ventricle(attrs);

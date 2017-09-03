@@ -2,10 +2,6 @@ package health;
 
 import java.util.HashMap;
 
-import org.xml.sax.Attributes;
-
-import tp1.IFT287Exception;
-
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -15,7 +11,7 @@ public class Systems
     // Attributes
     private HashMap<Integer, System> systemTab;
 
-    // Comfort Constructor
+    // Default Constructor
     public Systems()
     {
         systemTab = new HashMap<Integer, System>();
@@ -38,5 +34,12 @@ public class Systems
     public void setSystemTab(HashMap<Integer, System> systemTab)
     {
         this.systemTab = systemTab;
+    }
+    
+    // Methods
+
+    public void addSystem(System system)
+    {
+        systemTab.put(systemTab.size() - 1, system);
     }
 }

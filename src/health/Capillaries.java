@@ -69,7 +69,7 @@ public class Capillaries
     /**
      * @return the volume
      */
-    public int getVolume()
+    public double getVolume()
     {
         return volume;
     }
