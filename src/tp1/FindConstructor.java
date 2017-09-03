@@ -70,7 +70,7 @@ public class FindConstructor
             case "Atrium":
                 mainBody.addAtrium(new Atrium(attrs));
                 break;
-            case "Ventricule":
+            case "Ventricle":
                 new Ventricle(attrs);
                 break;
             case "Artery":
@@ -124,7 +124,7 @@ public class FindConstructor
             case "Connection":
                 mainBody.addConnection(new Connection(attrs));
                 break;
-            case "To":
+            case "to":
                 mainBody.addTo(new To(attrs));
                 break;
             case "Organ":

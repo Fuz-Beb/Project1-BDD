@@ -15,8 +15,6 @@ public class Flow
     // Attributes
     private int id;
     private String name;
-    private HashMap<Integer, Connectible> tabConnectible;
-    private HashMap<Integer, Connections> tabConnections;
     private HashMap<Integer, Connectible> connectibleTab;
     private HashMap<Integer, Connections> connectionsTab;
 
@@ -28,8 +26,16 @@ public class Flow
 
         if (attrs != null)
         {
-            id = Integer.parseInt(attrs.getValue(1));
-            name = attrs.getValue(0);
+            if (attrs.getLocalName(0) == "name")
+            {
+                name = attrs.getValue(0);
+                id = Integer.parseInt(attrs.getValue(1));
+            }
+            else
+            {
+                id = Integer.parseInt(attrs.getValue(0));
+                name = attrs.getValue(1);
+            }
         }
         else
         {
@@ -74,48 +80,46 @@ public class Flow
     }
 
     /**
-     * @return the tabConnectible
+     * @return the connectibleTab
      */
-    public HashMap<Integer, Connectible> getTabConnectible()
+    public HashMap<Integer, Connectible> getConnectibleTab()
     {
-        return tabConnectible;
+        return connectibleTab;
     }
 
     /**
-     * @param tabConnectible
-     *            the tabConnectible to set
+     * @param connectibleTab the connectibleTab to set
      */
-    public void setTabConnectible(HashMap<Integer, Connectible> tabConnectible)
+    public void setConnectibleTab(HashMap<Integer, Connectible> connectibleTab)
     {
-        this.tabConnectible = tabConnectible;
+        this.connectibleTab = connectibleTab;
     }
 
     /**
-     * @return the tabConnections
+     * @return the connectionsTab
      */
-    public HashMap<Integer, Connections> getTabConnections()
+    public HashMap<Integer, Connections> getConnectionsTab()
     {
-        return tabConnections;
+        return connectionsTab;
     }
 
     /**
-     * @param tabConnections
-     *            the tabConnections to set
+     * @param connectionsTab the connectionsTab to set
      */
-    public void setTabConnections(HashMap<Integer, Connections> tabConnections)
+    public void setConnectionsTab(HashMap<Integer, Connections> connectionsTab)
     {
-        this.tabConnections = tabConnections;
+        this.connectionsTab = connectionsTab;
     }
-
+    
     // Methods
 
     public void addConnectible(Connectible connectible)
     {
-        tabConnectible.put(tabConnectible.size(), connectible);
+        connectibleTab.put(connectibleTab.size(), connectible);
     }
 
     public void addConnections(Connections connections)
     {
-        tabConnections.put(tabConnections.size(), connections);
+        connectionsTab.put(connectionsTab.size(), connections);
     }
 }

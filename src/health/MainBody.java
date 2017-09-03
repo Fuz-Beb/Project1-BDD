@@ -64,7 +64,7 @@ public class MainBody
      */
     public HashMap<Integer, Connectible> getLastConnectible()
     {
-        return getLastFlow().get(getLastFlow().size() - 1).getTabConnectible();
+        return getLastFlow().get(getLastFlow().size() - 1).getConnectibleTab();
     }
 
     /**
@@ -72,12 +72,12 @@ public class MainBody
      */
     public HashMap<Integer, Connections> getLastConnections()
     {
-        return getLastFlow().get(getLastFlow().size() - 1).getTabConnections();
+        return getLastFlow().get(getLastFlow().size() - 1).getConnectionsTab();
     }
 
     public HashMap<Integer, Connection> getLastConnection()
     {
-        return getLastConnections().get(getLastConnection().size() - 1).getTabConnection();
+        return getLastConnections().get(getLastConnections().size() - 1).getTabConnection();
     }
 
     /**
