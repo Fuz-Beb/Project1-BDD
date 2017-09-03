@@ -25,6 +25,7 @@ public class MonParser extends DefaultHandler
 
     public void startElement(String uri, String localName, String qName, Attributes attributes)
     {
+        System.out.println("Start element = " + qName);
         FindConstructor findConstructor = new FindConstructor();
 
         try

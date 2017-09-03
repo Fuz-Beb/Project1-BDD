@@ -40,6 +40,6 @@ public class Systems
 
     public void addSystem(System system)
     {
-        systemTab.put(systemTab.size() - 1, system);
+        systemTab.put(systemTab.size(), system);
     }
 }
