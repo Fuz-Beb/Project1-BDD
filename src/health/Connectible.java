@@ -366,6 +366,46 @@ public class Connectible
         atriumTab.put(atriumTab.size(), atrium);
     }
 
+    public void addVentricle(Ventricle ventricle)
+    {
+        ventricleTab.put(ventricleTab.size(), ventricle);
+    }
+
+    public void addArtery(Artery artery)
+    {
+        arteryTab.put(arteryTab.size(), artery);
+    }
+
+    public void addVein(Vein vein)
+    {
+        veinTab.put(veinTab.size(), vein);
+    }
+
+    public void addCapillaries(Capillaries capillaries)
+    {
+        capillariesTab.put(capillariesTab.size(), capillaries);
+    }
+
+    public void addNose(Nose nose)
+    {
+        noseTab.put(noseTab.size(), nose);
+    }
+
+    public void addAirConnectible(AirConnectible airConnectible)
+    {
+        airConnectibleTab.put(airConnectibleTab.size(), airConnectible);
+    }
+
+    public void addAlveoli(Alveoli alveoli)
+    {
+        alveoliTab.put(alveoliTab.size(), alveoli);
+    }
+
+    public void addDigestiveTract(DigestiveTract digestiveTract)
+    {
+        digestiveTractTab.put(digestiveTractTab.size(), digestiveTract);
+    }
+
     public void addStomachTract(StomachTract stomachTract)
     {
         stomachTractTab.put(stomachTractTab.size(), stomachTract);
