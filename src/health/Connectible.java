@@ -62,7 +62,8 @@ public class Connectible
     }
 
     /**
-     * @param atriumTab the atriumTab to set
+     * @param atriumTab
+     *            the atriumTab to set
      */
     public void setAtriumTab(HashMap<Integer, Atrium> atriumTab)
     {
@@ -78,7 +79,8 @@ public class Connectible
     }
 
     /**
-     * @param ventricleTab the ventricleTab to set
+     * @param ventricleTab
+     *            the ventricleTab to set
      */
     public void setVentricleTab(HashMap<Integer, Ventricle> ventricleTab)
     {
@@ -94,7 +96,8 @@ public class Connectible
     }
 
     /**
-     * @param arteryTab the arteryTab to set
+     * @param arteryTab
+     *            the arteryTab to set
      */
     public void setArteryTab(HashMap<Integer, Artery> arteryTab)
     {
@@ -110,7 +113,8 @@ public class Connectible
     }
 
     /**
-     * @param veinTab the veinTab to set
+     * @param veinTab
+     *            the veinTab to set
      */
     public void setVeinTab(HashMap<Integer, Vein> veinTab)
     {
@@ -126,7 +130,8 @@ public class Connectible
     }
 
     /**
-     * @param capillariesTab the capillariesTab to set
+     * @param capillariesTab
+     *            the capillariesTab to set
      */
     public void setCapillariesTab(HashMap<Integer, Capillaries> capillariesTab)
     {
@@ -142,7 +147,8 @@ public class Connectible
     }
 
     /**
-     * @param noseTab the noseTab to set
+     * @param noseTab
+     *            the noseTab to set
      */
     public void setNoseTab(HashMap<Integer, Nose> noseTab)
     {
@@ -158,7 +164,8 @@ public class Connectible
     }
 
     /**
-     * @param airConnectibleTab the airConnectibleTab to set
+     * @param airConnectibleTab
+     *            the airConnectibleTab to set
      */
     public void setAirConnectibleTab(HashMap<Integer, AirConnectible> airConnectibleTab)
     {
@@ -174,7 +181,8 @@ public class Connectible
     }
 
     /**
-     * @param alveoliTab the alveoliTab to set
+     * @param alveoliTab
+     *            the alveoliTab to set
      */
     public void setAlveoliTab(HashMap<Integer, Alveoli> alveoliTab)
     {
@@ -190,7 +198,8 @@ public class Connectible
     }
 
     /**
-     * @param digestiveTractTab the digestiveTractTab to set
+     * @param digestiveTractTab
+     *            the digestiveTractTab to set
      */
     public void setDigestiveTractTab(HashMap<Integer, DigestiveTract> digestiveTractTab)
     {
@@ -206,7 +215,8 @@ public class Connectible
     }
 
     /**
-     * @param stomachTractTab the stomachTractTab to set
+     * @param stomachTractTab
+     *            the stomachTractTab to set
      */
     public void setStomachTractTab(HashMap<Integer, StomachTract> stomachTractTab)
     {
@@ -222,7 +232,8 @@ public class Connectible
     }
 
     /**
-     * @param duodenumTractTab the duodenumTractTab to set
+     * @param duodenumTractTab
+     *            the duodenumTractTab to set
      */
     public void setDuodenumTractTab(HashMap<Integer, DuodenumTract> duodenumTractTab)
     {
@@ -238,7 +249,8 @@ public class Connectible
     }
 
     /**
-     * @param rectumTractTab the rectumTractTab to set
+     * @param rectumTractTab
+     *            the rectumTractTab to set
      */
     public void setRectumTractTab(HashMap<Integer, RectumTract> rectumTractTab)
     {
@@ -254,7 +266,8 @@ public class Connectible
     }
 
     /**
-     * @param biductTab the biductTab to set
+     * @param biductTab
+     *            the biductTab to set
      */
     public void setBiductTab(HashMap<Integer, BiDuct> biductTab)
     {
@@ -270,7 +283,8 @@ public class Connectible
     }
 
     /**
-     * @param ductTab the ductTab to set
+     * @param ductTab
+     *            the ductTab to set
      */
     public void setDuctTab(HashMap<Integer, Duct> ductTab)
     {
@@ -286,7 +300,8 @@ public class Connectible
     }
 
     /**
-     * @param ductOverflowableJunctionTab the ductOverflowableJunctionTab to set
+     * @param ductOverflowableJunctionTab
+     *            the ductOverflowableJunctionTab to set
      */
     public void setDuctOverflowableJunctionTab(HashMap<Integer, DuctOverflowableJunction> ductOverflowableJunctionTab)
     {
@@ -302,7 +317,8 @@ public class Connectible
     }
 
     /**
-     * @param deversingDuctTab the deversingDuctTab to set
+     * @param deversingDuctTab
+     *            the deversingDuctTab to set
      */
     public void setDeversingDuctTab(HashMap<Integer, DeversingDuct> deversingDuctTab)
     {
@@ -318,7 +334,8 @@ public class Connectible
     }
 
     /**
-     * @param innerGallbladderTab the innerGallbladderTab to set
+     * @param innerGallbladderTab
+     *            the innerGallbladderTab to set
      */
     public void setInnerGallbladderTab(HashMap<Integer, InnerGallbladder> innerGallbladderTab)
     {
@@ -334,10 +351,28 @@ public class Connectible
     }
 
     /**
-     * @param salivaryDuctTab the salivaryDuctTab to set
+     * @param salivaryDuctTab
+     *            the salivaryDuctTab to set
      */
     public void setSalivaryDuctTab(HashMap<Integer, SalivaryDuct> salivaryDuctTab)
     {
         this.salivaryDuctTab = salivaryDuctTab;
+    }
+
+    // Methods
+
+    public void addStomachTract(StomachTract stomachTract)
+    {
+        stomachTractTab.put(stomachTractTab.size(), stomachTract);
+    }
+
+    public void addDuodenumTract(DuodenumTract duodenumTract)
+    {
+        duodenumTractTab.put(duodenumTractTab.size(), duodenumTract);
+    }
+
+    public void addRectumTract(RectumTract rectumTract)
+    {
+        rectumTractTab.put(rectumTractTab.size(), rectumTract);
     }
 }

@@ -21,13 +21,13 @@ public class MainBody
     private HashMap<Integer, Flow> flowTab;
     private HashMap<Integer, Connectible> connectibleTab;
     private HashMap<Integer, Connectible> connectionsTab;
-    
+
     // Comfort Constructor
     public MainBody(Attributes attrs) throws IFT287Exception
     {
         systemsTab = new HashMap<Integer, Systems>();
         organsTab = new HashMap<Integer, Organs>();
-        
+
         if (attrs != null)
         {
             name = attrs.getValue(0);
@@ -127,16 +127,16 @@ public class MainBody
     }
 
     public void addFlow(Flow flow)
-    {    
+    {
         systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
         systemTab.get(systemTab.size() - 1).addFlow(flow);
     }
 
     public void addConnectible(Connectible connectible)
-    {     
+    {
         systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
         flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        
+
         flowTab.get(flowTab.size() - 1).addConnectible(connectible);
     }
 
@@ -144,7 +144,7 @@ public class MainBody
     {
         systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
         flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        
+
         flowTab.get(flowTab.size() - 1).addConnections(connections);
     }
 
@@ -152,8 +152,27 @@ public class MainBody
     {
         systemTab = systemsTab.get(systemsTab.size() - 1).getSystemTab();
         flowTab = systemTab.get(systemTab.size() - 1).getFlowTab();
-        //connectibleTab.get(connectibleTab.size() - 1).
-        
-        //flowTab.get(flowTab.size() - 1).addConnections(connections);
+        // connectibleTab.get(connectibleTab.size() - 1).
+
+        // flowTab.get(flowTab.size() - 1).addConnections(connections);
+    }
+
+    public void addStomachTract(StomachTract stomachTract)
+    {
+        flowTab.get(flowTab.size() - 1).getTabConnectible().get(connectibleTab.size() - 1)
+                .addStomachTract(stomachTract);
+    }
+
+    // Methods
+
+    public void addDuodenumTract(DuodenumTract duodenumTract)
+    {
+        flowTab.get(flowTab.size() - 1).getTabConnectible().get(connectibleTab.size() - 1)
+                .addDuodenumTract(duodenumTract);
+    }
+
+    public void addRectumTract(RectumTract rectumTract)
+    {
+        flowTab.get(flowTab.size() - 1).getTabConnectible().get(connectibleTab.size() - 1).addRectumTract(rectumTract);
     }
 }

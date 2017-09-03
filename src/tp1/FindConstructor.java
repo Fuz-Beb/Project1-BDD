@@ -94,13 +94,13 @@ public class FindConstructor
                 new DigestiveTract(attrs);
                 break;
             case "StomachTract":
-                new StomachTract(attrs);
+                mainBody.addStomachTract(new StomachTract(attrs));
                 break;
             case "DuodenumTract":
-                new DuodenumTract(attrs);
+                mainBody.addDuodenumTract(new DuodenumTract(attrs));
                 break;
             case "RectumTract":
-                new RectumTract(attrs);
+                mainBody.addRectumTract(new RectumTract(attrs));
                 break;
             case "BiDuct":
                 new BiDuct(attrs);
