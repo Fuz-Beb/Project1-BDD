@@ -91,4 +91,11 @@ public class System
     {
         this.flowTab = flowTab;
     }
+    
+    // Methods
+
+    public void addFlow(Flow flow)
+    {
+        flowTab.put(flowTab.size() - 1, flow);
+    }
 }

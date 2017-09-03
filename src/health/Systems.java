@@ -2,7 +2,6 @@ package health;
 
 import java.util.HashMap;
 
-import org.xml.sax.Attributes;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
@@ -13,10 +12,10 @@ public class Systems
     // Attributes
     private HashMap<Integer, System> systemTab;
 
-    // Comfort Constructor
-    public Systems(Attributes attrs)
+    // Default Constructor
+    public Systems()
     {
-
+        systemTab = new HashMap<Integer, System>();
     }
 
     // Getters / Setters
@@ -36,5 +35,12 @@ public class Systems
     public void setSystemTab(HashMap<Integer, System> systemTab)
     {
         this.systemTab = systemTab;
+    }
+    
+    // Methods
+
+    public void addSystem(System system)
+    {
+        systemTab.put(systemTab.size() - 1, system);
     }
 }
