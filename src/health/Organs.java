@@ -14,9 +14,9 @@ public class Organs
     private HashMap<Integer, Organ> organTab;
 
     // Comfort Constructor
-    public Organs(Attributes attrs)
+    public Organs()
     {
-
+        organTab = new HashMap<Integer, Organ>();
     }
 
     // Getters / Setters

@@ -14,9 +14,9 @@ public class Connections
     private HashMap<Integer, Connection> tabConnection;
 
     // Comfort Constructor
-    public Connections(Attributes attrs)
+    public Connections()
     {
-
+        tabConnection = new HashMap<Integer, Connection>();
     }
 
     // Getters / Setters
