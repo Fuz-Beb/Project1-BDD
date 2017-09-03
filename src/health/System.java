@@ -11,7 +11,6 @@ import org.xml.sax.Attributes;
 public class System
 {
     // Attributes
-
     private String name;
     private int id;
     private int type;

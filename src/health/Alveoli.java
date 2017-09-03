@@ -14,7 +14,6 @@ public class Alveoli
     private int volume;
 
     // Comfort Constructor
-
     public Alveoli(Attributes attributes)
     {
 
