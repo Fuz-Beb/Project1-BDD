@@ -9,25 +9,36 @@ import org.xml.sax.Attributes;
 import health.AirConnectible;
 import health.Alveoli;
 import health.Artery;
+import health.Atrium;
+import health.BiDuct;
 import health.Capillaries;
 import health.Connectible;
 import health.Connection;
 import health.Connections;
+import health.DeversingDuct;
+import health.DigestiveTract;
+import health.Duct;
+import health.DuctOverflowableJunction;
+import health.DuodenumTract;
 import health.Flow;
+import health.InnerGallbladder;
 import health.MainBody;
 import health.Nose;
 import health.Organ;
 import health.Organs;
+import health.RectumTract;
 import health.SalivaryDuct;
+import health.StomachTract;
 import health.Systems;
 import health.System;
 import health.To;
 import health.Vein;
+import health.Ventricle;
 
 public class FindConstructor
 {
     // Comfort Constructor
-    FindConstructor(String qName, Attributes attrs)
+    FindConstructor(String qName, Attributes attrs) throws IFT287Exception
     {
         switch (qName)
         {
@@ -56,7 +67,7 @@ public class FindConstructor
                 new Atrium(attrs);
                 break;
             case "Ventricule":
-                new Ventricule(attrs);
+                new Ventricle(attrs);
                 break;
             case "Artery":
                 new Artery(attrs);
@@ -116,11 +127,7 @@ public class FindConstructor
                 new Organ(attrs);
                 break;
             default:
-<<<<<<< HEAD
-                System.err.println("Error with the choice of the constructor");
-=======
                 throw new IFT287Exception("Error with the choice of the constructor");
->>>>>>> a3cbb8205bd0a43d4396b91ed5ff4c0ea500a455
         }
     }
 }
