@@ -259,7 +259,7 @@ public class MainBody
      */
     public void addSystems(Systems systems)
     {
-        systemsTab.put(systemsTab.size() - 1, systems);
+        systemsTab.put(systemsTab.size(), systems);
     }
 
     /**
@@ -267,7 +267,7 @@ public class MainBody
      */
     public void addOrgans(Organs organs)
     {
-        organsTab.put(organsTab.size() - 1, organs);
+        organsTab.put(organsTab.size(), organs);
     }
 
     /**
