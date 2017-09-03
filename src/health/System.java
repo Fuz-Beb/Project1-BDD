@@ -22,7 +22,7 @@ public class System
     public System(Attributes attrs) throws IFT287Exception
     {
         flowTab = new HashMap<Integer, Flow>();
-        
+
         if (attrs != null)
         {
             name = attrs.getValue(0);
@@ -104,11 +104,11 @@ public class System
     {
         this.flowTab = flowTab;
     }
-    
+
     // Methods
 
     public void addFlow(Flow flow)
     {
-        flowTab.put(flowTab.size() - 1, flow);
+        flowTab.put(flowTab.size(), flow);
     }
 }

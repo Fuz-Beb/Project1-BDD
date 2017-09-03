@@ -360,7 +360,7 @@ public class Connectible
     }
 
     // Methods
-    
+
     public void addAtrium(Atrium atrium)
     {
         atriumTab.put(atriumTab.size(), atrium);
@@ -379,5 +379,35 @@ public class Connectible
     public void addRectumTract(RectumTract rectumTract)
     {
         rectumTractTab.put(rectumTractTab.size(), rectumTract);
+    }
+
+    public void addBiduct(BiDuct biDuct)
+    {
+        biductTab.put(biductTab.size(), biDuct);
+    }
+
+    public void addDuct(Duct duct)
+    {
+        ductTab.put(ductTab.size(), duct);
+    }
+
+    public void addDuctOverflowableJunction(DuctOverflowableJunction ductOverflowableJunction)
+    {
+        ductOverflowableJunctionTab.put(ductOverflowableJunctionTab.size(), ductOverflowableJunction);
+    }
+
+    public void addDeversingDuct(DeversingDuct deversingDuct)
+    {
+        deversingDuctTab.put(deversingDuctTab.size(), deversingDuct);
+    }
+
+    public void addInnerGallbladder(InnerGallbladder innerGallbladder)
+    {
+        innerGallbladderTab.put(innerGallbladderTab.size(), innerGallbladder);
+    }
+
+    public void addSalivaryDuct(SalivaryDuct salivaryDuct)
+    {
+        salivaryDuctTab.put(salivaryDuctTab.size(), salivaryDuct);
     }
 }

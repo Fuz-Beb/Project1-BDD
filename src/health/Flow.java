@@ -25,11 +25,11 @@ public class Flow
     {
         connectibleTab = new HashMap<Integer, Connectible>();
         connectionsTab = new HashMap<Integer, Connections>();
-        
+
         if (attrs != null)
-        { 
+        {
             id = Integer.parseInt(attrs.getValue(1));
-            name = attrs.getValue(0);  
+            name = attrs.getValue(0);
         }
         else
         {
@@ -82,7 +82,8 @@ public class Flow
     }
 
     /**
-     * @param tabConnectible the tabConnectible to set
+     * @param tabConnectible
+     *            the tabConnectible to set
      */
     public void setTabConnectible(HashMap<Integer, Connectible> tabConnectible)
     {
@@ -98,20 +99,23 @@ public class Flow
     }
 
     /**
-     * @param tabConnections the tabConnections to set
+     * @param tabConnections
+     *            the tabConnections to set
      */
     public void setTabConnections(HashMap<Integer, Connections> tabConnections)
     {
         this.tabConnections = tabConnections;
     }
 
+    // Methods
+
     public void addConnectible(Connectible connectible)
     {
-        tabConnectible.put(tabConnectible.size() - 1, connectible);
+        tabConnectible.put(tabConnectible.size(), connectible);
     }
 
     public void addConnections(Connections connections)
     {
-        tabConnections.put(tabConnections.size() - 1, connections);
+        tabConnections.put(tabConnections.size(), connections);
     }
 }

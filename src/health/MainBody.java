@@ -38,33 +38,144 @@ public class MainBody
             throw new IFT287Exception("MainBody : bad attributes");
         }
     }
-    
+
     /**
-     * @return HashMap<Integer, System> 
+     * @return HashMap<Integer, System>
      */
-    public HashMap<Integer, System> getLastSystem() {
+    public HashMap<Integer, System> getLastSystem()
+    {
         return systemsTab.get(systemsTab.size() - 1).getSystemTab();
     }
-    
+
     /**
      * @return HashMap<Integer, Flow>
      */
-    public HashMap<Integer, Flow> getLastFlow() {
+    public HashMap<Integer, Flow> getLastFlow()
+    {
         return getLastSystem().get(getLastSystem().size() - 1).getFlowTab();
     }
-    
+
     /**
      * @return HashMap<Integer, Connectible>
      */
-    public HashMap<Integer, Connectible> getLastConnectible() {
+    public HashMap<Integer, Connectible> getLastConnectible()
+    {
         return getLastFlow().get(getLastFlow().size() - 1).getTabConnectible();
     }
-    
+
     /**
      * @return Connections
      */
-    public HashMap<Integer, Connections> getLastConnections() {
+    public HashMap<Integer, Connections> getLastConnections()
+    {
         return getLastFlow().get(getLastFlow().size() - 1).getTabConnections();
+    }
+
+    public HashMap<Integer, Connection> getLastConnection()
+    {
+        return getLastConnections().get(getLastConnection().size() - 1).getTabConnection();
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return id;
+    }
+
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * @return the systemTab
+     */
+    public HashMap<Integer, System> getSystemTab()
+    {
+        return systemTab;
+    }
+
+    /**
+     * @param systemTab
+     *            the systemTab to set
+     */
+    public void setSystemTab(HashMap<Integer, System> systemTab)
+    {
+        this.systemTab = systemTab;
+    }
+
+    /**
+     * @return the flowTab
+     */
+    public HashMap<Integer, Flow> getFlowTab()
+    {
+        return flowTab;
+    }
+
+    /**
+     * @param flowTab
+     *            the flowTab to set
+     */
+    public void setFlowTab(HashMap<Integer, Flow> flowTab)
+    {
+        this.flowTab = flowTab;
+    }
+
+    /**
+     * @return the connectibleTab
+     */
+    public HashMap<Integer, Connectible> getConnectibleTab()
+    {
+        return connectibleTab;
+    }
+
+    /**
+     * @param connectibleTab
+     *            the connectibleTab to set
+     */
+    public void setConnectibleTab(HashMap<Integer, Connectible> connectibleTab)
+    {
+        this.connectibleTab = connectibleTab;
+    }
+
+    /**
+     * @return the connectionsTab
+     */
+    public HashMap<Integer, Connectible> getConnectionsTab()
+    {
+        return connectionsTab;
+    }
+
+    /**
+     * @param connectionsTab
+     *            the connectionsTab to set
+     */
+    public void setConnectionsTab(HashMap<Integer, Connectible> connectionsTab)
+    {
+        this.connectionsTab = connectionsTab;
     }
 
     // Getters / Setters
@@ -138,6 +249,7 @@ public class MainBody
     }
 
     // Methods
+
     public void addSystems(Systems systems)
     {
         systemsTab.put(systemsTab.size() - 1, systems);
@@ -159,12 +271,12 @@ public class MainBody
     }
 
     public void addConnectible(Connectible connectible)
-    { 
+    {
         getLastFlow().get(getLastFlow().size() - 1).addConnectible(connectible);
     }
 
     public void addConnections(Connections connections)
-    { 
+    {
         getLastFlow().get(getLastFlow().size() - 1).addConnections(connections);
     }
 
@@ -186,5 +298,50 @@ public class MainBody
     public void addRectumTract(RectumTract rectumTract)
     {
         getLastConnectible().get(getLastConnectible().size() - 1).addRectumTract(rectumTract);
+    }
+
+    public void addBiDuct(BiDuct biDuct)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addBiduct(biDuct);
+    }
+
+    public void addDuct(Duct duct)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addDuct(duct);
+    }
+
+    public void addDuctOverflowableJunction(DuctOverflowableJunction ductOverflowableJunction)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addDuctOverflowableJunction(ductOverflowableJunction);
+    }
+
+    public void addDeversingDuct(DeversingDuct deversingDuct)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addDeversingDuct(deversingDuct);
+    }
+
+    public void addInnerGallbladder(InnerGallbladder innerGallbladder)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addInnerGallbladder(innerGallbladder);
+    }
+
+    public void addSalivaryDuct(SalivaryDuct salivaryDuct)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addSalivaryDuct(salivaryDuct);
+    }
+
+    public void addConnection(Connection connection)
+    {
+        getLastConnections().get(getLastConnections().size() - 1).addConnection(connection);
+    }
+
+    public void addTo(To to)
+    {
+        getLastConnection().get(getLastConnection().size() - 1).addTo(to);
+    }
+
+    public void addOrgan(Organ organ)
+    {
+        organsTab.get(organsTab.size() - 1).addOrgan(organ);
     }
 }
