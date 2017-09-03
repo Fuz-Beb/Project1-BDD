@@ -11,156 +11,333 @@ import org.xml.sax.Attributes;
 public class Connectible
 {
     // Attributes
-    private HashMap<Integer, Artery> tabArtery;
-    private HashMap<Integer, Vein> tabVein;
-    private HashMap<Integer, Capillaries> tabCapillaries;
-    private HashMap<Integer, Ventricle> tabVentricle;
-    private HashMap<Integer, SalivaryDuct> tabSalivaryDuct;
-    private HashMap<Integer, AirConnectible> tabAirConnectible;
-    private HashMap<Integer, Nose> tabNose;
-    private HashMap<Integer, Alveoli> tabAlveoli;
+    private HashMap<Integer, Atrium> atriumTab;
+    private HashMap<Integer, Ventricle> ventricleTab;
+    private HashMap<Integer, Artery> arteryTab;
+    private HashMap<Integer, Vein> veinTab;
+    private HashMap<Integer, Capillaries> capillariesTab;
+    private HashMap<Integer, Nose> noseTab;
+    private HashMap<Integer, AirConnectible> airConnectibleTab;
+    private HashMap<Integer, Alveoli> alveoliTab;
+    private HashMap<Integer, DigestiveTract> digestiveTractTab;
+    private HashMap<Integer, StomachTract> stomachTractTab;
+    private HashMap<Integer, DuodenumTract> duodenumTractTab;
+    private HashMap<Integer, RectumTract> rectumTractTab;
+    private HashMap<Integer, BiDuct> biductTab;
+    private HashMap<Integer, Duct> ductTab;
+    private HashMap<Integer, DuctOverflowableJunction> ductOverflowableJunctionTab;
+    private HashMap<Integer, DeversingDuct> deversingDuctTab;
+    private HashMap<Integer, InnerGallbladder> innerGallbladderTab;
+    private HashMap<Integer, SalivaryDuct> salivaryDuctTab;
 
     // Comfort Constructor
     public Connectible(Attributes attrs)
     {
-
-    }
-
-    // Getters / Setters
-
-    /**
-     * @return the tabArtery
-     */
-    public HashMap<Integer, Artery> getTabArtery()
-    {
-        return tabArtery;
-    }
-
-    /**
-     * @param tabArtery
-     *            the tabArtery to set
-     */
-    public void setTabArtery(HashMap<Integer, Artery> tabArtery)
-    {
-        this.tabArtery = tabArtery;
-    }
-
-    /**
-     * @return the tabVein
-     */
-    public HashMap<Integer, Vein> getTabVein()
-    {
-        return tabVein;
+        atriumTab = new HashMap<Integer, Atrium>();
+        ventricleTab = new HashMap<Integer, Ventricle>();
+        arteryTab = new HashMap<Integer, Artery>();
+        veinTab = new HashMap<Integer, Vein>();
+        capillariesTab = new HashMap<Integer, Capillaries>();
+        noseTab = new HashMap<Integer, Nose>();
+        airConnectibleTab = new HashMap<Integer, AirConnectible>();
+        alveoliTab = new HashMap<Integer, Alveoli>();
+        digestiveTractTab = new HashMap<Integer, DigestiveTract>();
+        stomachTractTab = new HashMap<Integer, StomachTract>();
+        duodenumTractTab = new HashMap<Integer, DuodenumTract>();
+        rectumTractTab = new HashMap<Integer, RectumTract>();
+        biductTab = new HashMap<Integer, BiDuct>();
+        ductTab = new HashMap<Integer, Duct>();
+        ductOverflowableJunctionTab = new HashMap<Integer, DuctOverflowableJunction>();
+        deversingDuctTab = new HashMap<Integer, DeversingDuct>();
+        innerGallbladderTab = new HashMap<Integer, InnerGallbladder>();
+        salivaryDuctTab = new HashMap<Integer, SalivaryDuct>();
     }
 
     /**
-     * @param tabVein
-     *            the tabVein to set
+     * @return the atriumTab
      */
-    public void setTabVein(HashMap<Integer, Vein> tabVein)
+    public HashMap<Integer, Atrium> getAtriumTab()
     {
-        this.tabVein = tabVein;
+        return atriumTab;
     }
 
     /**
-     * @return the tabCapillaries
+     * @param atriumTab the atriumTab to set
      */
-    public HashMap<Integer, Capillaries> getTabCapillaries()
+    public void setAtriumTab(HashMap<Integer, Atrium> atriumTab)
     {
-        return tabCapillaries;
+        this.atriumTab = atriumTab;
     }
 
     /**
-     * @param tabCapillaries
-     *            the tabCapillaries to set
+     * @return the ventricleTab
      */
-    public void setTabCapillaries(HashMap<Integer, Capillaries> tabCapillaries)
+    public HashMap<Integer, Ventricle> getVentricleTab()
     {
-        this.tabCapillaries = tabCapillaries;
+        return ventricleTab;
     }
 
     /**
-     * @return the tabVentricle
+     * @param ventricleTab the ventricleTab to set
      */
-    public HashMap<Integer, Ventricle> getTabVentricle()
+    public void setVentricleTab(HashMap<Integer, Ventricle> ventricleTab)
     {
-        return tabVentricle;
+        this.ventricleTab = ventricleTab;
     }
 
     /**
-     * @param tabVentricle
-     *            the tabVentricle to set
+     * @return the arteryTab
      */
-    public void setTabVentricle(HashMap<Integer, Ventricle> tabVentricle)
+    public HashMap<Integer, Artery> getArteryTab()
     {
-        this.tabVentricle = tabVentricle;
+        return arteryTab;
     }
 
     /**
-     * @return the tabSalivaryDuct
+     * @param arteryTab the arteryTab to set
      */
-    public HashMap<Integer, SalivaryDuct> getTabSalivaryDuct()
+    public void setArteryTab(HashMap<Integer, Artery> arteryTab)
     {
-        return tabSalivaryDuct;
+        this.arteryTab = arteryTab;
     }
 
     /**
-     * @param tabSalivaryDuct
-     *            the tabSalivaryDuct to set
+     * @return the veinTab
      */
-    public void setTabSalivaryDuct(HashMap<Integer, SalivaryDuct> tabSalivaryDuct)
+    public HashMap<Integer, Vein> getVeinTab()
     {
-        this.tabSalivaryDuct = tabSalivaryDuct;
+        return veinTab;
     }
 
     /**
-     * @return the tabAirConnectible
+     * @param veinTab the veinTab to set
      */
-    public HashMap<Integer, AirConnectible> getTabAirConnectible()
+    public void setVeinTab(HashMap<Integer, Vein> veinTab)
     {
-        return tabAirConnectible;
+        this.veinTab = veinTab;
     }
 
     /**
-     * @param tabAirConnectible
-     *            the tabAirConnectible to set
+     * @return the capillariesTab
      */
-    public void setTabAirConnectible(HashMap<Integer, AirConnectible> tabAirConnectible)
+    public HashMap<Integer, Capillaries> getCapillariesTab()
     {
-        this.tabAirConnectible = tabAirConnectible;
+        return capillariesTab;
     }
 
     /**
-     * @return the tabNose
+     * @param capillariesTab the capillariesTab to set
      */
-    public HashMap<Integer, Nose> getTabNose()
+    public void setCapillariesTab(HashMap<Integer, Capillaries> capillariesTab)
     {
-        return tabNose;
+        this.capillariesTab = capillariesTab;
     }
 
     /**
-     * @param tabNose
-     *            the tabNose to set
+     * @return the noseTab
      */
-    public void setTabNose(HashMap<Integer, Nose> tabNose)
+    public HashMap<Integer, Nose> getNoseTab()
     {
-        this.tabNose = tabNose;
+        return noseTab;
     }
 
     /**
-     * @return the tabAlveoli
+     * @param noseTab the noseTab to set
      */
-    public HashMap<Integer, Alveoli> getTabAlveoli()
+    public void setNoseTab(HashMap<Integer, Nose> noseTab)
     {
-        return tabAlveoli;
+        this.noseTab = noseTab;
     }
 
     /**
-     * @param tabAlveoli
-     *            the tabAlveoli to set
+     * @return the airConnectibleTab
      */
-    public void setTabAlveoli(HashMap<Integer, Alveoli> tabAlveoli)
+    public HashMap<Integer, AirConnectible> getAirConnectibleTab()
     {
-        this.tabAlveoli = tabAlveoli;
+        return airConnectibleTab;
+    }
+
+    /**
+     * @param airConnectibleTab the airConnectibleTab to set
+     */
+    public void setAirConnectibleTab(HashMap<Integer, AirConnectible> airConnectibleTab)
+    {
+        this.airConnectibleTab = airConnectibleTab;
+    }
+
+    /**
+     * @return the alveoliTab
+     */
+    public HashMap<Integer, Alveoli> getAlveoliTab()
+    {
+        return alveoliTab;
+    }
+
+    /**
+     * @param alveoliTab the alveoliTab to set
+     */
+    public void setAlveoliTab(HashMap<Integer, Alveoli> alveoliTab)
+    {
+        this.alveoliTab = alveoliTab;
+    }
+
+    /**
+     * @return the digestiveTractTab
+     */
+    public HashMap<Integer, DigestiveTract> getDigestiveTractTab()
+    {
+        return digestiveTractTab;
+    }
+
+    /**
+     * @param digestiveTractTab the digestiveTractTab to set
+     */
+    public void setDigestiveTractTab(HashMap<Integer, DigestiveTract> digestiveTractTab)
+    {
+        this.digestiveTractTab = digestiveTractTab;
+    }
+
+    /**
+     * @return the stomachTractTab
+     */
+    public HashMap<Integer, StomachTract> getStomachTractTab()
+    {
+        return stomachTractTab;
+    }
+
+    /**
+     * @param stomachTractTab the stomachTractTab to set
+     */
+    public void setStomachTractTab(HashMap<Integer, StomachTract> stomachTractTab)
+    {
+        this.stomachTractTab = stomachTractTab;
+    }
+
+    /**
+     * @return the duodenumTractTab
+     */
+    public HashMap<Integer, DuodenumTract> getDuodenumTractTab()
+    {
+        return duodenumTractTab;
+    }
+
+    /**
+     * @param duodenumTractTab the duodenumTractTab to set
+     */
+    public void setDuodenumTractTab(HashMap<Integer, DuodenumTract> duodenumTractTab)
+    {
+        this.duodenumTractTab = duodenumTractTab;
+    }
+
+    /**
+     * @return the rectumTractTab
+     */
+    public HashMap<Integer, RectumTract> getRectumTractTab()
+    {
+        return rectumTractTab;
+    }
+
+    /**
+     * @param rectumTractTab the rectumTractTab to set
+     */
+    public void setRectumTractTab(HashMap<Integer, RectumTract> rectumTractTab)
+    {
+        this.rectumTractTab = rectumTractTab;
+    }
+
+    /**
+     * @return the biductTab
+     */
+    public HashMap<Integer, BiDuct> getBiductTab()
+    {
+        return biductTab;
+    }
+
+    /**
+     * @param biductTab the biductTab to set
+     */
+    public void setBiductTab(HashMap<Integer, BiDuct> biductTab)
+    {
+        this.biductTab = biductTab;
+    }
+
+    /**
+     * @return the ductTab
+     */
+    public HashMap<Integer, Duct> getDuctTab()
+    {
+        return ductTab;
+    }
+
+    /**
+     * @param ductTab the ductTab to set
+     */
+    public void setDuctTab(HashMap<Integer, Duct> ductTab)
+    {
+        this.ductTab = ductTab;
+    }
+
+    /**
+     * @return the ductOverflowableJunctionTab
+     */
+    public HashMap<Integer, DuctOverflowableJunction> getDuctOverflowableJunctionTab()
+    {
+        return ductOverflowableJunctionTab;
+    }
+
+    /**
+     * @param ductOverflowableJunctionTab the ductOverflowableJunctionTab to set
+     */
+    public void setDuctOverflowableJunctionTab(HashMap<Integer, DuctOverflowableJunction> ductOverflowableJunctionTab)
+    {
+        this.ductOverflowableJunctionTab = ductOverflowableJunctionTab;
+    }
+
+    /**
+     * @return the deversingDuctTab
+     */
+    public HashMap<Integer, DeversingDuct> getDeversingDuctTab()
+    {
+        return deversingDuctTab;
+    }
+
+    /**
+     * @param deversingDuctTab the deversingDuctTab to set
+     */
+    public void setDeversingDuctTab(HashMap<Integer, DeversingDuct> deversingDuctTab)
+    {
+        this.deversingDuctTab = deversingDuctTab;
+    }
+
+    /**
+     * @return the innerGallbladderTab
+     */
+    public HashMap<Integer, InnerGallbladder> getInnerGallbladderTab()
+    {
+        return innerGallbladderTab;
+    }
+
+    /**
+     * @param innerGallbladderTab the innerGallbladderTab to set
+     */
+    public void setInnerGallbladderTab(HashMap<Integer, InnerGallbladder> innerGallbladderTab)
+    {
+        this.innerGallbladderTab = innerGallbladderTab;
+    }
+
+    /**
+     * @return the salivaryDuctTab
+     */
+    public HashMap<Integer, SalivaryDuct> getSalivaryDuctTab()
+    {
+        return salivaryDuctTab;
+    }
+
+    /**
+     * @param salivaryDuctTab the salivaryDuctTab to set
+     */
+    public void setSalivaryDuctTab(HashMap<Integer, SalivaryDuct> salivaryDuctTab)
+    {
+        this.salivaryDuctTab = salivaryDuctTab;
     }
 }

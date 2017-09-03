@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import org.xml.sax.Attributes;
 
+import tp1.IFT287Exception;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -11,15 +13,26 @@ import org.xml.sax.Attributes;
 public class MainBody
 {
     // Attributes
-    private String bodyName;
-    private int bodyId;
+    private String name;
+    private int id;
     private HashMap<Integer, Systems> systemsTab;
     private HashMap<Integer, Organs> organsTab;
 
     // Comfort Constructor
-    public MainBody(Attributes attrs)
+    public MainBody(Attributes attrs) throws IFT287Exception
     {
+        systemsTab = new HashMap<Integer, Systems>();
+        organsTab = new HashMap<Integer, Organs>();
         
+        if (attrs != null)
+        {
+            name = attrs.getValue(0);
+            id = Integer.parseInt(attrs.getValue(1));
+        }
+        else
+        {
+            throw new IFT287Exception("MainBody : bad attributes");
+        }
     }
 
     // Getters / Setters
@@ -29,7 +42,7 @@ public class MainBody
      */
     public String getBodyName()
     {
-        return bodyName;
+        return name;
     }
 
     /**
@@ -38,7 +51,7 @@ public class MainBody
      */
     public void setBodyName(String bodyName)
     {
-        this.bodyName = bodyName;
+        this.name = bodyName;
     }
 
     /**
@@ -46,7 +59,7 @@ public class MainBody
      */
     public int getBodyId()
     {
-        return bodyId;
+        return id;
     }
 
     /**
@@ -55,7 +68,7 @@ public class MainBody
      */
     public void setBodyId(int bodyId)
     {
-        this.bodyId = bodyId;
+        this.id = bodyId;
     }
 
     /**

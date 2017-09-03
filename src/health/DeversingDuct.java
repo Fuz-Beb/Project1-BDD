@@ -2,6 +2,8 @@ package health;
 
 import org.xml.sax.Attributes;
 
+import tp1.IFT287Exception;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -13,9 +15,17 @@ public class DeversingDuct
     private int id;
 
     // Comfort constructor
-    public DeversingDuct(Attributes attrs)
+    public DeversingDuct(Attributes attrs) throws IFT287Exception
     {
-
+        if (attrs != null)
+        {
+            name = attrs.getValue(0);
+            id = Integer.parseInt(attrs.getValue(1));
+        }
+        else
+        {
+            throw new IFT287Exception("DeversingDuct : bad attributes");
+        }
     }
 
     // Getters / Setters

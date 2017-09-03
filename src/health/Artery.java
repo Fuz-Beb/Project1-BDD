@@ -2,6 +2,8 @@ package health;
 
 import org.xml.sax.Attributes;
 
+import tp1.IFT287Exception;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -16,9 +18,20 @@ public class Artery
     private double length;
 
     // Comfort constructor
-    public Artery(Attributes attrs)
+    public Artery(Attributes attrs) throws IFT287Exception
     {
-
+        if (attrs != null)
+        {
+            name = attrs.getValue(0);
+            id = Integer.parseInt(attrs.getValue(1));
+            startRadius = Double.parseDouble(attrs.getValue(2));
+            endRadius = Double.parseDouble(attrs.getValue(3));
+            length = Double.parseDouble(attrs.getValue(4));
+        }
+        else
+        {
+            throw new IFT287Exception("Artery : bad attributes");
+        }
     }
 
     // Getters / Setters
