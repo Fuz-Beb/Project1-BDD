@@ -172,6 +172,46 @@ public class MainBody
     {
         getLastConnectible().get(getLastConnectible().size() - 1).addAtrium(atrium);
     }
+    
+    public void addVentricle(Ventricle ventricle)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addVentricle(ventricle);
+    }
+    
+    public void addArtery(Artery artery)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addArtery(artery);
+    }
+    
+    public void addVein(Vein vein)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addVein(vein);
+    }
+    
+    public void addCapillaries(Capillaries capillaries)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addCapillaries(capillaries);
+    }
+    
+    public void addNose(Nose nose)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addNose(nose);
+    }
+    
+    public void addAirConnectible(AirConnectible airConnectible)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addAirConnectible(airConnectible);
+    }
+    
+    public void addAlveoli(Alveoli alveoli)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addAlveoli(alveoli);
+    }
+    
+    public void addDigestiveTract(DigestiveTract digestiveTract)
+    {
+        getLastConnectible().get(getLastConnectible().size() - 1).addDigestiveTract(digestiveTract);
+    }
 
     public void addStomachTract(StomachTract stomachTract)
     {
