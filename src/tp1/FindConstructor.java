@@ -65,7 +65,7 @@ public class FindConstructor
                 mainBody.addConnectible(new Connectible(attrs));
                 break;
             case "Connections":
-                mainBody.addConnections(new Connections(attrs));
+                mainBody.addConnections(new Connections());
                 break;
             case "Atrium":
                 mainBody.addAtrium(new Atrium(attrs));
