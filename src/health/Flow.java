@@ -15,13 +15,10 @@ public class Flow
     // Attributes
     private int id;
     private String name;
-<<<<<<< HEAD
     private HashMap<Integer, Connectible> tabConnectible;
     private HashMap<Integer, Connections> tabConnections;
-=======
     private HashMap<Integer, Connectible> connectibleTab;
     private HashMap<Integer, Connections> connectionsTab;
->>>>>>> 1b741857bca58348ba10f494505346df7ece3019
 
     // Comfort Constructor
     public Flow(Attributes attrs) throws IFT287Exception

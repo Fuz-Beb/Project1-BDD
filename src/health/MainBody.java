@@ -27,8 +27,6 @@ public class MainBody
     {
         systemsTab = new HashMap<Integer, Systems>();
         organsTab = new HashMap<Integer, Organs>();
-<<<<<<< HEAD
-=======
         
         if (attrs != null)
         {
@@ -39,7 +37,6 @@ public class MainBody
         {
             throw new IFT287Exception("MainBody : bad attributes");
         }
->>>>>>> 1b741857bca58348ba10f494505346df7ece3019
     }
 
     // Getters / Setters

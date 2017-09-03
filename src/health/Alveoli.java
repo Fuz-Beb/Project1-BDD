@@ -69,7 +69,7 @@ public class Alveoli
     /**
      * @return the volume
      */
-    public int getVolume()
+    public double getVolume()
     {
         return volume;
     }
