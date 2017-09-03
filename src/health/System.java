@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import org.xml.sax.Attributes;
 
+import tp1.IFT287Exception;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -17,9 +19,20 @@ public class System
     private HashMap<Integer, Flow> flowTab;
 
     // Comfort Constructor
-    public System(Attributes attrs)
+    public System(Attributes attrs) throws IFT287Exception
     {
-
+        flowTab = new HashMap<Integer, Flow>();
+        
+        if (attrs != null)
+        {
+            name = attrs.getValue(0);
+            id = Integer.parseInt(attrs.getValue(1));
+            type = Integer.parseInt(attrs.getValue(2));
+        }
+        else
+        {
+            throw new IFT287Exception("System : bad attributes");
+        }
     }
 
     // Getters / Setters

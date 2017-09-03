@@ -2,6 +2,8 @@ package health;
 
 import org.xml.sax.Attributes;
 
+import tp1.IFT287Exception;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -15,9 +17,19 @@ public class StomachTract
     private double volume;
 
     // Comfort constructor
-    public StomachTract(Attributes attrs)
+    public StomachTract(Attributes attrs) throws IFT287Exception
     {
-        
+        if (attrs != null)
+        {
+            name = attrs.getValue(0);
+            id = Integer.parseInt(attrs.getValue(1));
+            length = Double.parseDouble(attrs.getValue(2));
+            volume = Double.parseDouble(attrs.getValue(3));
+        }
+        else
+        {
+            throw new IFT287Exception("StomachTract : bad attributes");
+        }
     }
 
     // Getters / Setters
