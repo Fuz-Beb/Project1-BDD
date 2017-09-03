@@ -24,15 +24,18 @@ public class Vein
         {
             name = attrs.getValue(0);
             id = Integer.parseInt(attrs.getValue(1));
-            
-            if(attrs.getLength() == 5) {
+
+            if (attrs.getLength() == 5)
+            {
                 startRadius = Double.parseDouble(attrs.getValue(2));
                 endRadius = Double.parseDouble(attrs.getValue(3));
                 length = Double.parseDouble(attrs.getValue(4));
             }
-            else {
+
+            else
+            {
                 startRadius = Double.parseDouble(attrs.getValue(2));
-                length = Double.parseDouble(attrs.getValue(3));                
+                length = Double.parseDouble(attrs.getValue(3));
             }
         }
         else

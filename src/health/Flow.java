@@ -26,14 +26,16 @@ public class Flow
 
         if (attrs != null)
         {
-            if(attrs.getLocalName(0) == "name") {
-                name = attrs.getValue(0); 
+            if (attrs.getLocalName(0) == "name")
+            {
+                name = attrs.getValue(0);
                 id = Integer.parseInt(attrs.getValue(1));
             }
-            else {
+            else
+            {
                 id = Integer.parseInt(attrs.getValue(0));
-                name = attrs.getValue(1); 
-            }                                         
+                name = attrs.getValue(1);
+            }
         }
         else
         {
@@ -86,7 +88,7 @@ public class Flow
     }
 
     /**
-     * @param connectibleTab
+     * @param connectibleTab 
      *            the connectibleTab to set
      */
     public void setConnectibleTab(HashMap<Integer, Connectible> connectibleTab)
