@@ -88,7 +88,7 @@ public class Flow
     }
 
     /**
-     * @param connectibleTab 
+     * @param connectibleTab
      *            the connectibleTab to set
      */
     public void setConnectibleTab(HashMap<Integer, Connectible> connectibleTab)

@@ -5,7 +5,6 @@ package tp1;
 // Bouteloup Remy - 17 132 265
 
 import java.lang.System;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -36,7 +35,6 @@ public class MonParser extends DefaultHandler
         {
             e.printStackTrace();
         }
-
     }
 
     public void endElement(String namespace, String lName, String qName)

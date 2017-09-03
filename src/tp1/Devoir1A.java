@@ -48,8 +48,7 @@ public class Devoir1A
 	        factory.setValidating(true);
 			SAXParser parser = factory.newSAXParser();
 			DefaultHandler handler = new MonParser();
-			parser.parse(new File(nomFichierXML), handler);
-			
+			parser.parse(new File(nomFichierXML), handler);						
         } catch (Exception e) {
         	e.printStackTrace();
         }
