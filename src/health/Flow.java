@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -123,5 +125,34 @@ public class Flow
     public void addConnections(Connections connections)
     {
         connectionsTab.put(connectionsTab.size(), connections);
+    }
+
+    /**
+     * @param jsonGenerator
+     */
+    public void ToJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject();
+
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        jsonGenerator.write("id", this.id);
+        jsonGenerator.write("name", this.name);
+
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("Connectible");
+        for (int i = 0; i < this.connectibleTab.size(); i++)
+        {
+            this.connectibleTab.get(i).ToJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("Connections");
+        for (int i = 0; i < this.connectionsTab.size(); i++)
+        {
+            this.connectionsTab.get(i).ToJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
     }
 }

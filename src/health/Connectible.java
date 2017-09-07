@@ -1,7 +1,6 @@
 package health;
 
 import java.util.HashMap;
-
 import org.xml.sax.Attributes;
 
 // Travail fait par :
