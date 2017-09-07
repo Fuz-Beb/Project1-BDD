@@ -40,8 +40,32 @@ public class FindConstructor
     // Attributes
     private static MainBody mainBody;
 
-    // Methods
+    // Getters / Setters
+    
+    /**
+     * @return the mainBody
+     */
+    public static MainBody getMainBody()
+    {
+        return mainBody;
+    }
 
+    /**
+     * @param mainBody the mainBody to set
+     */
+    public static void setMainBody(MainBody mainBody)
+    {
+        FindConstructor.mainBody = mainBody;
+    }
+
+    // Methods
+    
+    /**
+     * Find Constructor method
+     * @param qName
+     * @param attrs
+     * @throws IFT287Exception
+     */
     public void findConstructor(String qName, Attributes attrs) throws IFT287Exception
     {
         switch (qName)

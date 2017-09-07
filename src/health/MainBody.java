@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -10,7 +12,7 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class MainBody
+public class MainBody 
 {
     // Attributes
     private String name;
@@ -442,5 +444,33 @@ public class MainBody
     public void addOrgan(Organ organ)
     {
         organsTab.get(organsTab.size() - 1).addOrgan(organ);
+    }
+
+    /**
+     * Converti l'objet actuel en JSON
+     * @param jsonGenerator
+     */
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject();
+
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        jsonGenerator.write("bodyID", this.id);
+        jsonGenerator.write("bodyName", this.name);
+        
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("systems");
+        for (int i=0; i<systemsTab.size(); i++) {
+            systemsTab.get(i).toJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+        
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("organs");
+        for (int i=0; i<systemsTab.size(); i++) {
+            this.organsTab.get(i).toJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
     }
 }

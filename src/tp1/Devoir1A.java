@@ -1,14 +1,27 @@
 package tp1;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.System;
+import java.util.HashMap;
+
+import javax.json.Json;
+import javax.json.stream.JsonGenerator;
+import javax.json.stream.JsonGeneratorFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import health.MainBody;
 
 /**
  * Fichier de base pour le Devoir1A du cours IFT287
@@ -30,28 +43,89 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class Devoir1A
 {
+    /**
+     * La méthode principale
+     * @param args
+     * @throws IFT287Exception
+     * @throws FileNotFoundException
+     */
     public static void main(String[] args)
     {
-    	if (args.length < 2) {
+        if (args.length < 2)
+        {
             System.out.println("Usage: java tp1.Devoir1A <fichierXML> <fichierJSON>");
             return;
         }
-    	
-    	String nomFichierXML = args[0];
+
+        String nomFichierXML = args[0];
         String nomFichierJSON = args[1];
-        
+
         System.out.println("Debut de la conversion du fichier " + nomFichierXML + " vers le fichier " + nomFichierJSON);
+
+//        REVOIR
         
-        try {
-	        // Construction du parseur
-	        SAXParserFactory factory = SAXParserFactory.newInstance();
-	        factory.setValidating(true);
-			SAXParser parser = factory.newSAXParser();
-			DefaultHandler handler = new MonParser();
-			parser.parse(new File(nomFichierXML), handler);						
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
+        // Attributes
+        
+        MainBody mainBody;
+        
+        // DEBUT - Lecture du fichier XML
+
+        try
+        {
+            lectureXML(nomFichierXML);
+
         System.out.println("Conversion terminee.");
+
+        // FIN - Lecture du fichier XML
+
+        // DEBUT- JSON générateur
+
+        HashMap<String, Object> config = new HashMap<String, Object>(1);
+        config.put(JsonGenerator.PRETTY_PRINTING, true);
+
+        // Création du générateur JSON
+        JsonGeneratorFactory fact = Json.createGeneratorFactory(config);
+        JsonGenerator jsonGenerator = fact.createGenerator(new FileOutputStream(new File(nomFichierJSON)));
+        
+        mainBody = lectureXML(nomFichierXML);
+        
+        mainBody.toJSON(jsonGenerator);
+                
+        // Fermeture du générateur
+//        jsonGenerator.close();
+        
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+
+        // FIN - JSON générateur
+    }
+    
+    // 
+    /**
+     * Lecture du fichier XML avec SAXP
+     * @param nomFichierXML
+     * @return mainBody
+     * @throws SAXException
+     * @throws IOException
+     * @throws ParserConfigurationException
+     */
+    public static MainBody lectureXML(String nomFichierXML) throws SAXException, IOException, ParserConfigurationException {
+
+        MainBody mainBody;
+        
+        // Construction du parseur
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setValidating(true);
+        SAXParser parser = factory.newSAXParser();
+        DefaultHandler handler = new MonParser();
+        parser.parse(new File(nomFichierXML), handler);
+                
+        mainBody = FindConstructor.getMainBody();
+        
+        return mainBody;
     }
 }
