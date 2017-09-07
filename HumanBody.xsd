@@ -1,306 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<xsd:simpleType name="zeroToSeven">
-  <xsd:restriction base="xsd:int">
-    <xsd:minInclusive value="0"/>
-    <xsd:maxInclusive value="7"/>
-  </xsd:restriction>
-</xsd:simpleType>
-
-  <!-- MainBody - Type complexe -->
-  <xsd:element name="MainBody">
-    <xsd:complexType>
-      <xsd:sequence>
-        <!-- Systems - Type complexe -->
-        <xsd:element name="Systems">
-          <xsd:complexType>
-            <xsd:sequence>
-              <!-- System - Type complexe - Plusieurs occurrences -->
-              <xsd:element name="System" minOccurs="0" maxOccurs="unbounded">
-                <xsd:complexType>
-                  <xsd:sequence>
-                    <!-- Flow - Type complexe - Plusieurs occurrences -->
-                    <xsd:element name="Flow" minOccurs="0" maxOccurs="unbounded">
-                      <xsd:complexType>
-                        <xsd:sequence>
-                          <!-- Connectible - Type complexe -->
-                          <xsd:element name="Connectible">
-                            <xsd:complexType>
-                              <!-- Choix entre plusieurs "Connectible" -->
-                              <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                                <xsd:element name="Atrium">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Ventricle">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Artery">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="startRadius" use="optional"/>
-                                        <xsd:attribute type="xsd:float" name="endRadius" use="optional"/>
-                                        <xsd:attribute type="xsd:float" name="length" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Vein">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="startRadius" use="optional"/>
-                                        <xsd:attribute type="xsd:float" name="endRadius" use="optional"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Capillaries">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="optional"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="optional"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Nose">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="AirConnectible">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="startRadius" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="endRadius" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="length" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Alveoli">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:short" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="DigestiveTract">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="StomachTract">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="DuodenumTract">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="RectumTract">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                        <xsd:attribute type="xsd:float" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="BiDuct">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="Duct">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="DuctOverflowableJunction">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="DeversingDuct">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="InnerGallbladder">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                                <xsd:element name="SalivaryDuct">
-                                  <xsd:complexType>
-                                    <xsd:simpleContent>
-                                      <xsd:extension base="xsd:string">
-                                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="length" use="required"/>
-                                        <xsd:attribute type="xsd:integer" name="volume" use="required"/>
-                                      </xsd:extension>
-                                    </xsd:simpleContent>
-                                  </xsd:complexType>
-                                </xsd:element>
-                              </xsd:choice>
-                            </xsd:complexType>
-                          </xsd:element>
-                          <!-- Connections - Type complexe -->
-                          <xsd:element name="Connections">
-                            <xsd:complexType>
-                              <xsd:sequence>
-                                <!-- Connections - Type complexe - Plusieurs occurrences -->
-                                <xsd:element name="Connection" minOccurs="0" maxOccurs="unbounded">
-                                  <xsd:complexType>
-                                    <xsd:sequence>
-                                      <!-- to - Type complexe - Plusieurs occurrences -->
-                                      <xsd:element name="to" minOccurs="0" maxOccurs="unbounded">
-                                        <xsd:complexType>
-                                          <xsd:simpleContent>
-                                            <xsd:extension base="xsd:string">
-                                              <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                            </xsd:extension>
-                                          </xsd:simpleContent>
-                                        </xsd:complexType>
-                                      </xsd:element>
-                                    </xsd:sequence>
-                                    <!-- Attribut id appartient à Connection -->
-                                    <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                                  </xsd:complexType>
-                                </xsd:element>
-                              </xsd:sequence>
-                            </xsd:complexType>
-                          </xsd:element>
-                        </xsd:sequence>
-                        <!-- Attribut id et name appartient à Flow -->
-                        <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                        <xsd:attribute type="xsd:string" name="name" use="required"/>
-                      </xsd:complexType>
-                    </xsd:element>
-                  </xsd:sequence>
-                  <!-- Attribut name, id et type appartient à System -->
-                  <xsd:attribute type="xsd:string" name="name" use="required"/>
-                  <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                  <xsd:attribute type="xsd:integer" name="type" use="required"/>
-                </xsd:complexType>
-              </xsd:element>
-            </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>
-        <!-- Organs - Type complexe -->
-        <xsd:element name="Organs">
-          <xsd:complexType>
-            <xsd:sequence>
-              <!-- Organ - Type complexe - Plusieurs occurrences -->
-              <xsd:element name="Organ" minOccurs="0" maxOccurs="unbounded">
-                <xsd:complexType>
-                  <xsd:simpleContent>
-                    <xsd:extension base="xsd:string">
-                      <xsd:attribute type="xsd:string" name="name" use="required"/>
-                      <xsd:attribute type="xsd:integer" name="id" use="required"/>
-                      <xsd:attribute type="xsd:integer" name="systemID" use="required"/>
-                    </xsd:extension>
-                  </xsd:simpleContent>
-                </xsd:complexType>
-              </xsd:element>
-            </xsd:sequence>
-          </xsd:complexType>
-        </xsd:element>
-      </xsd:sequence>
-      <!-- Attribut bodyName et bodyID appartient à MainBody -->
-      <xsd:attribute type="xsd:string" name="bodyName" use="required"/>
-      <xsd:attribute type="xsd:integer" name="bodyID" use="required"/>
-    </xsd:complexType>
-  </xsd:element>
+	<!-- MainBody - Type complexe -->
+	<xsd:element name="MainBody">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="Systems"/>
+				<xsd:element maxOccurs="unbounded" ref="Organs"/>
+			</xsd:sequence>
+			<xsd:attribute name="bodyID" use="required" type="xsd:integer"/>
+			<xsd:attribute name="bodyName" use="required" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Systems - Type complexe -->
+	<xsd:element name="Systems">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="System"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- System - Type complexe -->
+	<xsd:element name="System">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="Flow"/>
+			</xsd:sequence>
+			<xsd:attribute name="name" use="required" type="xsd:string"/>
+			<xsd:attribute name="id" use="required" type="xsd:integer"/>
+			<xsd:attribute name="type" use="required" type="xsd:integer"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Flow - Type complexe -->
+	<xsd:element name="Flow">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="Connectible"/>
+				<xsd:element maxOccurs="unbounded" ref="Connections"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" use="required" type="xsd:integer"/>
+			<xsd:attribute name="name" use="required" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Connectible - Type complexe -->
+	<xsd:element name="Connectible">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="Atrium" type="ConnectibleAttribute2"/>
+				<xsd:element name="Ventricle" type="ConnectibleAttribute2"/>
+				<xsd:element name="Artery" type="ConnectibleAttribute6"/>
+				<xsd:element name="Vein" type="ConnectibleAttribute6"/>
+				<xsd:element name="Capillaries" type="ConnectibleAttribute4"/>
+				<xsd:element name="Nose" type="ConnectibleAttribute1"/>
+				<xsd:element name="AirConnectible" type="ConnectibleAttribute5"/>
+				<xsd:element name="Alveoli"  type="ConnectibleAttribute2"/>
+				<xsd:element name="DigestiveTract" type="ConnectibleAttribute3"/>
+				<xsd:element name="StomachTract" type="ConnectibleAttribute3"/>
+				<xsd:element name="DuodenumTract" type="ConnectibleAttribute3"/>
+				<xsd:element name="RectumTract" type="ConnectibleAttribute3"/>
+				<xsd:element name="BiDuct" type="ConnectibleAttribute1"/>
+				<xsd:element name="Duct" type="ConnectibleAttribute1"/>
+				<xsd:element name="DuctOverflowableJunction" type="ConnectibleAttribute1"/>
+				<xsd:element name="DeversingDuct" type="ConnectibleAttribute1"/>
+				<xsd:element name="InnerGallbladder" type="ConnectibleAttribute1"/>
+				<xsd:element name="SalivaryDuct" type="ConnectibleAttribute3"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="ConnectibleAttribute1">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConnectibleAttribute2">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+        <xsd:attribute name="volume" use="required" type="xsd:float"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConnectibleAttribute3">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+        <xsd:attribute name="volume" use="required" type="xsd:float"/>
+		<xsd:attribute name="length" use="required" type="xsd:float"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConnectibleAttribute4">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+        <xsd:attribute name="volume" use="optional" type="xsd:float"/>
+		<xsd:attribute name="length" use="optional" type="xsd:float"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConnectibleAttribute5">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+        <xsd:attribute name="startRadius" use="required" type="xsd:float"/>
+		<xsd:attribute name="endRadius" use="required" type="xsd:float"/>
+		<xsd:attribute name="length" use="required" type="xsd:float"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConnectibleAttribute6">
+		<xsd:attribute name="name" use="required" type="xsd:string"/>
+        <xsd:attribute name="id" use="required" type="xsd:integer"/>
+        <xsd:attribute name="startRadius" use="optional" type="xsd:float"/>
+		<xsd:attribute name="endRadius" use="optional" type="xsd:float"/>
+		<xsd:attribute name="length" use="required" type="xsd:float"/>
+	</xsd:complexType>
+	
+	<!-- Connections - Type complexe -->
+	<xsd:element name="Connections">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" maxOccurs="unbounded" ref="Connection"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Connections - Type complexe -->
+	<xsd:element name="Connection">
+	  <xsd:complexType>
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" ref="to"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" use="required" type="xsd:integer"/>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<!-- to - Type simple -->
+	<xsd:element name="to">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="id" use="required" type="xsd:integer"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+		
+	<!-- Organs - Type complexe -->
+	<xsd:element name="Organs">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="Organ"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Organ - Type simple -->
+	<xsd:element name="Organ">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="name" use="required" type="xsd:string"/>
+					<xsd:attribute name="id" use="required" type="xsd:integer"/>
+					<xsd:attribute name="systemID" use="required" type="xsd:integer"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
 </xsd:schema>
