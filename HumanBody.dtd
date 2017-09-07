@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- DTD de la MainBody -->
-<!ELEMENT MainBody (Systems|Organs)*>
+<!ELEMENT MainBody (Systems,Organs)+>
 <!ATTLIST MainBody
   bodyName CDATA #REQUIRED
   bodyID CDATA #REQUIRED>
 
 <!--  Systems -->
-  <!ELEMENT Systems (System)*>
-    <!ELEMENT System (Flow)*>
+  <!ELEMENT Systems (System)+>
+    <!ELEMENT System (Flow)+>
     <!ATTLIST System
       name CDATA #REQUIRED
       id CDATA #REQUIRED
       type CDATA #REQUIRED>
 
       <!-- Flow -->
-      <!ELEMENT Flow (Connectible|Connections)*>
+      <!ELEMENT Flow (Connectible,Connections)>
       <!ATTLIST Flow
         id CDATA #REQUIRED
         name CDATA #REQUIRED>
