@@ -70,7 +70,7 @@ public class Devoir1A
             mainBody = lectureXML(nomFichierXML);
 
             // Ecrire du fichier JSON
-            ecrireJSON(nomFichierJSON, mainBody);
+            //ecrireJSON(nomFichierJSON, mainBody);
 
             System.out.println("Conversion terminee.");
         }

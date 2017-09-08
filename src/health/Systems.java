@@ -8,12 +8,16 @@ import javax.json.stream.JsonGenerator;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
+
 public class Systems
 {
     // Attributes
     private HashMap<Integer, System> systemTab;
 
     // Default Constructor
+    /**
+     * 
+     */
     public Systems()
     {
         systemTab = new HashMap<Integer, System>();
@@ -40,6 +44,9 @@ public class Systems
 
     // Methods
 
+    /**
+     * @param system
+     */
     public void addSystem(System system)
     {
         systemTab.put(systemTab.size(), system);

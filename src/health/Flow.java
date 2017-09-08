@@ -21,6 +21,11 @@ public class Flow
     private HashMap<Integer, Connections> connectionsTab;
 
     // Comfort Constructor
+    /**
+     * 
+     * @param attrs
+     * @throws IFT287Exception
+     */
     public Flow(Attributes attrs) throws IFT287Exception
     {
         connectibleTab = new HashMap<Integer, Connectible>();
@@ -117,11 +122,19 @@ public class Flow
 
     // Methods
 
+    /**
+     * 
+     * @param connectible
+     */
     public void addConnectible(Connectible connectible)
     {
         connectibleTab.put(connectibleTab.size(), connectible);
     }
 
+    /**
+     * 
+     * @param connections
+     */
     public void addConnections(Connections connections)
     {
         connectionsTab.put(connectionsTab.size(), connections);
@@ -142,7 +155,7 @@ public class Flow
         jsonGenerator.writeStartArray("Connectible");
         for (int i = 0; i < this.connectibleTab.size(); i++)
         {
-            this.connectibleTab.get(i).ToJSON(jsonGenerator);
+            // this.connectibleTab.get(i).ToJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
 
@@ -150,7 +163,7 @@ public class Flow
         jsonGenerator.writeStartArray("Connections");
         for (int i = 0; i < this.connectionsTab.size(); i++)
         {
-            this.connectionsTab.get(i).ToJSON(jsonGenerator);
+            // this.connectionsTab.get(i).ToJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();

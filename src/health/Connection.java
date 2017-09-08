@@ -17,6 +17,12 @@ public class Connection
     private HashMap<Integer, To> toTab;
 
     // Comfort Constructor
+    
+    /**
+     * 
+     * @param attrs
+     * @throws IFT287Exception
+     */
     public Connection(Attributes attrs) throws IFT287Exception
     {
         toTab = new HashMap<Integer, To>();
@@ -67,6 +73,10 @@ public class Connection
         this.toTab = toTab;
     }
 
+    /**
+     * 
+     * @param to
+     */
     public void addTo(To to)
     {
         toTab.put(toTab.size(), to);

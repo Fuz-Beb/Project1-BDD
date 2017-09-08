@@ -1,17 +1,21 @@
 package health;
 
 import javax.json.stream.JsonGenerator;
+import org.xml.sax.Attributes;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
+/**
+ * 
+ */
 public class Connectible
 {
     // Attributes
     private String type;
-    private int id;
     private String name;
+    private int id;
     private Double volume;
     private Double length;
     private Double startRadius;
@@ -26,32 +30,37 @@ public class Connectible
      * @param id
      * @param name
      */
-    public Connectible(String type, int id, String name)
+    public Connectible(String type, String name, int id)
     {
         this.type = type;
-        this.id = id;
         this.name = name;
+        this.id = id;
     }
 
     /**
      * Constructeur de confort avec les attributs communs et spéciaux
      * 
      * @param type
-     * @param id
-     * @param name
-     * @param volume
-     * @param length
-     * @param startRadius
-     * @param endRadius
+     * @param attrs
      */
-    public Connectible(String type, int id, String name, Double volume, Double length, Double startRadius,
-            Double endRadius)
+    public Connectible(String type, Attributes attrs)
     {
-        this(type, id, name);
-        this.volume = volume;
-        this.length = length;
-        this.startRadius = startRadius;
-        this.endRadius = endRadius;
+        this(type, attrs.getValue(0), Integer.parseInt(attrs.getValue(1)));
+
+        for (int i = 2; i < attrs.getLength(); i++)
+        {
+            switch (attrs.getQName(i))
+            {
+                case "volume":
+                    volume = Double.parseDouble(attrs.getValue(i));
+                case "length":
+                    length = Double.parseDouble(attrs.getValue(i));
+                case "startRadius":
+                    startRadius = Double.parseDouble(attrs.getValue(i));
+                case "endRadius":
+                    endRadius = Double.parseDouble(attrs.getValue(i));
+            }
+        }
     }
 
     // Getters / Setters
