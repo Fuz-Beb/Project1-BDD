@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -110,5 +112,28 @@ public class System
     public void addFlow(Flow flow)
     {
         flowTab.put(flowTab.size(), flow);
+    }
+
+    /**
+     * @param jsonGenerator
+     */
+    public void ToJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject();
+
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        jsonGenerator.write("name", this.name);
+        jsonGenerator.write("id", this.id);
+        jsonGenerator.write("type", this.type);
+
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("Flow");
+        for (int i = 0; i < this.flowTab.size(); i++)
+        {
+            this.flowTab.get(i).ToJSON(jsonGenerator);
+        }
+
+        jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
     }
 }

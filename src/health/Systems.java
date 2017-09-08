@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -35,11 +37,28 @@ public class Systems
     {
         this.systemTab = systemTab;
     }
-    
+
     // Methods
 
     public void addSystem(System system)
     {
         systemTab.put(systemTab.size(), system);
+    }
+
+    /**
+     * @param jsonGenerator
+     */
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject();
+        
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("System");
+        for (int i = 0; i < this.systemTab.size(); i++)
+        {
+            this.systemTab.get(i).ToJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
     }
 }

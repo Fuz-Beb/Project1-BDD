@@ -1,9 +1,7 @@
 package health;
 
 import java.util.HashMap;
-
 import javax.json.stream.JsonGenerator;
-
 import org.xml.sax.Attributes;
 
 // Travail fait par :
