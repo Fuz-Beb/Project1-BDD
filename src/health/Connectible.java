@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 // Travail fait par :
@@ -449,5 +451,30 @@ public class Connectible
     public void addSalivaryDuct(SalivaryDuct salivaryDuct)
     {
         salivaryDuctTab.put(salivaryDuctTab.size(), salivaryDuct);
+    }
+    
+    /**
+     * Convertit l'objet actuel en JSON
+     * @param jsonGenerator
+     */    
+    public void toJSON(JsonGenerator jsonGenerator) {
+        // Ecrit l'objet actuel dans le générateur JSON
+        generator.writeStartObject();
+        generator.write("id", this.getId());
+        generator.write("type", this.getType());
+        generator.write("name", this.getName());
+        if (this.getVolume() != null) {
+            generator.write("volume", this.getVolume());
+        }
+        if (this.getStartRadius() != null) {
+            generator.write("startRadius", this.getStartRadius());
+        }
+        if (this.getEndRadius() != null) {
+            generator.write("endRadius", this.getEndRadius());
+        }
+        if (this.getLength() != null) {
+            generator.write("length", this.getLength());
+        }
+        generator.writeEnd();
     }
 }

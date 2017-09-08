@@ -447,7 +447,7 @@ public class MainBody
     }
 
     /**
-     * Converti l'objet actuel en JSON
+     * Convertit l'objet actuel en JSON
      * 
      * @param jsonGenerator
      */
@@ -469,9 +469,9 @@ public class MainBody
 
         // Ecrit le sous-menu et le parcourt tant qu'il y a des données
         jsonGenerator.writeStartArray("organs");
-        for (int i = 0; i < systemsTab.size(); i++)
+        for (int i = 0; i < organsTab.size(); i++)
         {
-            this.organsTab.get(i).toJSON(jsonGenerator);
+            organsTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();

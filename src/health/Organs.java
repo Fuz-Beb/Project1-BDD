@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.stream.JsonGenerator;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -41,5 +43,20 @@ public class Organs
     public void addOrgan(Organ organ)
     {
         organTab.put(organTab.size(), organ);
+    }
+
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+        // Ecrit l'objet actuel dans le générateur JSON
+        jsonGenerator.writeStartObject();
+        
+        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        jsonGenerator.writeStartArray("organ");
+        for (int i = 0; i < organTab.size(); i++)
+        {
+            organTab.get(i).toJSON(jsonGenerator);
+        }                
+        
+        jsonGenerator.writeEnd();
     }
 }
