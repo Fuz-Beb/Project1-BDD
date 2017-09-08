@@ -45,12 +45,14 @@ public class Devoir1A
 {
     /**
      * La méthode principale
+     * 
      * @param args
-     * @throws IFT287Exception
-     * @throws FileNotFoundException
      */
     public static void main(String[] args)
     {
+        // Attributes
+        MainBody mainBody;
+
         if (args.length < 2)
         {
             System.out.println("Usage: java tp1.Devoir1A <fichierXML> <fichierJSON>");
@@ -62,70 +64,63 @@ public class Devoir1A
 
         System.out.println("Debut de la conversion du fichier " + nomFichierXML + " vers le fichier " + nomFichierJSON);
 
-//        REVOIR
-        
-        // Attributes
-        
-        MainBody mainBody;
-        
-        // DEBUT - Lecture du fichier XML
-
         try
         {
-            lectureXML(nomFichierXML);
+            // Lecture du fichier XML
+            mainBody = lectureXML(nomFichierXML);
 
-        System.out.println("Conversion terminee.");
+            // Ecrire du fichier JSON
+            ecrireJSON(nomFichierJSON, mainBody);
 
-        // FIN - Lecture du fichier XML
-
-        // DEBUT- JSON générateur
-
-        HashMap<String, Object> config = new HashMap<String, Object>(1);
-        config.put(JsonGenerator.PRETTY_PRINTING, true);
-
-        // Création du générateur JSON
-        JsonGeneratorFactory fact = Json.createGeneratorFactory(config);
-        JsonGenerator jsonGenerator = fact.createGenerator(new FileOutputStream(new File(nomFichierJSON)));
-        
-        mainBody = lectureXML(nomFichierXML);
-        
-        mainBody.toJSON(jsonGenerator);
-                
-        // Fermeture du générateur
-//        jsonGenerator.close();
-        
+            System.out.println("Conversion terminee.");
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        
-
-        // FIN - JSON générateur
     }
-    
-    // 
+
+    //
     /**
      * Lecture du fichier XML avec SAXP
+     * 
      * @param nomFichierXML
      * @return mainBody
      * @throws SAXException
      * @throws IOException
      * @throws ParserConfigurationException
      */
-    public static MainBody lectureXML(String nomFichierXML) throws SAXException, IOException, ParserConfigurationException {
+    public static MainBody lectureXML(String nomFichierXML)
+            throws SAXException, IOException, ParserConfigurationException
+    {
 
-        MainBody mainBody;
-        
         // Construction du parseur
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
         SAXParser parser = factory.newSAXParser();
         DefaultHandler handler = new MonParser();
         parser.parse(new File(nomFichierXML), handler);
-                
-        mainBody = FindConstructor.getMainBody();
-        
-        return mainBody;
+
+        return FindConstructor.getMainBody();
+    }
+
+    /**
+     * @param monFichierJSON
+     * @param mainBody
+     * @throws FileNotFoundException
+     */
+    public static void ecrireJSON(String monFichierJSON, MainBody mainBody) throws FileNotFoundException
+    {
+        HashMap<String, Object> config = new HashMap<String, Object>(1);
+        config.put(JsonGenerator.PRETTY_PRINTING, true);
+
+        // Création du générateur JSON
+        JsonGeneratorFactory fact = Json.createGeneratorFactory(config);
+        JsonGenerator jsonGenerator = fact.createGenerator(new FileOutputStream(new File(monFichierJSON)));
+
+        mainBody.toJSON(jsonGenerator);
+
+        // Fermeture du générateur
+        // jsonGenerator.close();
     }
 }
