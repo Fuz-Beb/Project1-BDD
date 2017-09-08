@@ -1,5 +1,8 @@
 package health;
 
+import javax.json.JsonObject;
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -26,6 +29,16 @@ public class To
         }
     }
 
+    /**
+     * Constructeur de confort offrant comme argument un objet JSON
+     * 
+     * @param jsonObject
+     */
+    public To(JsonObject jsonObject)
+    {
+        id = jsonObject.getInt("id");
+    }
+
     // Getters / Setters
 
     /**
@@ -43,5 +56,12 @@ public class To
     public void setId(int id)
     {
         this.id = id;
+    }
+
+    // Methods
+
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject().write("id", this.id).writeEnd();
     }
 }
