@@ -60,8 +60,13 @@ public class To
 
     // Methods
 
+    /**
+     * @param jsonGenerator
+     */
     public void toJSON(JsonGenerator jsonGenerator)
     {
-        jsonGenerator.writeStartObject().write("id", this.id).writeEnd();
+        jsonGenerator.writeStartObject();
+        jsonGenerator.write("id", this.id);
+        jsonGenerator.writeEnd();
     }
 }

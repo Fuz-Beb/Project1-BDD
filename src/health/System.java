@@ -21,6 +21,12 @@ public class System
     private HashMap<Integer, Flow> flowTab;
 
     // Comfort Constructor
+
+    /**
+     * 
+     * @param attrs
+     * @throws IFT287Exception
+     */
     public System(Attributes attrs) throws IFT287Exception
     {
         flowTab = new HashMap<Integer, Flow>();
@@ -117,7 +123,7 @@ public class System
     /**
      * @param jsonGenerator
      */
-    public void ToJSON(JsonGenerator jsonGenerator)
+    public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
 
@@ -130,7 +136,7 @@ public class System
         jsonGenerator.writeStartArray("Flow");
         for (int i = 0; i < this.flowTab.size(); i++)
         {
-            this.flowTab.get(i).ToJSON(jsonGenerator);
+            flowTab.get(i).toJSON(jsonGenerator);
         }
 
         jsonGenerator.writeEnd();

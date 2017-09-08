@@ -63,7 +63,7 @@ public class Systems
         jsonGenerator.writeStartArray("System");
         for (int i = 0; i < this.systemTab.size(); i++)
         {
-            this.systemTab.get(i).ToJSON(jsonGenerator);
+            systemTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();

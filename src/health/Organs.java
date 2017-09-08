@@ -51,12 +51,13 @@ public class Organs
         jsonGenerator.writeStartObject();
         
         // Ecrit le sous-menu et le parcourt tant qu'il y a des données
-        jsonGenerator.writeStartArray("organ");
+        jsonGenerator.writeStartArray("Organ");
         for (int i = 0; i < organTab.size(); i++)
         {
             organTab.get(i).toJSON(jsonGenerator);
         }                
         
+        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }
 }

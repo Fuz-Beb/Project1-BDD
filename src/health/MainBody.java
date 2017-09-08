@@ -206,7 +206,7 @@ public class MainBody
         jsonGenerator.write("bodyName", this.name);
 
         // Ecrit le sous-menu et le parcourt tant qu'il y a des données
-        jsonGenerator.writeStartArray("systems");
+        jsonGenerator.writeStartArray("Systems");
         for (int i = 0; i < systemsTab.size(); i++)
         {
             systemsTab.get(i).toJSON(jsonGenerator);
@@ -214,7 +214,7 @@ public class MainBody
         jsonGenerator.writeEnd();
 
         // Ecrit le sous-menu et le parcourt tant qu'il y a des données
-        jsonGenerator.writeStartArray("organs");
+        jsonGenerator.writeStartArray("Organs");
         for (int i = 0; i < organsTab.size(); i++)
         {
             organsTab.get(i).toJSON(jsonGenerator);

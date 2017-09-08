@@ -170,7 +170,7 @@ public class Flow
     /**
      * @param jsonGenerator
      */
-    public void ToJSON(JsonGenerator jsonGenerator)
+    public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
 
@@ -182,7 +182,7 @@ public class Flow
         jsonGenerator.writeStartArray("Connectible");
         for (int i = 0; i < this.connectibleTab.size(); i++)
         {
-            this.connectibleTab.get(i).toJSON(jsonGenerator);
+            connectibleTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
 
@@ -190,7 +190,7 @@ public class Flow
         jsonGenerator.writeStartArray("Connections");
         for (int i = 0; i < this.connectionTab.size(); i++)
         {
-            this.connectionTab.get(i).toJSON(jsonGenerator);
+            connectionTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
