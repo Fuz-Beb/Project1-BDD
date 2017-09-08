@@ -1,5 +1,7 @@
 package health;
 
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -80,5 +82,19 @@ public class Organ
     public void setSystemID(int systemID)
     {
         this.systemID = systemID;
+    }
+
+    /**
+     * Convertit l'objet actuel en JSON
+     * @param jsonGenerator
+     */
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+     // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        jsonGenerator.writeStartObject();
+        jsonGenerator.write("id", this.getId());
+        jsonGenerator.write("name", this.getName());
+        jsonGenerator.write("systemID", this.getSystemID());
+        jsonGenerator.writeEnd();
     }
 }
