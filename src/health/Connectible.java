@@ -1,5 +1,6 @@
 package health;
 
+import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 import org.xml.sax.Attributes;
 
@@ -60,6 +61,35 @@ public class Connectible
                 case "endRadius":
                     endRadius = Double.parseDouble(attrs.getValue(i));
             }
+        }
+    }
+
+    /**
+     * Constructeur de confort offrant comme argument un objet JSON
+     * 
+     * @param jsonObject
+     */
+    public Connectible(JsonObject jsonObject)
+    {
+        type = jsonObject.getString("type");
+        id = jsonObject.getInt("id");
+        name = jsonObject.getString("name");
+
+        if (jsonObject.getJsonNumber("volume") != null)
+        {
+            this.volume = jsonObject.getJsonNumber("volume").doubleValue();
+        }
+        if (jsonObject.getJsonNumber("length") != null)
+        {
+            this.length = jsonObject.getJsonNumber("length").doubleValue();
+        }
+        if (jsonObject.getJsonNumber("startRadius") != null)
+        {
+            this.startRadius = jsonObject.getJsonNumber("startRadius").doubleValue();
+        }
+        if (jsonObject.getJsonNumber("endRadius") != null)
+        {
+            this.endRadius = jsonObject.getJsonNumber("endRadius").doubleValue();
         }
     }
 

@@ -90,7 +90,7 @@ public class Organ
      */
     public void toJSON(JsonGenerator jsonGenerator)
     {
-     // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.writeStartObject();
         jsonGenerator.write("id", this.getId());
         jsonGenerator.write("name", this.getName());

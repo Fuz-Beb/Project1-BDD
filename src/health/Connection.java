@@ -2,6 +2,9 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonObject;
+import javax.json.stream.JsonGenerator;
+
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -26,14 +29,29 @@ public class Connection
     public Connection(Attributes attrs) throws IFT287Exception
     {
         toTab = new HashMap<Integer, To>();
+    
+       if (attrs != null)
+       {
+           id = Integer.parseInt(attrs.getValue(0));
+       }
+       else
+       {
+           throw new IFT287Exception("Connection : bad attributes");
+       }
+    }
 
-        if (attrs != null)
+    /**
+     * Constructeur de confort offrant comme argument un objet JSON
+     * 
+     * @param jsonObject
+     */
+    public Connection(JsonObject jsonObject)
+    {
+        id = jsonObject.getInt("id");
+
+        for (int boucle = 0; boucle < toTab.size(); boucle++)
         {
-            id = Integer.parseInt(attrs.getValue(0));
-        }
-        else
-        {
-            throw new IFT287Exception("Connection : bad attributes");
+            //toTab.put(toTab.size(), new To((JsonObject) toTab.get(boucle)));
         }
     }
 
@@ -73,12 +91,29 @@ public class Connection
         this.toTab = toTab;
     }
 
+    // Methods
+    
     /**
-     * 
      * @param to
      */
     public void addTo(To to)
     {
         toTab.put(toTab.size(), to);
+    }
+
+    public void toJSON(JsonGenerator jsonGenerator)
+    {
+        jsonGenerator.writeStartObject();
+
+        jsonGenerator.write("id", this.getId());
+
+        jsonGenerator.writeStartArray("tos");
+        for (int i = 0; i < toTab.size(); i++)
+        {
+            //toTab.get(i).toJSON(jsonGenerator);
+        }
+        jsonGenerator.writeEnd();
+
+        jsonGenerator.writeEnd();
     }
 }

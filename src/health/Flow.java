@@ -2,6 +2,7 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
 import org.xml.sax.Attributes;
@@ -18,7 +19,7 @@ public class Flow
     private int id;
     private String name;
     private HashMap<Integer, Connectible> connectibleTab;
-    private HashMap<Integer, Connections> connectionsTab;
+    private HashMap<Integer, Connection> connectionTab;
 
     // Comfort Constructor
     /**
@@ -29,7 +30,7 @@ public class Flow
     public Flow(Attributes attrs) throws IFT287Exception
     {
         connectibleTab = new HashMap<Integer, Connectible>();
-        connectionsTab = new HashMap<Integer, Connections>();
+        connectionTab = new HashMap<Integer, Connection>();
 
         if (attrs != null)
         {
@@ -48,6 +49,30 @@ public class Flow
         {
             throw new IFT287Exception("Flow : bad attributes");
         }
+    }
+
+
+    /**
+     * Constructeur de confort
+     * 
+     * @param objectJSON
+     */
+    public Flow(JsonObject objectJSON)
+    {
+        connectibleTab = new HashMap<Integer, Connectible>();
+        connectionTab = new HashMap<Integer, Connection>();
+        id = objectJSON.getInt("id");
+        name = objectJSON.getString("name");
+
+        // Permet de lire les connectionsTab et de les assigner au HasMap
+        // correspondant
+        for (int boucle = 0; boucle < connectionTab.size(); boucle++)
+        {
+            connectionTab.put(connectionTab.size(), new Connection((JsonObject) connectionTab.get(boucle)));
+        }
+
+        // Permet de lire les connectibles et de les assigner au HasMap
+        // correspondant
     }
 
     // Getters / Setters
@@ -102,25 +127,27 @@ public class Flow
     {
         this.connectibleTab = connectibleTab;
     }
-
+    
     /**
-     * @return the connectionsTab
+     * @return the connectionTab
      */
-    public HashMap<Integer, Connections> getConnectionsTab()
+    public HashMap<Integer, Connection> getConnectionTab()
     {
-        return connectionsTab;
+        return connectionTab;
     }
 
-    /**
-     * @param connectionsTab
-     *            the connectionsTab to set
-     */
-    public void setConnectionsTab(HashMap<Integer, Connections> connectionsTab)
-    {
-        this.connectionsTab = connectionsTab;
-    }
 
+    /**
+     * @param connectionTab the connectionTab to set
+     */
+    public void setConnectionTab(HashMap<Integer, Connection> connectionTab)
+    {
+        this.connectionTab = connectionTab;
+    }
+    
     // Methods
+    
+
 
     /**
      * 
@@ -133,11 +160,11 @@ public class Flow
 
     /**
      * 
-     * @param connections
+     * @param connection
      */
-    public void addConnections(Connections connections)
+    public void addConnection(Connection connection)
     {
-        connectionsTab.put(connectionsTab.size(), connections);
+        connectionTab.put(connectionTab.size(), connection);
     }
 
     /**
@@ -155,15 +182,15 @@ public class Flow
         jsonGenerator.writeStartArray("Connectible");
         for (int i = 0; i < this.connectibleTab.size(); i++)
         {
-            // this.connectibleTab.get(i).ToJSON(jsonGenerator);
+            this.connectibleTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
 
         // Ecrit le sous-menu et le parcourt tant qu'il y a des données
         jsonGenerator.writeStartArray("Connections");
-        for (int i = 0; i < this.connectionsTab.size(); i++)
+        for (int i = 0; i < this.connectionTab.size(); i++)
         {
-            // this.connectionsTab.get(i).ToJSON(jsonGenerator);
+            this.connectionTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();

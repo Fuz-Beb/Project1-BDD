@@ -76,10 +76,9 @@ public class FindConstructor
             case "Connectible":
                 break;
             case "Connections":
-                mainBody.getLastFlow().addConnections(new Connections());
                 break;
             case "Connection":
-                mainBody.getLastConnections().addConnection(new Connection(attrs));
+                mainBody.getLastFlow().addConnection(new Connection(attrs));
                 break;
             case "to":
                 mainBody.getLastConnection().addTo(new To(attrs));

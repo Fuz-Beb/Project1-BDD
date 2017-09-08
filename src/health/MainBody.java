@@ -63,20 +63,11 @@ public class MainBody
     }
 
     /**
-     * @return Connections
-     */
-    public Connections getLastConnections()
-    {
-        return getLastFlow().getConnectionsTab().get(getLastFlow().getConnectionsTab().size() - 1);
-
-    }
-
-    /**
      * @return Connection
      */
     public Connection getLastConnection()
     {
-        return getLastConnections().getTabConnection().get(getLastConnections().getTabConnection().size() - 1);
+        return getLastFlow().getConnectionTab().get(getLastFlow().getConnectionTab().size() - 1);
     }
 
     /**
