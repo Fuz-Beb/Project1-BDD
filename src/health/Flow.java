@@ -2,11 +2,13 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
+import tp1_model.ConnectibleModel;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
@@ -21,27 +23,21 @@ public class Flow
     private HashMap<Integer, Connections> connectionsTab;
 
     // Comfort Constructor
-    public Flow(Attributes attrs) throws IFT287Exception
+    
+    /**
+     * Constructeur de confort
+     * @param attrs
+     * @throws IFT287Exception
+     */
+    public Flow(JsonObject objectJSON)
     {
         connectibleTab = new HashMap<Integer, Connectible>();
         connectionsTab = new HashMap<Integer, Connections>();
+        id = objectJSON.getInt("id");
+        name = objectJSON.getString("name");
 
-        if (attrs != null)
-        {
-            if (attrs.getLocalName(0) == "name")
-            {
-                name = attrs.getValue(0);
-                id = Integer.parseInt(attrs.getValue(1));
-            }
-            else
-            {
-                id = Integer.parseInt(attrs.getValue(0));
-                name = attrs.getValue(1);
-            }
-        }
-        else
-        {
-            throw new IFT287Exception("Flow : bad attributes");
+        for(int boucle = 0; boucle < connectibleTab.size(); boucle++) {
+            connectibleTab.put(connectibleTab.size(), new Connectible((JsonObject)connectibleTab.get(boucle)))
         }
     }
 
