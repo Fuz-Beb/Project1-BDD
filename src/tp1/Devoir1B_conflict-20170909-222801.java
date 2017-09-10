@@ -62,8 +62,17 @@ public class Devoir1B
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
 
+        
         try
         {
+        
+            FileInputStream file = new FileInputStream(new File(nomFichierJSON));
+            JsonReader reader =  Json.createReader(file);
+            
+            JsonObject obj = reader.readObject();
+            mainBody = new MainBody(obj);
+        
+
             // Lecture du fichier JSON
 //            mainBody = lectureJSON(nomFichierJSON, null);
 

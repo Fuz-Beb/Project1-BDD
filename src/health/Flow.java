@@ -27,23 +27,15 @@ public class Flow
      * @param attrs
      * @throws IFT287Exception
      */
-    public Flow(Attributes attrs) throws IFT287Exception
+    public Flow(HashMap<String, String> attrs) throws IFT287Exception
     {
         connectibleTab = new HashMap<Integer, Connectible>();
         connectionTab = new HashMap<Integer, Connection>();
 
         if (attrs != null)
         {
-            if (attrs.getLocalName(0) == "name")
-            {
-                name = attrs.getValue(0);
-                id = Integer.parseInt(attrs.getValue(1));
-            }
-            else
-            {
-                id = Integer.parseInt(attrs.getValue(0));
-                name = attrs.getValue(1);
-            }
+            name = attrs.get("name");
+            id = Integer.parseInt(attrs.get("id"));
         }
         else
         {

@@ -1,5 +1,7 @@
 package health;
 
+import java.util.HashMap;
+
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -17,11 +19,11 @@ public class To
     private int id;
 
     // Comfort Constructor
-    public To(Attributes attrs) throws IFT287Exception
+    public To(HashMap<String, String> attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
-            id = Integer.parseInt(attrs.getValue(0));
+            id = Integer.parseInt(attrs.get("id"));
         }
         else
         {

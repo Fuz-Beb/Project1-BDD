@@ -50,9 +50,9 @@ public class Devoir1A
      */
     public static void main(String[] args)
     {
-        // Attributes
+        
         MainBody mainBody;
-
+        
         if (args.length < 2)
         {
             System.out.println("Usage: java tp1.Devoir1A <fichierXML> <fichierJSON>");

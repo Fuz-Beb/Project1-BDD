@@ -1,5 +1,7 @@
 package health;
 
+import java.util.HashMap;
+
 import javax.json.stream.JsonGenerator;
 
 import org.xml.sax.Attributes;
@@ -17,13 +19,13 @@ public class Organ
     private int systemID;
 
     // Comfort Constructor
-    public Organ(Attributes attrs) throws IFT287Exception
+    public Organ(HashMap<String, String> attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
-            name = attrs.getValue(0);
-            id = Integer.parseInt(attrs.getValue(1));
-            systemID = Integer.parseInt(attrs.getValue(2));
+            name = attrs.get("name");
+            id = Integer.parseInt(attrs.get("id"));
+            systemID = Integer.parseInt(attrs.get("systemID"));
         }
         else
         {

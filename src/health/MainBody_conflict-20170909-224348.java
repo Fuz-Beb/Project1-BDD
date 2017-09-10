@@ -6,6 +6,8 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.xml.sax.Attributes;
+
 import tp1.IFT287Exception;
 
 // Travail fait par :
@@ -36,8 +38,8 @@ public class MainBody
 
         if (attrs != null)
         {
-            name = attrs.get("bodyName");
-            id = Integer.parseInt(attrs.get("bodyID"));
+            name = attrs.get("name");
+            id = Integer.parseInt(attrs.get("id"));
         }
         else
         {
@@ -63,12 +65,8 @@ public class MainBody
         }
         
         for (int boucle = 0; boucle < tempSystems.size(); boucle++) {
-            systemsTab.put(systemsTab.size(), new System());
+            systemsTab.put(systemsTab.size(), new System((JsonObject) tempSystems.get(boucle)));
         }
-        
-        for (int boucle = 0; boucle < tempOrgans.size(); boucle++) {
-            organsTab.put(organsTab.size(), new Organ());
-        }        
     }
     
     // Getters / Setters
@@ -200,22 +198,6 @@ public class MainBody
     }
 
     // Methods
-
-    /**
-     * @param system 
-     */
-    public void addSystems(System system)
-    {
-        systemsTab.put(systemsTab.size(), system);
-    }
-
-    /**
-     * @param organ 
-     */
-    public void addOrgans(Organ organ)
-    {
-        organsTab.put(organsTab.size(), organ);
-    }
 
     /**
      * Convertit l'objet actuel en JSON

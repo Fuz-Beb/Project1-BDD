@@ -1,5 +1,7 @@
 package health;
 
+import java.util.HashMap;
+
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 import org.xml.sax.Attributes;
@@ -44,22 +46,22 @@ public class Connectible
      * @param type
      * @param attrs
      */
-    public Connectible(String type, Attributes attrs)
+    public Connectible(String type, HashMap<String, String> attrs)
     {
-        this(type, attrs.getValue(0), Integer.parseInt(attrs.getValue(1)));
+        this(type, attrs.get("name"), Integer.parseInt(attrs.get("id")));
 
-        for (int i = 2; i < attrs.getLength(); i++)
+        for (int i = 2; i < attrs.size(); i++)
         {
-            switch (attrs.getQName(i))
+            switch (attrs.get("name"))
             {
                 case "volume":
-                    volume = Double.parseDouble(attrs.getValue(i));
+                    volume = Double.parseDouble(attrs.get("volume"));
                 case "length":
-                    length = Double.parseDouble(attrs.getValue(i));
+                    length = Double.parseDouble(attrs.get("length"));
                 case "startRadius":
-                    startRadius = Double.parseDouble(attrs.getValue(i));
+                    startRadius = Double.parseDouble(attrs.get("startRadius"));
                 case "endRadius":
-                    endRadius = Double.parseDouble(attrs.getValue(i));
+                    endRadius = Double.parseDouble(attrs.get("endRadius"));
             }
         }
     }

@@ -5,6 +5,8 @@ package tp1;
 // Bouteloup Remy - 17 132 265
 
 import java.lang.System;
+import java.util.HashMap;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -25,11 +27,21 @@ public class MonParser extends DefaultHandler
     public void startElement(String uri, String localName, String qName, Attributes attributes)
     {
         System.out.println("Start element = " + qName);
+
+        HashMap<String, String> attributesTab = null;
         FindConstructor findConstructor = new FindConstructor();
+
+        if (attributes != null)
+        {
+            attributesTab = new HashMap<String, String>();
+            
+            for(int boucle = 0; boucle < attributes.getLength(); boucle++)
+                attributesTab.put(attributes.getLocalName(boucle), attributes.getValue(boucle));
+        }
 
         try
         {
-            findConstructor.findConstructor(qName, attributes);
+            findConstructor.findConstructor(qName, attributesTab);
         }
         catch (IFT287Exception e)
         {

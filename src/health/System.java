@@ -2,6 +2,8 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
 import org.xml.sax.Attributes;
@@ -24,24 +26,29 @@ public class System
 
     /**
      * 
-     * @param attrs
      * @throws IFT287Exception
      */
-    public System(Attributes attrs) throws IFT287Exception
-    {
-        flowTab = new HashMap<Integer, Flow>();
-
-        if (attrs != null)
-        {
-            name = attrs.getValue(0);
-            id = Integer.parseInt(attrs.getValue(1));
-            type = Integer.parseInt(attrs.getValue(2));
-        }
-        else
-        {
-            throw new IFT287Exception("System : bad attributes");
-        }
-    }
+//    public System() throws IFT287Exception
+//    {
+//        flowTab = new HashMap<Integer, Flow>();
+//
+//        if (jsonObject != null)
+//        {
+//            id = jsonObject.getInt("id");            
+//            name = jsonObject.getString("name");
+//            type = jsonObject.getInt("type");
+//
+//            JsonArray tempFlows = jsonObject.getJsonArray("flows");
+//            for (int i = 0; i < tempFlows.size(); i++)
+//            {
+//                flowTab.put(flowTab.size(), new Flow((JsonObject) tempFlows.get(i)));
+//            }
+//        }
+//        else
+//        {
+//            throw new IFT287Exception("System : bad attributes");
+//        }
+//    }
 
     // Getters / Setters
 
