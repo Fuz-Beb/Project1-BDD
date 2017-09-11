@@ -1,7 +1,5 @@
 package health;
 
-import java.util.HashMap;
-
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -9,7 +7,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
-import java.lang.System;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
@@ -51,22 +48,22 @@ public class Connectible
      * @param type
      * @param attrs
      */
-    public Connectible(String type, HashMap<String, String> attrs)
+    public Connectible(String type, Attributes attrs)
     {
-        this(type, attrs.get("name"), Integer.parseInt(attrs.get("id")));
+        this(type, attrs.getValue("name"), Integer.parseInt(attrs.getValue("id")));
 
-        for (int i = 2; i < attrs.size(); i++)
+        for (int i = 2; i < attrs.getLength(); i++)
         {
-            switch (attrs.get("name"))
+            switch (attrs.getValue("name"))
             {
                 case "volume":
-                    volume = Double.parseDouble(attrs.get("volume"));
+                    volume = Double.parseDouble(attrs.getValue("volume"));
                 case "length":
-                    length = Double.parseDouble(attrs.get("length"));
+                    length = Double.parseDouble(attrs.getValue("length"));
                 case "startRadius":
-                    startRadius = Double.parseDouble(attrs.get("startRadius"));
+                    startRadius = Double.parseDouble(attrs.getValue("startRadius"));
                 case "endRadius":
-                    endRadius = Double.parseDouble(attrs.get("endRadius"));
+                    endRadius = Double.parseDouble(attrs.getValue("endRadius"));
             }
         }
     }
@@ -266,8 +263,8 @@ public class Connectible
         Node connectible = document.createElement(type);
         ((Element) connectible).setAttribute("name", name);
         ((Element) connectible).setAttribute("id", String.valueOf(id));
-        
-        // Ajout 
+
+        // Ajout
         if (volume != null)
         {
             ((Element) connectible).setAttribute("volume", String.valueOf(volume));
@@ -284,7 +281,7 @@ public class Connectible
         {
             ((Element) connectible).setAttribute("length", String.valueOf(length));
         }
-        
+
         node.appendChild(connectible);
     }
 }

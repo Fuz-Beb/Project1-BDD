@@ -29,17 +29,18 @@ public class System
 
     /**
      * 
+     * @param attrs 
      * @throws IFT287Exception
      */
-    public System(HashMap<String, String> attrs) throws IFT287Exception
+    public System(Attributes attrs) throws IFT287Exception
     {
         flowTab = new HashMap<Integer, Flow>();
 
         if (attrs != null)
         {
-            id = Integer.parseInt(attrs.get("id"));
-            name = attrs.get("name");
-            type = Integer.parseInt(attrs.get("type"));
+            id = Integer.parseInt(attrs.getValue("id"));
+            name = attrs.getValue("name");
+            type = Integer.parseInt(attrs.getValue("type"));
 
             // JsonArray tempFlows = attrs.getJsonArray("flows");
             // for (int i = 0; i < tempFlows.size(); i++)

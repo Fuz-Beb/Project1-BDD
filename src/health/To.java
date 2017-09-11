@@ -22,11 +22,11 @@ public class To
     private int id;
 
     // Comfort Constructor
-    public To(HashMap<String, String> attrs) throws IFT287Exception
+    public To(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
-            id = Integer.parseInt(attrs.get("id"));
+            id = Integer.parseInt(attrs.getValue("id"));
         }
         else
         {

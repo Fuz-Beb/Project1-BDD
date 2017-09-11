@@ -34,15 +34,15 @@ public class MainBody
      * @param attrs
      * @throws IFT287Exception
      */
-    public MainBody(HashMap<String, String> attrs) throws IFT287Exception
+    public MainBody(Attributes attrs) throws IFT287Exception
     {
         systemTab = new HashMap<Integer, System>();
         organTab = new HashMap<Integer, Organ>();
 
         if (attrs != null)
         {
-            name = attrs.get("bodyName");
-            id = Integer.parseInt(attrs.get("bodyID"));
+            name = attrs.getValue("bodyName");
+            id = Integer.parseInt(attrs.getValue("bodyID"));
         }
         else
         {
@@ -200,24 +200,6 @@ public class MainBody
     }
 
     // Methods
-
-    /**
-     * <<<<<<< HEAD =======
-     * 
-     * @param system
-     */
-    public void addSystem(System system)
-    {
-        systemTab.put(systemTab.size(), system);
-    }
-
-    /**
-     * @param organ
-     */
-    public void addOrgan(Organ organ)
-    {
-        organTab.put(organTab.size(), organ);
-    }
 
     /**
      * >>>>>>> master Convertit l'objet actuel en JSON

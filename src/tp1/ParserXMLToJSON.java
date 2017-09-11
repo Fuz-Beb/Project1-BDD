@@ -11,8 +11,16 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import health.Connectible;
+import health.Connection;
+import health.Flow;
+import health.MainBody;
+import health.Organ;
+import health.To;
+
 public class ParserXMLToJSON extends DefaultHandler
 {
+    MainBody mainbody;
 
     public void startDocument()
     {
@@ -22,28 +30,40 @@ public class ParserXMLToJSON extends DefaultHandler
     {
     }
 
-    public void startElement(String uri, String localName, String qName, Attributes attributes)
+    public void startElement(String uri, String localName, String qName, Attributes attrs)
     {
         System.out.println("Start element = " + qName);
-
-        HashMap<String, String> attributesTab = null;
-        FindConstructor findConstructor = new FindConstructor();
-
-        if (attributes != null)
+        
+        switch (qName)
         {
-            attributesTab = new HashMap<String, String>();
-            
-            for(int boucle = 0; boucle < attributes.getLength(); boucle++)
-                attributesTab.put(attributes.getLocalName(boucle), attributes.getValue(boucle));
-        }
-
-        try
-        {
-            findConstructor.findConstructor(qName, attributesTab);
-        }
-        catch (IFT287Exception e)
-        {
-            e.printStackTrace();
+            case "MainBody":
+                mainbody = new MainBody(attrs);
+                break;
+            case "Systems":
+                break;
+            case "Organs":
+                break;
+            case "System":
+                mainbody.getSystemTab().put(mainbody.getSystemTab().size(), new System(attrs));
+                break;
+            case "Flow":
+                mainbody.getLastSystem().getFlowTab().put(mainbody.getLastSystem().getFlowTab().size(), new Flow(attrs));
+                break;
+            case "Connectible":
+                break;
+            case "Connections":
+                break;
+            case "Connection":
+                mainbody.getLastFlow().getConnectionTab().put(mainbody.getLastFlow().getConnectionTab().size(), new Connection(attrs));
+                break;
+            case "to":
+                mainbody.getLastConnection().getToTab().put(mainbody.getLastConnection().getToTab().size(), new To(attrs));
+                break;
+            case "Organ":
+                mainbody.getOrganTab().put(mainbody.getOrganTab().size(), new Organ(attrs));
+                break;
+            default:
+                mainbody.getLastFlow().getConnectibleTab().put(mainbody.getLastFlow().getConnectibleTab().size(), new Connectible(qName, attrs));
         }
     }
 
@@ -64,5 +84,13 @@ public class ParserXMLToJSON extends DefaultHandler
     public void fatalError(SAXParseException e)
     {
         System.out.println("FatalError catched ! Message : " + e.getMessage());
+    }
+
+    /**
+     * @return the mainbody
+     */
+    public MainBody getMainbody()
+    {
+        return mainbody;
     }
 }

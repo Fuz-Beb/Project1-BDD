@@ -29,13 +29,13 @@ public class Connection
      * @param attrs
      * @throws IFT287Exception
      */
-    public Connection(HashMap<String, String> attrs) throws IFT287Exception
+    public Connection(Attributes attrs) throws IFT287Exception
     {
         toTab = new HashMap<Integer, To>();
 
         if (attrs != null)
         {
-            id = Integer.parseInt(attrs.get("id"));
+            id = Integer.parseInt(attrs.getValue("id"));
         }
         else
         {

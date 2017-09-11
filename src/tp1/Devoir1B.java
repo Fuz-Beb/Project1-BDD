@@ -3,8 +3,6 @@ package tp1;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-
-
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -51,14 +49,13 @@ import health.MainBody;
 public class Devoir1B
 {
     /**
-<<<<<<< HEAD
-     * La méthode principale
+     * <<<<<<< HEAD La méthode principale
      * 
-=======
->>>>>>> master
+     * ======= >>>>>>> master
+     * 
      * @param args
-     * @throws IOException 
-     * @throws SAXException 
+     * @throws IOException
+     * @throws SAXException
      */
     public static void main(String[] args) throws SAXException, IOException
     {
@@ -102,22 +99,21 @@ public class Devoir1B
     public static MainBody lectureXML(String nomFichierJSON)
             throws SAXException, IOException, ParserConfigurationException
     {
-
         // Construction du parseur
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
         SAXParser parser = factory.newSAXParser();
-        DefaultHandler handler = new ParserXMLToJSON();
-        parser.parse(new File(nomFichierJSON), handler);
+        DefaultHandler hdl = new ParserXMLToJSON();
+        parser.parse(new File(nomFichierJSON), hdl);
 
-        return FindConstructor.getMainBody();
+        return ((ParserXMLToJSON) hdl).getMainbody();
     }
 
     /**
      * Permet d'écrire un fichier XML et de générer un fichier
      * 
-     * @param nomFichierXML 
-     * @param mainbody 
+     * @param nomFichierXML
+     * @param mainbody
      * 
      * @throws ParserConfigurationException
      * @throws FileNotFoundException

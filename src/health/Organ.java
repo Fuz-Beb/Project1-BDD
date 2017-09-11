@@ -23,13 +23,13 @@ public class Organ
     private int systemID;
 
     // Comfort Constructor
-    public Organ(HashMap<String, String> attrs) throws IFT287Exception
+    public Organ(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
-            name = attrs.get("name");
-            id = Integer.parseInt(attrs.get("id"));
-            systemID = Integer.parseInt(attrs.get("systemID"));
+            name = attrs.getValue("name");
+            id = Integer.parseInt(attrs.getValue("id"));
+            systemID = Integer.parseInt(attrs.getValue("systemID"));
         }
         else
         {
