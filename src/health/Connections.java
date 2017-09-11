@@ -35,14 +35,4 @@ public class Connections
     {
         this.tabConnection = tabConnection;
     }
-
-    // Methods
-
-    public void addConnection(Connection connection)
-    {
-        tabConnection.put(tabConnection.size(), connection);
-    }
-    
-    
-    
 }

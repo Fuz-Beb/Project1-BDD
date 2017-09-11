@@ -94,14 +94,6 @@ public class Connection
     // Methods
 
     /**
-     * @param to
-     */
-    public void addTo(To to)
-    {
-        toTab.put(toTab.size(), to);
-    }
-
-    /**
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)

@@ -43,7 +43,6 @@ public class Flow
         }
     }
 
-
     /**
      * Constructeur de confort
      * 
@@ -119,7 +118,7 @@ public class Flow
     {
         this.connectibleTab = connectibleTab;
     }
-    
+
     /**
      * @return the connectionTab
      */
@@ -128,36 +127,16 @@ public class Flow
         return connectionTab;
     }
 
-
     /**
-     * @param connectionTab the connectionTab to set
+     * @param connectionTab
+     *            the connectionTab to set
      */
     public void setConnectionTab(HashMap<Integer, Connection> connectionTab)
     {
         this.connectionTab = connectionTab;
     }
-    
+
     // Methods
-    
-
-
-    /**
-     * 
-     * @param connectible
-     */
-    public void addConnectible(Connectible connectible)
-    {
-        connectibleTab.put(connectibleTab.size(), connectible);
-    }
-
-    /**
-     * 
-     * @param connection
-     */
-    public void addConnection(Connection connection)
-    {
-        connectionTab.put(connectionTab.size(), connection);
-    }
 
     /**
      * @param jsonGenerator

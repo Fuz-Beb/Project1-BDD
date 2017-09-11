@@ -28,27 +28,64 @@ public class System
      * 
      * @throws IFT287Exception
      */
-//    public System() throws IFT287Exception
-//    {
-//        flowTab = new HashMap<Integer, Flow>();
+    public System(HashMap<String, String> attrs) throws IFT287Exception
+    {
+        flowTab = new HashMap<Integer, Flow>();
+
+        if (attrs != null)
+        {
+            id = Integer.parseInt(attrs.get("id"));
+            name = attrs.get("name");
+            type = Integer.parseInt(attrs.get("type"));
+
+            // JsonArray tempFlows = attrs.getJsonArray("flows");
+            // for (int i = 0; i < tempFlows.size(); i++)
+            // {
+            // flowTab.put(flowTab.size(), new Flow((JsonObject)
+            // tempFlows.get(i)));
+            // }
+        }
+        else
+        {
+            throw new IFT287Exception("System : bad attributes");
+        }
+    }
+
+    public System(JsonObject jsonObject)
+    {
+        flowTab = new HashMap<Integer, Flow>();
+
+        JsonArray tempArray = jsonObject.getJsonArray("System");
+        JsonObject test;
+        String test2;
+
+////        for (int boucle = 0; boucle < tempArray.size(); boucle++)
+////        {
+//            test = (JsonObject) tempArray.get(boucle);
 //
-//        if (jsonObject != null)
-//        {
-//            id = jsonObject.getInt("id");            
+////            for (int boucleArgs = 0; boucleArgs < test.size(); boucleArgs++)
+////            {
+//                name = test.getString("name");
+//                id = test.getInt("id");
+//                type = test.getInt("type");
+////            }
+//
+//        }
+
+        if (jsonObject != null)
+        {
+//            id = jsonObject.getInt("id");
 //            name = jsonObject.getString("name");
 //            type = jsonObject.getInt("type");
-//
-//            JsonArray tempFlows = jsonObject.getJsonArray("flows");
-//            for (int i = 0; i < tempFlows.size(); i++)
-//            {
-//                flowTab.put(flowTab.size(), new Flow((JsonObject) tempFlows.get(i)));
-//            }
-//        }
-//        else
-//        {
-//            throw new IFT287Exception("System : bad attributes");
-//        }
-//    }
+
+            JsonArray tempFlows = jsonObject.getJsonArray("flows");
+
+            for (int boucle = 0; boucle < tempFlows.size(); boucle++)
+            {
+                flowTab.put(flowTab.size(), new Flow((JsonObject) tempFlows.get(boucle)));
+            }
+        }
+    }
 
     // Getters / Setters
 
@@ -121,11 +158,6 @@ public class System
     }
 
     // Methods
-
-    public void addFlow(Flow flow)
-    {
-        flowTab.put(flowTab.size(), flow);
-    }
 
     /**
      * @param jsonGenerator

@@ -2,6 +2,7 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
 import org.xml.sax.Attributes;
@@ -33,6 +34,20 @@ public class Organ
         }
     }
 
+    public Organ(JsonObject jsonObject) throws IFT287Exception
+    {
+        if (jsonObject != null)
+        {        
+            name = jsonObject.getString("name");
+            id = jsonObject.getInt("id");
+            systemID = jsonObject.getInt("systemID");
+        }
+        else
+        {
+            throw new IFT287Exception("Organ : bad attributes");
+        }        
+    }
+    
     // Getters / Setters
 
     /**

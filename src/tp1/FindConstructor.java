@@ -65,31 +65,30 @@ public class FindConstructor
                 mainBody = new MainBody(attrs);
                 break;
             case "Systems":
-                mainBody.addSystems(new System());
                 break;
             case "Organs":
                 break;
             case "System":
-//                mainBody.getSystemsTab().put(mainBody.getSystemsTab().size(), new System(attrs));
+                mainBody.getSystemsTab().put(mainBody.getSystemsTab().size(), new System(attrs));
                 break;
             case "Flow":
-                mainBody.getLastSystem().addFlow(new Flow(attrs));
+                mainBody.getLastSystem().getFlowTab().put(mainBody.getLastSystem().getFlowTab().size(), new Flow(attrs));
                 break;
             case "Connectible":
                 break;
             case "Connections":
                 break;
             case "Connection":
-                mainBody.getLastFlow().addConnection(new Connection(attrs));
+                mainBody.getLastFlow().getConnectionTab().put(mainBody.getLastFlow().getConnectionTab().size(), new Connection(attrs));
                 break;
             case "to":
-                mainBody.getLastConnection().addTo(new To(attrs));
+                mainBody.getLastConnection().getToTab().put(mainBody.getLastConnection().getToTab().size(), new To(attrs));
                 break;
             case "Organ":
                 mainBody.getOrgansTab().put(mainBody.getOrgansTab().size(), new Organ(attrs));
                 break;
             default:
-                mainBody.getLastFlow().addConnectible(new Connectible(qName, attrs));
+                mainBody.getLastFlow().getConnectibleTab().put(mainBody.getLastFlow().getConnectibleTab().size(), new Connectible(qName, attrs));
         }        
     }
 }

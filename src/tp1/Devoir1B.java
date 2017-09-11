@@ -62,11 +62,17 @@ public class Devoir1B
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
 
+        
         try
-        {
-            // Lecture du fichier JSON
-//            mainBody = lectureJSON(nomFichierJSON, null);
-
+        {     
+            FileInputStream file = new FileInputStream(new File(nomFichierJSON));
+            JsonReader reader =  Json.createReader(file);            
+            JsonObject obj = reader.readObject();            
+            JsonParser jsonConvert = new JsonParser();
+            
+            
+            mainBody = jsonConvert.convertHashMap(obj);
+            
             System.out.println("Conversion terminee.");
         }
         catch (Exception e)
@@ -74,56 +80,4 @@ public class Devoir1B
             e.printStackTrace();
         }
     }
-
-    // Methods
-
-    public static MainBody lectureJSON(String nomFichierJSON, JsonObject jsonArg) throws FileNotFoundException, IFT287Exception
-    {
-        FileInputStream file = new FileInputStream(new File(nomFichierJSON));
-        JsonReader reader = Json.createReader(file);
-        JsonObject jsonObject;
-        HashMap<String, String> attributes = null;
-        FindConstructor findConstructor = new FindConstructor();
-        
-        // Initialisation de la récusivité
-        if(jsonArg == null)
-            jsonObject = reader.readObject();
-        else
-            jsonObject = jsonArg;
-        
-        
-        
-        
-        System.out.println("Test 1 : " + jsonObject);
-                
-        
-        for (Object key : jsonObject.keySet()) {
-            String keyStr = (String)key;
-            Object keyValue = jsonObject.get(keyStr);
-            
-            attributes = new HashMap<String, String>();
-            attributes.put(keyStr, keyValue.toString());
-            
-//            findConstructor.findConstructor(keyStr, attributes);
-
-            //Print key and value
-            System.out.println("key: "+ keyStr + " value: " + keyValue);
-
-            //for nested objects iteration if required
-            if (keyValue instanceof JsonArray) {
-                JsonObject test = null;
-                test.put(((JsonArray) keyValue).getString(0), (JsonValue) keyValue);
-                
-                
-                
-                System.out.println("Recursivite");
-                
-                lectureJSON(nomFichierJSON, test);
-
-            }
-        }
-        
-        return (new MainBody(jsonObject));
-    }
-
 }

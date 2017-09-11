@@ -52,22 +52,15 @@ public class MainBody
         systemsTab = new HashMap<Integer, System>();
         organsTab = new HashMap<Integer, Organ>();
 
-        if (jsonObject != null)
-        {
-            name = jsonObject.getString("bodyName");
-            id = jsonObject.getInt("bodyID");
-        }
-        else
-        {
-            throw new IFT287Exception("MainBody : bad attributes");
-        }
+        name = jsonObject.getString("bodyName");
+        id = jsonObject.getInt("bodyID");
         
         for (int boucle = 0; boucle < tempSystems.size(); boucle++) {
-            systemsTab.put(systemsTab.size(), new System());
+            systemsTab.put(systemsTab.size(), new System((JsonObject) tempSystems.get(boucle)));
         }
         
         for (int boucle = 0; boucle < tempOrgans.size(); boucle++) {
-            organsTab.put(organsTab.size(), new Organ());
+            organsTab.put(organsTab.size(), new Organ((JsonObject) tempOrgans.get(boucle)));
         }        
     }
     
@@ -200,22 +193,6 @@ public class MainBody
     }
 
     // Methods
-
-    /**
-     * @param system 
-     */
-    public void addSystems(System system)
-    {
-        systemsTab.put(systemsTab.size(), system);
-    }
-
-    /**
-     * @param organ 
-     */
-    public void addOrgans(Organ organ)
-    {
-        organsTab.put(organsTab.size(), organ);
-    }
 
     /**
      * Convertit l'objet actuel en JSON
