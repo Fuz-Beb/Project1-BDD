@@ -49,9 +49,7 @@ import health.MainBody;
 public class Devoir1B
 {
     /**
-     * <<<<<<< HEAD La méthode principale
-     * 
-     * ======= >>>>>>> master
+     * La méthode principale
      * 
      * @param args
      * @throws IOException
