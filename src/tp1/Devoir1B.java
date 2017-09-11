@@ -71,40 +71,14 @@ public class Devoir1B
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
 
-        try
-        {
-            // Lecture du JSON et affectation du mainbody
-            mainbody = lectureXML(nomFichierJSON);
-            ecritureXML(nomFichierXML, mainbody);
-        }
-        catch (ParserConfigurationException | FileNotFoundException | TransformerException e)
-        {
-            e.printStackTrace();
-        }
+        /*
+         * try { // Lecture du JSON et affectation du mainbody mainbody =
+         * lectureXML(nomFichierJSON); ecritureXML(nomFichierXML, mainbody); }
+         * catch (ParserConfigurationException | FileNotFoundException |
+         * TransformerException e) { e.printStackTrace(); }
+         */
 
         System.out.println("Conversion terminee.");
-    }
-
-    /**
-     * Lecture du fichier XML avec SAXP
-     * 
-     * @param nomFichierJSON
-     * @return mainBody
-     * @throws SAXException
-     * @throws IOException
-     * @throws ParserConfigurationException
-     */
-    public static MainBody lectureXML(String nomFichierJSON)
-            throws SAXException, IOException, ParserConfigurationException
-    {
-        // Construction du parseur
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        factory.setValidating(true);
-        SAXParser parser = factory.newSAXParser();
-        DefaultHandler hdl = new ParserXMLToJSON();
-        parser.parse(new File(nomFichierJSON), hdl);
-
-        return ((ParserXMLToJSON) hdl).getMainbody();
     }
 
     /**

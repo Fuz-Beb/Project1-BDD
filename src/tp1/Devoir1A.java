@@ -93,15 +93,14 @@ public class Devoir1A
     public static MainBody lectureXML(String nomFichierXML)
             throws SAXException, IOException, ParserConfigurationException
     {
-
         // Construction du parseur
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
         SAXParser parser = factory.newSAXParser();
-        DefaultHandler handler = new ParserXMLToJSON();
-        parser.parse(new File(nomFichierXML), handler);
+        DefaultHandler hdl = new ParserXMLToJSON();
+        parser.parse(new File(nomFichierXML), hdl);
 
-        return FindConstructor.getMainBody();
+        return ((ParserXMLToJSON) hdl).getMainbody();
     }
 
     /**
