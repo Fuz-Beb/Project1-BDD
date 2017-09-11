@@ -28,7 +28,7 @@ public class System
     // Comfort Constructor
 
     /**
-     * 
+     * Constructeur de confort pour XML -> JSON
      * @param attrs 
      * @throws IFT287Exception
      */
@@ -41,13 +41,6 @@ public class System
             id = Integer.parseInt(attrs.getValue("id"));
             name = attrs.getValue("name");
             type = Integer.parseInt(attrs.getValue("type"));
-
-            // JsonArray tempFlows = attrs.getJsonArray("flows");
-            // for (int i = 0; i < tempFlows.size(); i++)
-            // {
-            // flowTab.put(flowTab.size(), new Flow((JsonObject)
-            // tempFlows.get(i)));
-            // }
         }
         else
         {
@@ -55,39 +48,24 @@ public class System
         }
     }
 
-    public System(JsonObject jsonObject)
+    /**
+     * Constructeur de confort pour JSON -> XML
+     * 
+     * @param jsonObject
+     * @throws IFT287Exception
+     */
+    public System(JsonObject jsonObject) throws IFT287Exception
     {
         flowTab = new HashMap<Integer, Flow>();
-
         JsonArray tempArray = jsonObject.getJsonArray("System");
-        JsonObject test;
-        String test2;
 
-////        for (int boucle = 0; boucle < tempArray.size(); boucle++)
-////        {
-//            test = (JsonObject) tempArray.get(boucle);
-//
-////            for (int boucleArgs = 0; boucleArgs < test.size(); boucleArgs++)
-////            {
-//                name = test.getString("name");
-//                id = test.getInt("id");
-//                type = test.getInt("type");
-////            }
-//
-//        }
+        id = jsonObject.getInt("id");
+        name = jsonObject.getString("name");
+        type = jsonObject.getInt("type");
 
-        if (jsonObject != null)
+        for (int boucle = 0; boucle < tempArray.size(); boucle++)
         {
-//            id = jsonObject.getInt("id");
-//            name = jsonObject.getString("name");
-//            type = jsonObject.getInt("type");
-
-            JsonArray tempFlows = jsonObject.getJsonArray("flows");
-
-            for (int boucle = 0; boucle < tempFlows.size(); boucle++)
-            {
-                flowTab.put(flowTab.size(), new Flow((JsonObject) tempFlows.get(boucle)));
-            }
+            flowTab.put(flowTab.size(), new Flow((JsonObject) flowTab.get(boucle)));
         }
     }
 

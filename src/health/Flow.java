@@ -2,6 +2,7 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -53,20 +54,25 @@ public class Flow
      */
     public Flow(JsonObject objectJSON)
     {
+        JsonArray tempConnectibles = objectJSON.getJsonArray("connectibles");
+        JsonArray tempConnections = objectJSON.getJsonArray("connections");
+
         connectibleTab = new HashMap<Integer, Connectible>();
         connectionTab = new HashMap<Integer, Connection>();
         id = objectJSON.getInt("id");
         name = objectJSON.getString("name");
 
-        // Permet de lire les connectionsTab et de les assigner au HasMap
-        // correspondant
-        for (int boucle = 0; boucle < connectionTab.size(); boucle++)
+        // Lecture des connectibles
+        for (int boucle = 0; boucle < tempConnectibles.size(); boucle++)
         {
-            connectionTab.put(connectionTab.size(), new Connection((JsonObject) connectionTab.get(boucle)));
+            connectibleTab.put(connectibleTab.size(), new Connectible((JsonObject) tempConnectibles.get(boucle)));
         }
 
-        // Permet de lire les connectibles et de les assigner au HasMap
-        // correspondant
+        // Lecture des connections
+        for (int boucle = 0; boucle < tempConnections.size(); boucle++)
+        {
+            connectionTab.put(connectionTab.size(), new Connection((JsonObject) tempConnections.get(boucle)));
+        }
     }
 
     // Getters / Setters
@@ -163,15 +169,15 @@ public class Flow
 
         // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Connections");
-        
+
         for (int i = 0; i < this.connectionTab.size(); i++)
         {
             jsonGenerator.writeStartObject();
             jsonGenerator.writeStartArray("Connection");
-        
+
             // Parcours des noeuds enfants
             connectionTab.get(i).toJSON(jsonGenerator);
-            
+
             jsonGenerator.writeEnd();
             jsonGenerator.writeEnd();
         }
