@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -132,14 +135,35 @@ public class System
         jsonGenerator.write("id", this.id);
         jsonGenerator.write("type", this.type);
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Flow");
         for (int i = 0; i < this.flowTab.size(); i++)
         {
+            // Parcours des noeuds enfants
             flowTab.get(i).toJSON(jsonGenerator);
         }
 
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise System avec ses attributs
+        Node system = document.createElement("System");
+        ((Element) system).setAttribute("type", String.valueOf(type));
+        ((Element) system).setAttribute("id", String.valueOf(id));
+        ((Element) system).setAttribute("name", name);
+        node.appendChild(system);
+
+        // Création des balises enfants de System
+        for (int i = 0; i < flowTab.size(); i++)
+        {
+            flowTab.get(i).toXML(document, system);
+        }
     }
 }

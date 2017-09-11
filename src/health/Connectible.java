@@ -2,7 +2,12 @@ package health;
 
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
+import java.lang.System;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
@@ -229,23 +234,55 @@ public class Connectible
         jsonGenerator.write("type", this.getType());
         jsonGenerator.write("name", this.getName());
 
-        if (this.getVolume() != null)
+        if (volume != null)
         {
             jsonGenerator.write("volume", this.getVolume());
         }
-        if (this.getStartRadius() != null)
+        if (startRadius != null)
         {
             jsonGenerator.write("startRadius", this.getStartRadius());
         }
-        if (this.getEndRadius() != null)
+        if (endRadius != null)
         {
             jsonGenerator.write("endRadius", this.getEndRadius());
         }
-        if (this.getLength() != null)
+        if (length != null)
         {
             jsonGenerator.write("length", this.getLength());
         }
 
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise avec ses attributs
+        Node connectible = document.createElement(type);
+        ((Element) connectible).setAttribute("name", name);
+        ((Element) connectible).setAttribute("id", String.valueOf(id));
+        
+        // Ajout 
+        if (volume != null)
+        {
+            ((Element) connectible).setAttribute("volume", String.valueOf(volume));
+        }
+        if (startRadius != null)
+        {
+            ((Element) connectible).setAttribute("startRadius", String.valueOf(startRadius));
+        }
+        if (endRadius != null)
+        {
+            ((Element) connectible).setAttribute("endRadius", String.valueOf(endRadius));
+        }
+        if (length != null)
+        {
+            ((Element) connectible).setAttribute("length", String.valueOf(length));
+        }
+        
+        node.appendChild(connectible);
     }
 }

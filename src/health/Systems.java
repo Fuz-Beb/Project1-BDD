@@ -4,10 +4,12 @@ import java.util.HashMap;
 
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
-
 
 public class Systems
 {
@@ -57,15 +59,23 @@ public class Systems
      */
     public void toJSON(JsonGenerator jsonGenerator)
     {
-        jsonGenerator.writeStartObject();
         
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
-        jsonGenerator.writeStartArray("System");
-        for (int i = 0; i < this.systemTab.size(); i++)
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise
+        Node systems = document.createElement("Systems");
+        node.appendChild(systems);
+
+        // Création des balises enfants
+        for (int i = 0; i < systemTab.size(); i++)
         {
-            systemTab.get(i).toJSON(jsonGenerator);
+            systemTab.get(i).toXML(document, systems);
         }
-        jsonGenerator.writeEnd();
-        jsonGenerator.writeEnd();
     }
 }

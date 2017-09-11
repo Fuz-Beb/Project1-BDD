@@ -3,6 +3,9 @@ package health;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -66,7 +69,22 @@ public class To
     public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
-        jsonGenerator.write("id", this.id);
+        
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
+        jsonGenerator.write("id", id);
+        
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise to avec son attribut
+        Node to = document.createElement("to");
+        ((Element) to).setAttribute("id", String.valueOf(id));
+        node.appendChild(to);
     }
 }

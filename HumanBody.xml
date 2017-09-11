@@ -2,19 +2,7 @@
 <!DOCTYPE MainBody SYSTEM "HumanBody.dtd">
 <MainBody bodyName="DrHouse" bodyID="1">
   <Systems>
-    <!--Type for system are :
-      0 : Circulatory system
-      1 : Respiratory system
-      2 : Digestive system
-      3 : Urinary system
-      4 : Endocrine system
-      5 : Nervous system
-      6 : Skeletal system
-      7 : Muscular system
-      -->
-    <!--Circulatory system-->
     <System name="Circulatory" id="0" type="0">
-      <!--Heart flow-->
       <Flow id="0" name="Heart">
         <Connectible>
           <Atrium    name="Left atrium"     id="0" volume="120.0"/>
@@ -31,8 +19,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Aorta flow-->
       <Flow id="1" name="Aorta connection">
         <Connectible>
           <Artery name="Ascending aorta"    id="0" startRadius="1.3" endRadius="1.4" length="3"/>
@@ -44,8 +30,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Coronary flow-->
       <Flow id="2" name="Coronary">
         <Connectible>
           <Artery name="Left coronary"               id="0" startRadius="0.271109" endRadius="0.271109" length="4"/>
@@ -53,14 +37,12 @@
           <Artery name="Posterior inter ventricular" id="2" startRadius="0.156525" endRadius="0.156525" length="3"/>
           <Artery name="Anterior inter ventricular"  id="3" startRadius="0.191703" endRadius="0.191703" length="3"/>
           <Artery name="Circumflex"                  id="4" startRadius="0.191703" endRadius="0.191703" length="3"/>
-
           <Vein name="Middle cardiac"     id="5"  startRadius="0.271109" endRadius="0.271109" length="6"/>
           <Vein name="Great cardiac"      id="6"  startRadius="0.271109" endRadius="0.271109" length="6"/>
           <Vein name="Anterior cardiac"   id="7"  startRadius="0.156525" endRadius="0.156525" length="3"/>
           <Vein name="Small cardiac"      id="8"  startRadius="0.156525" endRadius="0.156525" length="3"/>
           <Vein name="Great anterior"     id="9"  startRadius="0.221360" endRadius="0.221360" length="3"/>
           <Vein name="Coronary sinus"     id="10" startRadius="0.313049" endRadius="0.313049" length="1"/>
-
           <Capillaries name="Left heart"  id="11" volume="100.0"/>
           <Capillaries name="Right heart" id="12" volume="100.0"/>
         </Connectible>
@@ -79,19 +61,15 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Pulmonary flow-->
       <Flow id="3" name="Pulmonary">
         <Connectible>
           <Artery name="Pulmonary trunk"  id="0" startRadius="1.5" endRadius="1.5"  length="6"/>
           <Artery name="Right pulmonary"  id="1" startRadius="1.06060" length="6"/>
           <Artery name="Left pulmonary"   id="2" startRadius="1.06060" length="6"/>
-
           <Vein name="Right pulmonary 1"  id="3" startRadius="1.06060" length="7"/>
           <Vein name="Right pulmonary 2"  id="4" startRadius="1.06060" length="7"/>
           <Vein name="Left pulmonary 1"   id="5" startRadius="1.06060" length="7"/>
           <Vein name="Left pulmonary 2"   id="6" startRadius="1.06060" length="7"/>
-
           <Capillaries name="Left alveoli"  id="7" volume="120.0"/>
           <Capillaries name="Right alveoli" id="8" volume="120.0"/>
         </Connectible>
@@ -106,7 +84,6 @@
           <Connection id="2">
             <to id="7"/>
           </Connection>
-          <!--3,4,5,6 are connected to the heart flow-->
           <Connection id="7">
             <to id="5"/>
             <to id="6"/>
@@ -117,8 +94,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Head and thoracic-->
       <Flow id="4" name="Head and thoracic">
         <Connectible>
           <Artery name="Left subclavian"      id="0" startRadius="0.15"  length="1"/>
@@ -127,26 +102,21 @@
           <Artery name="Thoracic aorta"       id="3" startRadius="1.25"  length="13"/>
           <Artery name="Right subclavian"     id="4" startRadius="0.15"  length="1"/>
           <Artery name="Right common carotid" id="5" startRadius="0.075" length="1"/>
-
           <Artery name="Right internal thoracic"      id="6" startRadius="0.02" length="1"/>
           <Artery name="Right posterior intercostal"  id="7" startRadius="0.01" length="1"/>
           <Artery name="Right vertebral"              id="8" startRadius="0.03" length="1"/>
-
           <Artery name="Left internal thoracic"     id="9"  startRadius="0.02" length="1"/>
           <Artery name="Left posterior intercostal" id="10" startRadius="0.01" length="1"/>
           <Artery name="Left vertebral"             id="11" startRadius="0.03" length="1"/>
-
           <Artery name="Basilar"                id="12" startRadius="0.04" length="1"/>
           <Artery name="Right internal carotid" id="13" startRadius="0.03" length="1"/>
           <Artery name="Left internal carotid"  id="14" startRadius="0.03" length="1"/>
-
           <Artery name="Right superior thyroid" id="15" startRadius="0.005" length="1"/>
           <Artery name="Left superior thyroid"  id="16" startRadius="0.005" length="1"/>
           <Artery name="Right facial"           id="17" startRadius="0.005" length="1"/>
           <Artery name="Left facial"            id="18" startRadius="0.005" length="1"/>
           <Artery name="Right lingual"          id="19" startRadius="0.005" length="1"/>
           <Artery name="Left lingual"           id="20" startRadius="0.005" length="1"/>
-
           <Artery name="Right external carotid"     id="21" startRadius="0.03"   length="1"/>
           <Artery name="Left external carotid"      id="22" startRadius="0.03"   length="1"/>
           <Artery name="Right superficial temporal" id="23" startRadius="0.015"  length="1"/>
@@ -155,17 +125,14 @@
           <Artery name="Left maxillary"             id="26" startRadius="0.005"  length="1"/>
           <Artery name="Right occipital"            id="27" startRadius="0.015"  length="1"/>
           <Artery name="Left occipital"             id="28" startRadius="0.015"  length="1"/>
-
           <Artery name="Bronchial"                id="29" startRadius="0.01" length="1"/>
           <Artery name="Esophageal"               id="30" startRadius="0.01" length="1"/>
           <Artery name="Right superior phrenic"   id="31" startRadius="0.005" length="1"/>
           <Artery name="Left superior phrenic"    id="32" startRadius="0.005" length="1"/>
-
           <Vein name="Right superior thyroid"     id="33" startRadius="0.005" length="1"/>
           <Vein name="Left superior thyroid"      id="34" startRadius="0.005" length="1"/>
           <Vein name="Right internal jugular"     id="35" startRadius="0.055" length="1"/>
           <Vein name="Left internal jugular"      id="36" startRadius="0.055" length="1"/>
-
           <Vein name="Right facial"               id="37" startRadius="0.005"  length="1"/>
           <Vein name="Left facial"                id="38" startRadius="0.005"  length="1"/>
           <Vein name="Right lingual"              id="39" startRadius="0.005"  length="1"/>
@@ -178,7 +145,6 @@
           <Vein name="Left maxillary"             id="46" startRadius="0.005"  length="1"/>
           <Vein name="Right external jugular"     id="47" startRadius="0.04"   length="1"/>
           <Vein name="Left external jugular"      id="48" startRadius="0.04"   length="1"/>
-
           <Vein name="Right internal thoracic"  id="49" startRadius="0.02"   length="1"/>
           <Vein name="Left internal thoracic"   id="50" startRadius="0.02"   length="1"/>
           <Vein name="Right vertebral"          id="51" startRadius="0.01"   length="1"/>
@@ -188,10 +154,8 @@
           <Vein name="Bronchial"                id="55" startRadius="0.01"   length="1"/>
           <Vein name="Esophageal"               id="56" startRadius="0.01"   length="1"/>
           <Vein name="Pericardial"              id="57" startRadius="0.015"  length="1"/>
-
           <Vein name="Right brachiocephalic"  id="58" startRadius="0.205" length="1"/>
           <Vein name="Left brachiocephalic"   id="59" startRadius="0.205" length="1"/>
-
           <Capillaries name="Brain"         id="60" volume="0.1"    length="1"/>
           <Capillaries name="Thyroid"       id="61" volume="0.01"   length="1"/>
           <Capillaries name="Facial"        id="62" volume="0.01"   length="1"/>
@@ -375,15 +339,12 @@
           <Connection id="48">
             <to id="59"/>
           </Connection>
-          <!--49 connect directly to superior vena cava-->
-          <!--50 connect directly to superior vena cava-->
           <Connection id="51">
             <to id="58"/>
           </Connection>
           <Connection id="52">
             <to id="59"/>
           </Connection>
-          <!--53 connect direclty to superior vena cava-->
           <Connection id="54">
             <to id="53"/>
           </Connection>
@@ -396,8 +357,6 @@
           <Connection id="57">
             <to id="53"/>
           </Connection>
-          <!--58 connect directly to superior vena cava-->
-          <!--59 connect directly to superior vena cava-->
           <Connection id="60">
             <to id="35"/>
             <to id="36"/>
@@ -447,8 +406,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Left arm-->
       <Flow id="5" name="Left arm">
         <Connectible>
           <Artery name="Axillary"                 id="0" startRadius="0.1"   length="1"/>
@@ -457,7 +414,6 @@
           <Artery name="Ulnar"                    id="3" startRadius="0.03"  length="1"/>
           <Artery name="Deep palmar arch"         id="4" startRadius="0.02"  length="1"/>
           <Artery name="Superficial palmar arch"  id="5" startRadius="0.02"  length="1"/>
-
           <Vein name="Basilic"    id="6"  startRadius="0.035"  length="1"/>
           <Vein name="Cephalic"   id="7"  startRadius="0.015"  length="1"/>
           <Vein name="Ulnar"      id="8"  startRadius="0.015"  length="1"/>
@@ -465,7 +421,6 @@
           <Vein name="Brachial"   id="10" startRadius="0.045"  length="1"/>
           <Vein name="Axillary"   id="11" startRadius="0.1"    length="1"/>
           <Vein name="Subclavian" id="12" startRadius="0.1"    length="1"/>
-
           <Capillaries name="Upper arm" id="13" volume="0.04" length="1"/>
           <Capillaries name="Lower arm" id="14" volume="0.02" length="1"/>
           <Capillaries name="Digital"   id="15" volume="0.04" length="1"/>
@@ -514,7 +469,6 @@
           <Connection id="11">
             <to id="12"/>
           </Connection>
-          <!--12 connect directly to left brachiocephalic-->
           <Connection id="13">
             <to id="6"/>
             <to id="11"/>
@@ -531,8 +485,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Right arm-->
       <Flow id="6" name="Right arm">
         <Connectible>
           <Artery name="Axillary"                 id="0" startRadius="0.1"   length="1"/>
@@ -541,7 +493,6 @@
           <Artery name="Ulnar"                    id="3" startRadius="0.03"  length="1"/>
           <Artery name="Deep palmar arch"         id="4" startRadius="0.02"  length="1"/>
           <Artery name="Superficial palmar arch"  id="5" startRadius="0.02"  length="1"/>
-
           <Vein name="Basilic"    id="6"  startRadius="0.035"  length="1"/>
           <Vein name="Cephalic"   id="7"  startRadius="0.015"  length="1"/>
           <Vein name="Ulnar"      id="8"  startRadius="0.015"  length="1"/>
@@ -549,7 +500,6 @@
           <Vein name="Brachial"   id="10" startRadius="0.045"  length="1"/>
           <Vein name="Axillary"   id="11" startRadius="0.1"    length="1"/>
           <Vein name="Subclavian" id="12" startRadius="0.1"    length="1"/>
-
           <Capillaries name="Upper arm" id="13" volume="0.04" length="1"/>
           <Capillaries name="Lower arm" id="14" volume="0.02" length="1"/>
           <Capillaries name="Digital"   id="15" volume="0.04" length="1"/>
@@ -598,7 +548,6 @@
           <Connection id="11">
             <to id="12"/>
           </Connection>
-          <!--12 connect directly to left brachiocephalic-->
           <Connection id="13">
             <to id="6"/>
             <to id="11"/>
@@ -615,8 +564,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Abdominal-->
       <Flow id="7" name="Abdominal">
         <Connectible>
           <Artery name="Abdominal aorta"        id="0" startRadius="1.20" endRadius="0.875"    length="25"/>
@@ -639,7 +586,6 @@
           <Artery name="Right gastric"          id="17" startRadius="0.005"  length="1"/>
           <Artery name="Right gastroepiploic"   id="18" startRadius="0.005"  length="1"/>
           <Artery name="Left gastroepiploic"    id="19" startRadius="0.0025" length="1"/>
-
           <Vein name="Right suprarenal"         id="20" startRadius="0.005"  length="1"/>
           <Vein name="Left suprarenal"          id="21" startRadius="0.005"  length="1"/>
           <Vein name="Lumbar"                   id="22" startRadius="0.01"   length="1"/>
@@ -654,7 +600,6 @@
           <Vein name="Hepatic portal"           id="31" startRadius="0.135"  length="1"/>
           <Vein name="Hepatic"                  id="32" startRadius="0.165"  length="1"/>
           <Vein name="Splenic"                  id="33" startRadius="0.05"   length="1"/>
-
           <Capillaries name="Right adrenal gland"       id="34" volume="0.005"  length="1"/>
           <Capillaries name="Left adrenal gland"        id="35" volume="0.005"  length="1"/>
           <Capillaries name="Right reproductive gonad"  id="36" volume="0.005"  length="1"/>
@@ -691,7 +636,6 @@
             <to id="11"/>
             <to id="12"/>
           </Connection>
-          <!--1,2 connect directly to the diaphragm capillaries in Head thoracic flow-->
           <Connection id="3">
             <to id="34"/>
           </Connection>
@@ -755,11 +699,9 @@
           <Connection id="19">
             <to id="47"/>
           </Connection>
-          <!--20 connect directly to inf vena cava-->
           <Connection id="21">
             <to id="24"/>
           </Connection>
-          <!--22,23,24,25 connect directly to inf vena cava-->
           <Connection id="26">
             <to id="24"/>
           </Connection>
@@ -778,7 +720,6 @@
           <Connection id="31">
             <to id="50"/>
           </Connection>
-          <!--32 connect directly to inf vena cava-->
           <Connection id="33">
             <to id="31"/>
           </Connection>
@@ -849,8 +790,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Right leg-->
       <Flow id="8" name="Right leg">
         <Connectible>
           <Artery name="Common Iliac"     id="0"  startRadius="0.1"    length="1"/>
@@ -865,7 +804,6 @@
           <Artery name="Peroneal"         id="9"  startRadius="0.01"   length="1"/>
           <Artery name="Medial Plantar"   id="10" startRadius="0.005"  length="1"/>
           <Artery name="Plantar Arch"     id="11" startRadius="0.01"   length="1"/>
-
           <Vein name="Common Iliac"       id="12" startRadius="0.1"    length="1"/>
           <Vein name="External Iliac"     id="13" startRadius="0.08"   length="1"/>
           <Vein name="Internal Iliac"     id="14" startRadius="0.02"   length="1"/>
@@ -877,7 +815,6 @@
           <Vein name="Posterior Tibial"   id="20" startRadius="0.02"   length="1"/>
           <Vein name="Peroneal"           id="21" startRadius="0.005"  length="1"/>
           <Vein name="Dorsal Venous Arch" id="22" startRadius="0.01"   length="1"/>
-
           <Capillaries name="Thight"            id="23" volume="0.02" length="1"/>
           <Capillaries name="Anterior Leg"      id="24" volume="0.02" length="1"/>
           <Capillaries name="Posterior Tibial"  id="25" volume="0.01" length="1"/>
@@ -929,7 +866,6 @@
           <Connection id="11">
             <to id="27"/>
           </Connection>
-          <!--12 connect directly to inferior vena cava-->
           <Connection id="13">
             <to id="12"/>
           </Connection>
@@ -986,8 +922,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Left leg-->
       <Flow id="9" name="Left leg">
         <Connectible>
           <Artery name="Common Iliac"     id="0"  startRadius="0.1"    length="1"/>
@@ -1002,7 +936,6 @@
           <Artery name="Peroneal"         id="9"  startRadius="0.01"   length="1"/>
           <Artery name="Medial Plantar"   id="10" startRadius="0.005"  length="1"/>
           <Artery name="Plantar Arch"     id="11" startRadius="0.01"   length="1"/>
-
           <Vein name="Common Iliac"       id="12" startRadius="0.1"    length="1"/>
           <Vein name="External Iliac"     id="13" startRadius="0.08"   length="1"/>
           <Vein name="Internal Iliac"     id="14" startRadius="0.02"   length="1"/>
@@ -1014,7 +947,6 @@
           <Vein name="Posterior Tibial"   id="20" startRadius="0.02"   length="1"/>
           <Vein name="Peroneal"           id="21" startRadius="0.005"  length="1"/>
           <Vein name="Dorsal Venous Arch" id="22" startRadius="0.01"   length="1"/>
-
           <Capillaries name="Thight"            id="23" volume="0.02" length="1"/>
           <Capillaries name="Anterior Leg"      id="24" volume="0.02" length="1"/>
           <Capillaries name="Posterior Tibial"  id="25" volume="0.01" length="1"/>
@@ -1066,7 +998,6 @@
           <Connection id="11">
             <to id="27"/>
           </Connection>
-          <!--12 connect directly to inferior vena cava-->
           <Connection id="13">
             <to id="12"/>
           </Connection>
@@ -1123,8 +1054,6 @@
           </Connection>
         </Connections>
       </Flow>
-
-      <!--Vena cava drain-->
       <Flow id="10" name="Vena cava drain">
         <Connectible>
           <Vein name="Superior Vena Cava" id="0" startRadius="1.25" length="3"/>
@@ -1133,8 +1062,6 @@
         <Connections/>
       </Flow>
     </System>
-
-    <!--Respiratory system-->
     <System name="Respiratory" id="1" type="1">
       <Flow name="Air" id="0">
         <Connectible>
@@ -1196,8 +1123,6 @@
         </Connections>
       </Flow>
     </System>
-
-    <!--Digestive system-->
     <System name="Digestive" id="2" type="2">
       <Flow name="Food" id="0">
         <Connectible>
@@ -1211,7 +1136,6 @@
           <DigestiveTract name="Descending colon"     id="7" length="38"  volume="477.5"/>
           <DigestiveTract name="Sigmoid colon"        id="8" length="25"  volume="314.16"/>
           <RectumTract    name="Rectum"               id="9" length="10"  volume="113.0"/>
-
           <BiDuct           name="Cystic duct"        id="10"/>
           <Duct             name="Hepatic duct"       id="11"/>
           <DuctOverflowableJunction name="Bile duct junction" id="12"/>
@@ -1248,7 +1172,6 @@
           <Connection id="8">
             <to id="9"/>
           </Connection>
-          <!--9 empty outside the body...-->        
           <Connection id="10">
             <to id="12"/>
           </Connection>
@@ -1277,7 +1200,6 @@
           <SalivaryDuct name="Left parotid duct"        id="0" length="3" volume="1"/>
           <SalivaryDuct name="Left submandibular duct"  id="1" length="3" volume="1"/>
           <SalivaryDuct name="Left sublingual duct"     id="2" length="1" volume="1"/>
-
           <SalivaryDuct name="Right parotid duct"       id="3" length="3" volume="1"/>
           <SalivaryDuct name="Right submandibular duct" id="4" length="3" volume="1"/>
           <SalivaryDuct name="Right sublingual duct"    id="5" length="1" volume="1"/>
@@ -1286,51 +1208,18 @@
       </Flow>
     </System>
   </Systems>
-  
-  <!--Organs definition-->
   <Organs>
-    <!--Circulatory system organ-->
     <Organ name="Heart" id="0" systemID="0"/>
-
-    <!-- Respiratory system organs-->
     <Organ name="Left lung" id="0" systemID="1"/>
-    
     <Organ name="Right lung" id="1" systemID="1"/>
-    
-    <!--Digestive system organs-->
     <Organ name="Mouth" id="0" systemID="2"/>
-    
     <Organ name="Esophagus" id="1" systemID="2"/>
-    
     <Organ name="Stomach" id="2" systemID="2"/>
-
     <Organ name="Small intestine" id="3" systemID="2"/>
-
     <Organ name="Liver" id="4" systemID="2"/>
-
     <Organ name="Pancreas" id="5" systemID="2"/>
-
     <Organ name="Gallbladder" id="6" systemID="2"/>
-
     <Organ name="Large intestine" id="7" systemID="2"/>
-
     <Organ name="Rectum" id="8" systemID="2"/>
   </Organs>
-
-  <!--System Template
-  <System name="" id="" type="">    
-    <Flow id="" name="">
-      <Connectible>
-        <TYPE name="" id="" [volume=""] [length=""] [startRadius=""] [endRadius=""]/>
-      </Connectible>
-      <Connections>
-        <Connection id="">
-          <to id=""/>
-        </Connection>
-      </Connections>
-    </Flow>    
-  </System>-->
-  
-  <!--Organ Template
-  <Organ name="" id="" systemID=""/>-->
 </MainBody>

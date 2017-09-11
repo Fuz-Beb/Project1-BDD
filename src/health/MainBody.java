@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -20,8 +23,8 @@ public class MainBody
     // Attributes
     private String name;
     private int id;
-    private HashMap<Integer, Systems> systemsTab;
-    private HashMap<Integer, Organs> organsTab;
+    private HashMap<Integer, System> systemTab;
+    private HashMap<Integer, Organ> organTab;
 
     // Comfort Constructor
 
@@ -31,8 +34,8 @@ public class MainBody
      */
     public MainBody(Attributes attrs) throws IFT287Exception
     {
-        systemsTab = new HashMap<Integer, Systems>();
-        organsTab = new HashMap<Integer, Organs>();
+        systemTab = new HashMap<Integer, System>();
+        organTab = new HashMap<Integer, Organ>();
 
         if (attrs != null)
         {
@@ -50,8 +53,7 @@ public class MainBody
      */
     public System getLastSystem()
     {
-        return systemsTab.get(systemsTab.size() - 1).getSystemTab()
-                .get(systemsTab.get(systemsTab.size() - 1).getSystemTab().size() - 1);
+        return systemTab.get(systemTab.size() - 1);
     }
 
     /**
@@ -143,53 +145,53 @@ public class MainBody
     /**
      * @return the systemsTab
      */
-    public HashMap<Integer, Systems> getSystemsTab()
+    public HashMap<Integer, System> getSystemTab()
     {
-        return systemsTab;
+        return systemTab;
     }
 
     /**
-     * @param systemsTab
+     * @param systemTab
      *            the systemsTab to set
      */
-    public void setSystemsTab(HashMap<Integer, Systems> systemsTab)
+    public void setSystemTab(HashMap<Integer, System> systemTab)
     {
-        this.systemsTab = systemsTab;
+        this.systemTab = systemTab;
     }
 
     /**
      * @return the organsTab
      */
-    public HashMap<Integer, Organs> getOrgansTab()
+    public HashMap<Integer, Organ> getOrganTab()
     {
-        return organsTab;
+        return organTab;
     }
 
     /**
-     * @param organsTab
+     * @param organTab
      *            the organsTab to set
      */
-    public void setOrgansTab(HashMap<Integer, Organs> organsTab)
+    public void setOrganTab(HashMap<Integer, Organ> organTab)
     {
-        this.organsTab = organsTab;
+        this.organTab = organTab;
     }
 
     // Methods
 
     /**
-     * @param systems
+     * @param system
      */
-    public void addSystems(Systems systems)
+    public void addSystem(System system)
     {
-        systemsTab.put(systemsTab.size(), systems);
+        systemTab.put(systemTab.size(), system);
     }
 
     /**
-     * @param organs
+     * @param organ
      */
-    public void addOrgans(Organs organs)
+    public void addOrgan(Organ organ)
     {
-        organsTab.put(organsTab.size(), organs);
+        organTab.put(organTab.size(), organ);
     }
 
     /**
@@ -205,21 +207,72 @@ public class MainBody
         jsonGenerator.write("bodyID", this.id);
         jsonGenerator.write("bodyName", this.name);
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Systems");
-        for (int i = 0; i < systemsTab.size(); i++)
+        for (int i = 0; i < systemTab.size(); i++)
         {
-            systemsTab.get(i).toJSON(jsonGenerator);
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeStartArray("System");
+
+            // Parcours des noeuds enfants
+            systemTab.get(i).toJSON(jsonGenerator);
+
+            jsonGenerator.writeEnd();
+            jsonGenerator.writeEnd();
         }
+
         jsonGenerator.writeEnd();
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Organs");
-        for (int i = 0; i < organsTab.size(); i++)
+
+        for (int i = 0; i < organTab.size(); i++)
         {
-            organsTab.get(i).toJSON(jsonGenerator);
+            // Ecrit l'objet actuel dans le générateur JSON
+            jsonGenerator.writeStartObject();
+
+            // Ecrit le sous-menu et le parcours tant qu'il y a des données
+            jsonGenerator.writeStartArray("Organ");
+
+            // Parcours des noeuds enfants
+            organTab.get(i).toJSON(jsonGenerator);
+
+            jsonGenerator.writeEnd();
+            jsonGenerator.writeEnd();
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     */
+    public void toXML(Document document)
+    {
+        // Création de la balise MainBody avec ses attributs
+        Node racine = document.createElement("MainBody");
+        ((Element) racine).setAttribute("bodyName", name);
+        ((Element) racine).setAttribute("bodyID", String.valueOf(id));
+        document.appendChild(racine);
+
+        // Création de la balise Systems
+        Node systems = document.createElement("Systems");
+        racine.appendChild(systems);
+
+        // Création des balises enfants de Systems
+        for (int i = 0; i < systemTab.size(); i++)
+        {
+            systemTab.get(i).toXML(document, systems);
+        }
+
+        // Création de la balise Organs
+        Node organs = document.createElement("Organs");
+        racine.appendChild(organs);
+
+        // Création des balises enfants de Organs
+        for (int i = 0; i < organTab.size(); i++)
+        {
+            organTab.get(i).toXML(document, organs);
+        }
     }
 }

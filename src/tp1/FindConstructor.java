@@ -62,13 +62,11 @@ public class FindConstructor
                 mainBody = new MainBody(attrs);
                 break;
             case "Systems":
-                mainBody.addSystems(new Systems());
                 break;
             case "Organs":
-                mainBody.addOrgans(new Organs());
                 break;
             case "System":
-                mainBody.getSystemsTab().get(0).addSystem(new System(attrs));
+                mainBody.addSystem(new System(attrs));
                 break;
             case "Flow":
                 mainBody.getLastSystem().addFlow(new Flow(attrs));
@@ -84,7 +82,7 @@ public class FindConstructor
                 mainBody.getLastConnection().addTo(new To(attrs));
                 break;
             case "Organ":
-                mainBody.getOrgansTab().get(0).addOrgan(new Organ(attrs));
+                mainBody.addOrgan(new Organ(attrs));
                 break;
             default:
                 mainBody.getLastFlow().addConnectible(new Connectible(qName, attrs));

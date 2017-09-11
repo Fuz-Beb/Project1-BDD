@@ -5,6 +5,9 @@ import java.util.HashMap;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -50,7 +53,6 @@ public class Flow
             throw new IFT287Exception("Flow : bad attributes");
         }
     }
-
 
     /**
      * Constructeur de confort
@@ -127,7 +129,7 @@ public class Flow
     {
         this.connectibleTab = connectibleTab;
     }
-    
+
     /**
      * @return the connectionTab
      */
@@ -136,18 +138,16 @@ public class Flow
         return connectionTab;
     }
 
-
     /**
-     * @param connectionTab the connectionTab to set
+     * @param connectionTab
+     *            the connectionTab to set
      */
     public void setConnectionTab(HashMap<Integer, Connection> connectionTab)
     {
         this.connectionTab = connectionTab;
     }
-    
-    // Methods
-    
 
+    // Methods
 
     /**
      * 
@@ -178,21 +178,71 @@ public class Flow
         jsonGenerator.write("id", this.id);
         jsonGenerator.write("name", this.name);
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Connectible");
         for (int i = 0; i < this.connectibleTab.size(); i++)
         {
+            // Parcours des noeuds enfants
             connectibleTab.get(i).toJSON(jsonGenerator);
         }
         jsonGenerator.writeEnd();
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Connections");
+        
         for (int i = 0; i < this.connectionTab.size(); i++)
         {
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeStartArray("Connection");
+        
+            // Parcours des noeuds enfants
             connectionTab.get(i).toJSON(jsonGenerator);
+            
+            jsonGenerator.writeEnd();
+            jsonGenerator.writeEnd();
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise Flow avec les attributs
+        Node flow = document.createElement("Flow");
+        ((Element) flow).setAttribute("id", String.valueOf(id));
+        ((Element) flow).setAttribute("name", name);
+        node.appendChild(flow);
+
+        // Test si des objets connectibles sont présents
+        if (!connectibleTab.isEmpty())
+        {
+            // Création de la balise Connectible
+            Node connectible = document.createElement("Connectible");
+            flow.appendChild(connectible);
+
+            // Création des balises enfants de Connectible
+            for (int i = 0; i < connectibleTab.size(); i++)
+            {
+                connectibleTab.get(i).toXML(document, connectible);
+            }
+        }
+
+        // Test si des objets connections sont présents
+        if (!connectionTab.isEmpty())
+        {
+            // Création de la balise Connections
+            Node connections = document.createElement("Connections");
+            flow.appendChild(connections);
+
+            // Création des balises enfants de Connections
+            for (int i = 0; i < connectionTab.size(); i++)
+            {
+                connectionTab.get(i).toXML(document, connections);
+            }
+        }
     }
 }

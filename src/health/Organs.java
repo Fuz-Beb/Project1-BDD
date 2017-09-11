@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
@@ -47,17 +50,23 @@ public class Organs
 
     public void toJSON(JsonGenerator jsonGenerator)
     {
-        // Ecrit l'objet actuel dans le générateur JSON
-        jsonGenerator.writeStartObject();
+
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise
+        Node organs = document.createElement("Organs");
+        node.appendChild(organs);
         
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
-        jsonGenerator.writeStartArray("Organ");
+        // Création des balises enfants
         for (int i = 0; i < organTab.size(); i++)
         {
-            organTab.get(i).toJSON(jsonGenerator);
-        }                
-        
-        jsonGenerator.writeEnd();
-        jsonGenerator.writeEnd();
+            organTab.get(i).toXML(document, organs);
+        }
     }
 }
