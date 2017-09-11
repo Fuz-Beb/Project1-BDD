@@ -1,22 +1,16 @@
 package tp1;
 
-
-
 import java.util.HashMap;
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-import org.xml.sax.Attributes;
-
 import health.Connectible;
 import health.Connection;
 import health.Flow;
 import health.MainBody;
 import health.Organ;
-import health.Organs;
-import health.Systems;
 import health.System;
 import health.To;
 
@@ -69,7 +63,7 @@ public class FindConstructor
             case "Organs":
                 break;
             case "System":
-                mainBody.getSystemsTab().put(mainBody.getSystemsTab().size(), new System(attrs));
+                mainBody.getSystemTab().put(mainBody.getSystemTab().size(), new System(attrs));
                 break;
             case "Flow":
                 mainBody.getLastSystem().getFlowTab().put(mainBody.getLastSystem().getFlowTab().size(), new Flow(attrs));
@@ -85,7 +79,7 @@ public class FindConstructor
                 mainBody.getLastConnection().getToTab().put(mainBody.getLastConnection().getToTab().size(), new To(attrs));
                 break;
             case "Organ":
-                mainBody.getOrgansTab().put(mainBody.getOrgansTab().size(), new Organ(attrs));
+                mainBody.getOrganTab().put(mainBody.getOrganTab().size(), new Organ(attrs));
                 break;
             default:
                 mainBody.getLastFlow().getConnectibleTab().put(mainBody.getLastFlow().getConnectibleTab().size(), new Connectible(qName, attrs));

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -99,16 +102,37 @@ public class Connection
     public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
-
+        
+        // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", this.getId());
-
+        
         jsonGenerator.writeStartArray("to");
+        
         for (int i = 0; i < toTab.size(); i++)
         {
+            // Parcours des noeuds enfants
             toTab.get(i).toJSON(jsonGenerator);
         }
+        
         jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
+    }
 
-        jsonGenerator.writeEnd();
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise Connection avec son attribut
+        Node connection = document.createElement("Connection");
+        ((Element) connection).setAttribute("id", String.valueOf(id));
+        node.appendChild(connection);
+
+        // Création des balises enfants de Connection
+        for (int i = 0; i < toTab.size(); i++)
+        {
+            toTab.get(i).toXML(document, connection);
+        }
     }
 }

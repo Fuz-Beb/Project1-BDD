@@ -1,24 +1,32 @@
 package tp1;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import org.xml.sax.Attributes;
+
 
 
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.lang.System;
-import java.util.HashMap;
-import java.util.Iterator;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.JsonValue;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import health.MainBody;
 
@@ -43,13 +51,19 @@ import health.MainBody;
 public class Devoir1B
 {
     /**
+<<<<<<< HEAD
      * La méthode principale
      * 
+=======
+>>>>>>> master
      * @param args
+     * @throws IOException 
+     * @throws SAXException 
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws SAXException, IOException
     {
-        MainBody mainBody;
+        // Attributes
+        MainBody mainbody;
 
         if (args.length < 2)
         {
@@ -62,22 +76,75 @@ public class Devoir1B
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
 
-        
         try
-        {     
-            FileInputStream file = new FileInputStream(new File(nomFichierJSON));
-            JsonReader reader =  Json.createReader(file);            
-            JsonObject obj = reader.readObject();            
-            JsonParser jsonConvert = new JsonParser();
-            
-            
-            mainBody = jsonConvert.convertHashMap(obj);
-            
-            System.out.println("Conversion terminee.");
+        {
+            // Lecture du JSON et affectation du mainbody
+            mainbody = lectureXML(nomFichierJSON);
+            ecritureXML(nomFichierXML, mainbody);
         }
-        catch (Exception e)
+        catch (ParserConfigurationException | FileNotFoundException | TransformerException e)
         {
             e.printStackTrace();
         }
+
+        System.out.println("Conversion terminee.");
+    }
+
+    /**
+     * Lecture du fichier XML avec SAXP
+     * 
+     * @param nomFichierJSON
+     * @return mainBody
+     * @throws SAXException
+     * @throws IOException
+     * @throws ParserConfigurationException
+     */
+    public static MainBody lectureXML(String nomFichierJSON)
+            throws SAXException, IOException, ParserConfigurationException
+    {
+
+        // Construction du parseur
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setValidating(true);
+        SAXParser parser = factory.newSAXParser();
+        DefaultHandler handler = new ParserXMLToJSON();
+        parser.parse(new File(nomFichierJSON), handler);
+
+        return FindConstructor.getMainBody();
+    }
+
+    /**
+     * Permet d'écrire un fichier XML et de générer un fichier
+     * 
+     * @param nomFichierXML 
+     * @param mainbody 
+     * 
+     * @throws ParserConfigurationException
+     * @throws FileNotFoundException
+     * @throws TransformerException
+     */
+    public static void ecritureXML(String nomFichierXML, MainBody mainbody)
+            throws ParserConfigurationException, FileNotFoundException, TransformerException
+    {
+
+        // Construction et préparation du document de sortie XML
+        DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
+        Document document = f.newDocumentBuilder().newDocument();
+        FileOutputStream output = new FileOutputStream(nomFichierXML);
+        PrintStream out = new PrintStream(output);
+        TransformerFactory allSpark = TransformerFactory.newInstance();
+        Transformer transformer = allSpark.newTransformer();
+        transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "HumanBody.dtd");
+        transformer.setOutputProperty(OutputKeys.VERSION, "1.0");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+        // Récupération des données à écrire
+        mainbody.toXML(document);
+
+        DOMSource source = new DOMSource(document);
+        StreamResult result = new StreamResult(out);
+        transformer.transform(source, result);
     }
 }

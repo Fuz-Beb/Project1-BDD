@@ -98,7 +98,7 @@ public class Devoir1A
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
         SAXParser parser = factory.newSAXParser();
-        DefaultHandler handler = new MonParser();
+        DefaultHandler handler = new ParserXMLToJSON();
         parser.parse(new File(nomFichierXML), handler);
 
         return FindConstructor.getMainBody();

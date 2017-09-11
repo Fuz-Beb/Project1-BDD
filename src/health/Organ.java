@@ -5,6 +5,9 @@ import java.util.HashMap;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
@@ -103,6 +106,7 @@ public class Organ
 
     /**
      * Convertit l'objet actuel en JSON
+     * 
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -113,5 +117,19 @@ public class Organ
         jsonGenerator.write("name", this.getName());
         jsonGenerator.write("systemID", this.getSystemID());
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     * @param node
+     */
+    public void toXML(Document document, Node node)
+    {
+        // Création de la balise Organ avec ses attributs
+        Node organ = document.createElement("Organ");
+        ((Element) organ).setAttribute("name", name);
+        ((Element) organ).setAttribute("id", String.valueOf(id));
+        ((Element) organ).setAttribute("systemID", String.valueOf(systemID));
+        node.appendChild(organ);
     }
 }

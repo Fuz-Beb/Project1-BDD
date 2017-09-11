@@ -6,6 +6,11 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.xml.sax.Attributes;
+
 import tp1.IFT287Exception;
 
 // Travail fait par :
@@ -20,8 +25,8 @@ public class MainBody
     // Attributes
     private String name;
     private int id;
-    private HashMap<Integer, System> systemsTab;
-    private HashMap<Integer, Organ> organsTab;
+    private HashMap<Integer, System> systemTab;
+    private HashMap<Integer, Organ> organTab;
 
     // Comfort Constructor
 
@@ -31,8 +36,8 @@ public class MainBody
      */
     public MainBody(HashMap<String, String> attrs) throws IFT287Exception
     {
-        systemsTab = new HashMap<Integer, System>();
-        organsTab = new HashMap<Integer, Organ>();
+        systemTab = new HashMap<Integer, System>();
+        organTab = new HashMap<Integer, Organ>();
 
         if (attrs != null)
         {
@@ -44,34 +49,36 @@ public class MainBody
             throw new IFT287Exception("MainBody : bad attributes");
         }
     }
-    
+
     public MainBody(JsonObject jsonObject) throws IFT287Exception
     {
         JsonArray tempSystems = jsonObject.getJsonArray("Systems");
         JsonArray tempOrgans = jsonObject.getJsonArray("Organs");
-        systemsTab = new HashMap<Integer, System>();
-        organsTab = new HashMap<Integer, Organ>();
+        systemTab = new HashMap<Integer, System>();
+        organTab = new HashMap<Integer, Organ>();
 
         name = jsonObject.getString("bodyName");
         id = jsonObject.getInt("bodyID");
-        
-        for (int boucle = 0; boucle < tempSystems.size(); boucle++) {
-            systemsTab.put(systemsTab.size(), new System((JsonObject) tempSystems.get(boucle)));
+
+        for (int boucle = 0; boucle < tempSystems.size(); boucle++)
+        {
+            systemTab.put(systemTab.size(), new System((JsonObject) tempSystems.get(boucle)));
         }
-        
-        for (int boucle = 0; boucle < tempOrgans.size(); boucle++) {
-            organsTab.put(organsTab.size(), new Organ((JsonObject) tempOrgans.get(boucle)));
-        }        
+
+        for (int boucle = 0; boucle < tempOrgans.size(); boucle++)
+        {
+            organTab.put(organTab.size(), new Organ((JsonObject) tempOrgans.get(boucle)));
+        }
     }
-    
+
     // Getters / Setters
-    
+
     /**
      * @return HashMap<Integer, System>
      */
     public System getLastSystem()
     {
-        return systemsTab.get(systemsTab.size() - 1);
+        return systemTab.get(systemTab.size() - 1);
     }
 
     /**
@@ -161,41 +168,59 @@ public class MainBody
     /**
      * @return the systemsTab
      */
-    public HashMap<Integer, System> getSystemsTab()
+    public HashMap<Integer, System> getSystemTab()
     {
-        return systemsTab;
+        return systemTab;
     }
 
     /**
-     * @param systemsTab
+     * @param systemTab
      *            the systemsTab to set
      */
-    public void setSystemsTab(HashMap<Integer, System> systemsTab)
+    public void setSystemTab(HashMap<Integer, System> systemTab)
     {
-        this.systemsTab = systemsTab;
+        this.systemTab = systemTab;
     }
 
     /**
      * @return the organsTab
      */
-    public HashMap<Integer, Organ> getOrgansTab()
+    public HashMap<Integer, Organ> getOrganTab()
     {
-        return organsTab;
+        return organTab;
     }
 
     /**
-     * @param organsTab
+     * @param organTab
      *            the organsTab to set
      */
-    public void setOrgansTab(HashMap<Integer, Organ> organsTab)
+    public void setOrganTab(HashMap<Integer, Organ> organTab)
     {
-        this.organsTab = organsTab;
+        this.organTab = organTab;
     }
 
     // Methods
 
     /**
-     * Convertit l'objet actuel en JSON
+     * <<<<<<< HEAD =======
+     * 
+     * @param system
+     */
+    public void addSystem(System system)
+    {
+        systemTab.put(systemTab.size(), system);
+    }
+
+    /**
+     * @param organ
+     */
+    public void addOrgan(Organ organ)
+    {
+        organTab.put(organTab.size(), organ);
+    }
+
+    /**
+     * >>>>>>> master Convertit l'objet actuel en JSON
      * 
      * @param jsonGenerator
      */
@@ -207,21 +232,72 @@ public class MainBody
         jsonGenerator.write("bodyID", this.id);
         jsonGenerator.write("bodyName", this.name);
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Systems");
-        for (int i = 0; i < systemsTab.size(); i++)
+        for (int i = 0; i < systemTab.size(); i++)
         {
-            systemsTab.get(i).toJSON(jsonGenerator);
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeStartArray("System");
+
+            // Parcours des noeuds enfants
+            systemTab.get(i).toJSON(jsonGenerator);
+
+            jsonGenerator.writeEnd();
+            jsonGenerator.writeEnd();
         }
+
         jsonGenerator.writeEnd();
 
-        // Ecrit le sous-menu et le parcourt tant qu'il y a des données
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Organs");
-        for (int i = 0; i < organsTab.size(); i++)
+
+        for (int i = 0; i < organTab.size(); i++)
         {
-            organsTab.get(i).toJSON(jsonGenerator);
+            // Ecrit l'objet actuel dans le générateur JSON
+            jsonGenerator.writeStartObject();
+
+            // Ecrit le sous-menu et le parcours tant qu'il y a des données
+            jsonGenerator.writeStartArray("Organ");
+
+            // Parcours des noeuds enfants
+            organTab.get(i).toJSON(jsonGenerator);
+
+            jsonGenerator.writeEnd();
+            jsonGenerator.writeEnd();
         }
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
+    }
+
+    /**
+     * @param document
+     */
+    public void toXML(Document document)
+    {
+        // Création de la balise MainBody avec ses attributs
+        Node racine = document.createElement("MainBody");
+        ((Element) racine).setAttribute("bodyName", name);
+        ((Element) racine).setAttribute("bodyID", String.valueOf(id));
+        document.appendChild(racine);
+
+        // Création de la balise Systems
+        Node systems = document.createElement("Systems");
+        racine.appendChild(systems);
+
+        // Création des balises enfants de Systems
+        for (int i = 0; i < systemTab.size(); i++)
+        {
+            systemTab.get(i).toXML(document, systems);
+        }
+
+        // Création de la balise Organs
+        Node organs = document.createElement("Organs");
+        racine.appendChild(organs);
+
+        // Création des balises enfants de Organs
+        for (int i = 0; i < organTab.size(); i++)
+        {
+            organTab.get(i).toXML(document, organs);
+        }
     }
 }
