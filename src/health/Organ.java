@@ -1,7 +1,5 @@
 package health;
 
-import java.util.HashMap;
-
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -23,13 +21,20 @@ public class Organ
     private int systemID;
 
     // Comfort Constructor
-    public Organ(HashMap<String, String> attrs) throws IFT287Exception
+
+    /**
+     * Constructeur de confort pour XML -> JSON
+     * 
+     * @param attrs
+     * @throws IFT287Exception
+     */
+    public Organ(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
-            name = attrs.get("name");
-            id = Integer.parseInt(attrs.get("id"));
-            systemID = Integer.parseInt(attrs.get("systemID"));
+            name = attrs.getValue("name");
+            id = Integer.parseInt(attrs.getValue("id"));
+            systemID = Integer.parseInt(attrs.getValue("systemID"));
         }
         else
         {
@@ -37,10 +42,16 @@ public class Organ
         }
     }
 
+    /**
+     * Constructeur de confort pour JSON -> XML
+     * 
+     * @param jsonObject
+     * @throws IFT287Exception
+     */
     public Organ(JsonObject jsonObject) throws IFT287Exception
     {
         if (jsonObject != null)
-        {        
+        {
             name = jsonObject.getString("name");
             id = jsonObject.getInt("id");
             systemID = jsonObject.getInt("systemID");
@@ -48,9 +59,9 @@ public class Organ
         else
         {
             throw new IFT287Exception("Organ : bad attributes");
-        }        
+        }
     }
-    
+
     // Getters / Setters
 
     /**

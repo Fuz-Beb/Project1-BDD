@@ -2,6 +2,7 @@ package health;
 
 import java.util.HashMap;
 
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -50,11 +51,13 @@ public class Connection
      */
     public Connection(JsonObject jsonObject)
     {
+        JsonArray tempTo = jsonObject.getJsonArray("to");
+        toTab = new HashMap<Integer, To>();
         id = jsonObject.getInt("id");
 
-        for (int boucle = 0; boucle < toTab.size(); boucle++)
+        for (int boucle = 0; boucle < tempTo.size(); boucle++)
         {
-            // toTab.put(toTab.size(), new To((JsonObject) toTab.get(boucle)));
+            toTab.put(toTab.size(), new To((JsonObject) tempTo.get(boucle)));
         }
     }
 
@@ -102,18 +105,18 @@ public class Connection
     public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
-        
+
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", this.getId());
-        
+
         jsonGenerator.writeStartArray("to");
-        
+
         for (int i = 0; i < toTab.size(); i++)
         {
             // Parcours des noeuds enfants
             toTab.get(i).toJSON(jsonGenerator);
         }
-        
+
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }

@@ -28,7 +28,7 @@ public class System
     // Comfort Constructor
 
     /**
-     * Constructeur de confort de système pour XML -> JSON
+     * Constructeur de confort pour XML -> JSON
      * 
      * @param attrs
      * @throws IFT287Exception
@@ -50,7 +50,7 @@ public class System
     }
 
     /**
-     * Constructeur de confort de système pour JSON -> XML
+     * Constructeur de confort pour JSON -> XML
      * 
      * @param jsonObject
      * @throws IFT287Exception
