@@ -76,10 +76,10 @@ public class ConnectibleHealth
      * @param jsonObject
      */
     public ConnectibleHealth(JsonObject jsonObject)
-    {
-        type = jsonObject.getString("type");
+    {        
         id = jsonObject.getInt("id");
         name = jsonObject.getString("name");
+        type = jsonObject.getString("type");
 
         if (jsonObject.getJsonNumber("volume") != null)
         {

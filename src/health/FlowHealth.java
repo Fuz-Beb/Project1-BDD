@@ -56,7 +56,7 @@ public class FlowHealth
     {
 
         JsonArray tempConnectibles = objectJSON.getJsonArray("Connectible");
-        JsonArray tempConnections = objectJSON.getJsonArray("Connection");
+        JsonArray tempConnections = objectJSON.getJsonArray("Connections");
 
         connectibleTab = new HashMap<Integer, ConnectibleHealth>();
         connectionTab = new HashMap<Integer, ConnectionHealth>();
