@@ -85,7 +85,7 @@ public class Devoir1B
             // Récupération du bon JsonArray concernant "System"
             JsonArray tempMainBody = jsonObject.getJsonArray("MainBody");
             JsonObject mainBodyObjectJson = tempMainBody.getJsonObject(0);
-            
+
             mainbody = new MainBody(mainBodyObjectJson);
 
             ecritureXML(nomFichierXML, mainbody);
