@@ -51,20 +51,22 @@ public class ConnectibleHealth
     public ConnectibleHealth(String type, Attributes attrs)
     {
         this(type, attrs.getValue("name"), Integer.parseInt(attrs.getValue("id")));
-
-        for (int i = 2; i < attrs.getLength(); i++)
+        
+        if (attrs.getValue("volume") != null)
         {
-            switch (attrs.getValue("name"))
-            {
-                case "volume":
-                    volume = Double.parseDouble(attrs.getValue("volume"));
-                case "length":
-                    length = Double.parseDouble(attrs.getValue("length"));
-                case "startRadius":
-                    startRadius = Double.parseDouble(attrs.getValue("startRadius"));
-                case "endRadius":
-                    endRadius = Double.parseDouble(attrs.getValue("endRadius"));
-            }
+            volume = Double.parseDouble(attrs.getValue("volume"));
+        }
+        else if (attrs.getValue("length") != null)
+        {
+            length = Double.parseDouble(attrs.getValue("length"));
+        }
+        else if (attrs.getValue("startRadius") != null)
+        {
+            startRadius = Double.parseDouble(attrs.getValue("startRadius"));
+        }
+        else if (attrs.getValue("startRadius") != null)
+        {
+            endRadius = Double.parseDouble(attrs.getValue("endRadius"));
         }
     }
 

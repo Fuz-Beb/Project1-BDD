@@ -50,9 +50,9 @@ public class Devoir1A
      */
     public static void main(String[] args)
     {
-        
+
         MainBody mainBody;
-        
+
         if (args.length < 2)
         {
             System.out.println("Usage: java tp1.Devoir1A <fichierXML> <fichierJSON>");
@@ -68,6 +68,10 @@ public class Devoir1A
         {
             // Lecture du fichier XML
             mainBody = lectureXML(nomFichierXML);
+
+            System.out.println(mainBody.getSystemTab().get(0).getFlowTab().get(0).getConnectibleTab().get(0).getType());
+            System.out
+                    .println(mainBody.getSystemTab().get(0).getFlowTab().get(0).getConnectibleTab().get(0).getVolume());
 
             // Ecrire du fichier JSON
             ecrireJSON(nomFichierJSON, mainBody);
