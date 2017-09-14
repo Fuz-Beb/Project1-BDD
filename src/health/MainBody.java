@@ -219,7 +219,7 @@ public class MainBody
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStartArray("MainBody");
         jsonGenerator.writeStartObject();
-
+        
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("bodyID", this.id);
         jsonGenerator.write("bodyName", this.name);

@@ -154,17 +154,16 @@ public class SystemHealth
         jsonGenerator.write("name", this.name);
         jsonGenerator.write("id", this.id);
         jsonGenerator.write("type", this.type);
+        
+        // Ecrit le sous-menu et le parcours tant qu'il y a des données
+        jsonGenerator.writeStartArray("Flow");
 
         for (int i = 0; i < this.flowTab.size(); i++)
         {
-            // Ecrit le sous-menu et le parcours tant qu'il y a des données
-            jsonGenerator.writeStartArray("Flow");
-
             // Parcours des noeuds enfants
             flowTab.get(i).toJSON(jsonGenerator);
-
-            jsonGenerator.writeEnd();
         }
+        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }
 
