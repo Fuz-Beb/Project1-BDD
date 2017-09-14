@@ -14,6 +14,7 @@ import java.io.PrintStream;
 import java.lang.System;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -79,8 +80,13 @@ public class Devoir1B
             FileInputStream file = new FileInputStream(new File(nomFichierJSON));
             JsonReader jsonReader = Json.createReader(file);
 
-            JsonObject obj = jsonReader.readObject();
-            mainbody = new MainBody(obj);
+            JsonObject jsonObject = jsonReader.readObject();
+
+            // Récupération du bon JsonArray concernant "System"
+            JsonArray tempMainBody = jsonObject.getJsonArray("MainBody");
+            JsonObject mainBodyObjectJson = tempMainBody.getJsonObject(0);
+            
+            mainbody = new MainBody(mainBodyObjectJson);
 
             ecritureXML(nomFichierXML, mainbody);
         }
