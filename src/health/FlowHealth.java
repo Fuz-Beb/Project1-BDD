@@ -54,8 +54,9 @@ public class FlowHealth
      */
     public FlowHealth(JsonObject objectJSON)
     {
-        JsonArray tempConnectibles = objectJSON.getJsonArray("connectibles");
-        JsonArray tempConnections = objectJSON.getJsonArray("connections");
+        
+        JsonArray tempConnectibles = objectJSON.getJsonArray("Connectible");
+        JsonArray tempConnections = objectJSON.getJsonArray("Connection");
 
         connectibleTab = new HashMap<Integer, ConnectibleHealth>();
         connectionTab = new HashMap<Integer, ConnectionHealth>();
@@ -63,16 +64,18 @@ public class FlowHealth
         name = objectJSON.getString("name");
 
         // Lecture des connectibles
-        for (int boucle = 0; boucle < tempConnectibles.size(); boucle++)
-        {
-            connectibleTab.put(connectibleTab.size(), new ConnectibleHealth((JsonObject) tempConnectibles.get(boucle)));
-        }
+        if(tempConnectibles != null)
+            for (int boucle = 0; boucle < tempConnectibles.size(); boucle++)
+            {
+                connectibleTab.put(connectibleTab.size(), new ConnectibleHealth((JsonObject) tempConnectibles.get(boucle)));
+            }
 
         // Lecture des connections
-        for (int boucle = 0; boucle < tempConnections.size(); boucle++)
-        {
-            connectionTab.put(connectionTab.size(), new ConnectionHealth((JsonObject) tempConnections.get(boucle)));
-        }
+        if(tempConnections != null)
+            for (int boucle = 0; boucle < tempConnections.size(); boucle++)
+            {
+                connectionTab.put(connectionTab.size(), new ConnectionHealth((JsonObject) tempConnections.get(boucle)));
+            }
     }
 
     // Getters / Setters

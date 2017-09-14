@@ -30,9 +30,7 @@ public class ParserXMLToJSON extends DefaultHandler
     }
 
     public void startElement(String uri, String localName, String qName, Attributes attrs)
-    {
-        System.out.println("Start element = " + qName);
-        
+    {        
         try
         {        
             switch (qName)

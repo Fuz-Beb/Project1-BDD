@@ -52,22 +52,30 @@ public class MainBody
 
     public MainBody(JsonObject jsonObject) throws IFT287Exception
     {
+        // Récupération du bon JsonArray concernant "System"
         JsonArray tempSystems = jsonObject.getJsonArray("Systems");
+        JsonObject system = tempSystems.getJsonObject(0);
+        JsonArray arraySystem = system.getJsonArray("System");
+
+        // Récupération du bon JsonArray concernant "Organ"
         JsonArray tempOrgans = jsonObject.getJsonArray("Organs");
+        JsonObject organ = tempOrgans.getJsonObject(0);
+        JsonArray arrayOrgan = organ.getJsonArray("Organ");
+
         systemTab = new HashMap<Integer, SystemHealth>();
         organTab = new HashMap<Integer, OrganHealth>();
 
         name = jsonObject.getString("bodyName");
         id = jsonObject.getInt("bodyID");
 
-        for (int boucle = 0; boucle < tempSystems.size(); boucle++)
+        for (int boucle = 0; boucle < arraySystem.size(); boucle++)
         {
-            systemTab.put(systemTab.size(), new SystemHealth((JsonObject) tempSystems.get(boucle)));
+            systemTab.put(systemTab.size(), new SystemHealth((JsonObject) arraySystem.get(boucle)));
         }
 
-        for (int boucle = 0; boucle < tempOrgans.size(); boucle++)
+        for (int boucle = 0; boucle < arrayOrgan.size(); boucle++)
         {
-            organTab.put(organTab.size(), new OrganHealth((JsonObject) tempOrgans.get(boucle)));
+            organTab.put(organTab.size(), new OrganHealth((JsonObject) arrayOrgan.get(boucle)));
         }
     }
 
@@ -211,7 +219,7 @@ public class MainBody
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStartArray("MainBody");
         jsonGenerator.writeStartObject();
-        
+
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("bodyID", this.id);
         jsonGenerator.write("bodyName", this.name);
@@ -249,7 +257,7 @@ public class MainBody
             jsonGenerator.writeEnd();
             jsonGenerator.writeEnd();
         }
-        
+
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
