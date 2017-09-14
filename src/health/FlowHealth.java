@@ -164,45 +164,14 @@ public class FlowHealth
 
         // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Connectible");
-        jsonGenerator.writeStartObject();
 
         // Création des enfants
         for (int i = 0; i < this.connectibleTab.size(); i++)
         {
-            // Si c'est le premier enfant, création de la balise car pas de
-            // comparaison à faire
-            if (i == 0)
-            {
-                jsonGenerator.writeStartArray(connectibleTab.get(i).getType());
-            }
-            // Si l'enfant précédent et différent de l'enfant courant, création
-            // d'une nouvelle balise
-            else if (connectibleTab.get(i - 1).getType() != connectibleTab.get(i).getType())
-            {
-                jsonGenerator.writeStartArray(connectibleTab.get(i).getType());
-            }
-
             // Parcours des noeuds enfants
             connectibleTab.get(i).toJSON(jsonGenerator);
-
-            // Test si on arrive à la fin de la boucle
-            if (connectibleTab.size() - 1 != i)
-            {
-                // Si l'enfant courant est différent du suivant alors fermeture
-                // de la balise
-                if (connectibleTab.get(i).getType() != connectibleTab.get(i + 1).getType())
-                {
-                    jsonGenerator.writeEnd();
-                }
-            }
-            // Fermeture du dernier enfant
-            else
-            {
-                jsonGenerator.writeEnd();
-            }
         }
         // Fermeture pour Connectible
-        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
 
         // Ecrit le sous-menu et le parcours tant qu'il y a des données

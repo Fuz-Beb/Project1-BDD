@@ -231,8 +231,9 @@ public class ConnectibleHealth
     {
         // Ecrit l'objet actuel dans le générateur JSON
         jsonGenerator.writeStartObject();
-        jsonGenerator.write("name", this.getName());
-        jsonGenerator.write("id", this.getId());
+        jsonGenerator.write("type", type);
+        jsonGenerator.write("name", name);
+        jsonGenerator.write("id", id);
 
         if (volume != null)
         {
