@@ -17,13 +17,13 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class Flow
+public class FlowHealth
 {
     // Attributes
     private int id;
     private String name;
-    private HashMap<Integer, Connectible> connectibleTab;
-    private HashMap<Integer, Connection> connectionTab;
+    private HashMap<Integer, ConnectibleHealth> connectibleTab;
+    private HashMap<Integer, ConnectionHealth> connectionTab;
 
     // Comfort Constructor
     /**
@@ -31,10 +31,10 @@ public class Flow
      * @param attrs
      * @throws IFT287Exception
      */
-    public Flow(Attributes attrs) throws IFT287Exception
+    public FlowHealth(Attributes attrs) throws IFT287Exception
     {
-        connectibleTab = new HashMap<Integer, Connectible>();
-        connectionTab = new HashMap<Integer, Connection>();
+        connectibleTab = new HashMap<Integer, ConnectibleHealth>();
+        connectionTab = new HashMap<Integer, ConnectionHealth>();
 
         if (attrs != null)
         {
@@ -52,26 +52,26 @@ public class Flow
      * 
      * @param objectJSON
      */
-    public Flow(JsonObject objectJSON)
+    public FlowHealth(JsonObject objectJSON)
     {
         JsonArray tempConnectibles = objectJSON.getJsonArray("connectibles");
         JsonArray tempConnections = objectJSON.getJsonArray("connections");
 
-        connectibleTab = new HashMap<Integer, Connectible>();
-        connectionTab = new HashMap<Integer, Connection>();
+        connectibleTab = new HashMap<Integer, ConnectibleHealth>();
+        connectionTab = new HashMap<Integer, ConnectionHealth>();
         id = objectJSON.getInt("id");
         name = objectJSON.getString("name");
 
         // Lecture des connectibles
         for (int boucle = 0; boucle < tempConnectibles.size(); boucle++)
         {
-            connectibleTab.put(connectibleTab.size(), new Connectible((JsonObject) tempConnectibles.get(boucle)));
+            connectibleTab.put(connectibleTab.size(), new ConnectibleHealth((JsonObject) tempConnectibles.get(boucle)));
         }
 
         // Lecture des connections
         for (int boucle = 0; boucle < tempConnections.size(); boucle++)
         {
-            connectionTab.put(connectionTab.size(), new Connection((JsonObject) tempConnections.get(boucle)));
+            connectionTab.put(connectionTab.size(), new ConnectionHealth((JsonObject) tempConnections.get(boucle)));
         }
     }
 
@@ -114,7 +114,7 @@ public class Flow
     /**
      * @return the connectibleTab
      */
-    public HashMap<Integer, Connectible> getConnectibleTab()
+    public HashMap<Integer, ConnectibleHealth> getConnectibleTab()
     {
         return connectibleTab;
     }
@@ -123,7 +123,7 @@ public class Flow
      * @param connectibleTab
      *            the connectibleTab to set
      */
-    public void setConnectibleTab(HashMap<Integer, Connectible> connectibleTab)
+    public void setConnectibleTab(HashMap<Integer, ConnectibleHealth> connectibleTab)
     {
         this.connectibleTab = connectibleTab;
     }
@@ -131,7 +131,7 @@ public class Flow
     /**
      * @return the connectionTab
      */
-    public HashMap<Integer, Connection> getConnectionTab()
+    public HashMap<Integer, ConnectionHealth> getConnectionTab()
     {
         return connectionTab;
     }
@@ -140,7 +140,7 @@ public class Flow
      * @param connectionTab
      *            the connectionTab to set
      */
-    public void setConnectionTab(HashMap<Integer, Connection> connectionTab)
+    public void setConnectionTab(HashMap<Integer, ConnectionHealth> connectionTab)
     {
         this.connectionTab = connectionTab;
     }
@@ -191,7 +191,7 @@ public class Flow
      */
     public void toXML(Document document, Node node)
     {
-        // Création de la balise Flow avec les attributs
+        // Création de la balise FlowHealth avec les attributs
         Node flow = document.createElement("Flow");
         ((Element) flow).setAttribute("id", String.valueOf(id));
         ((Element) flow).setAttribute("name", name);
@@ -200,11 +200,11 @@ public class Flow
         // Test si des objets connectibles sont présents
         if (!connectibleTab.isEmpty())
         {
-            // Création de la balise Connectible
+            // Création de la balise ConnectibleHealth
             Node connectible = document.createElement("Connectible");
             flow.appendChild(connectible);
 
-            // Création des balises enfants de Connectible
+            // Création des balises enfants de ConnectibleHealth
             for (int i = 0; i < connectibleTab.size(); i++)
             {
                 connectibleTab.get(i).toXML(document, connectible);

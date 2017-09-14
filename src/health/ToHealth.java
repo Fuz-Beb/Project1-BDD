@@ -1,7 +1,5 @@
 package health;
 
-import java.util.HashMap;
-
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -16,13 +14,20 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class To
+public class ToHealth
 {
     // Attributes
     private int id;
 
     // Comfort Constructor
-    public To(Attributes attrs) throws IFT287Exception
+
+    /**
+     * Comfort Constructor
+     * 
+     * @param attrs
+     * @throws IFT287Exception
+     */
+    public ToHealth(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
@@ -39,7 +44,7 @@ public class To
      * 
      * @param jsonObject
      */
-    public To(JsonObject jsonObject)
+    public ToHealth(JsonObject jsonObject)
     {
         id = jsonObject.getInt("id");
     }
@@ -71,10 +76,10 @@ public class To
     public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
-        
+
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", id);
-        
+
         jsonGenerator.writeEnd();
     }
 

@@ -5,18 +5,17 @@ package tp1;
 // Bouteloup Remy - 17 132 265
 
 import java.lang.System;
-import java.util.HashMap;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import health.Connectible;
-import health.Connection;
-import health.Flow;
+import health.ConnectibleHealth;
+import health.ConnectionHealth;
+import health.FlowHealth;
 import health.MainBody;
-import health.Organ;
-import health.To;
+import health.OrganHealth;
+import health.SystemHealth;
+import health.ToHealth;
 
 public class ParserXMLToJSON extends DefaultHandler
 {
@@ -34,37 +33,44 @@ public class ParserXMLToJSON extends DefaultHandler
     {
         System.out.println("Start element = " + qName);
         
-        switch (qName)
-        {
-            case "MainBody":
-                mainbody = new MainBody(attrs);
-                break;
-            case "Systems":
-                break;
-            case "Organs":
-                break;
-            case "System":
-                mainbody.getSystemTab().put(mainbody.getSystemTab().size(), new System(attrs));
-                break;
-            case "Flow":
-                mainbody.getLastSystem().getFlowTab().put(mainbody.getLastSystem().getFlowTab().size(), new Flow(attrs));
-                break;
-            case "Connectible":
-                break;
-            case "Connections":
-                break;
-            case "Connection":
-                mainbody.getLastFlow().getConnectionTab().put(mainbody.getLastFlow().getConnectionTab().size(), new Connection(attrs));
-                break;
-            case "to":
-                mainbody.getLastConnection().getToTab().put(mainbody.getLastConnection().getToTab().size(), new To(attrs));
-                break;
-            case "Organ":
-                mainbody.getOrganTab().put(mainbody.getOrganTab().size(), new Organ(attrs));
-                break;
-            default:
-                mainbody.getLastFlow().getConnectibleTab().put(mainbody.getLastFlow().getConnectibleTab().size(), new Connectible(qName, attrs));
+        try
+        {        
+            switch (qName)
+            {
+                case "MainBody":
+                    mainbody = new MainBody(attrs);
+                    break;
+                case "Systems":
+                    break;
+                case "Organs":
+                    break;
+                case "System":
+                    mainbody.getSystemTab().put(mainbody.getSystemTab().size(), new SystemHealth(attrs));
+                    break;
+                case "Flow":
+                    mainbody.getLastSystem().getFlowTab().put(mainbody.getLastSystem().getFlowTab().size(), new FlowHealth(attrs));
+                    break;
+                case "Connectible":
+                    break;
+                case "Connections":
+                    break;
+                case "Connection":
+                    mainbody.getLastFlow().getConnectionTab().put(mainbody.getLastFlow().getConnectionTab().size(), new ConnectionHealth(attrs));
+                    break;
+                case "to":
+                    mainbody.getLastConnection().getToTab().put(mainbody.getLastConnection().getToTab().size(), new ToHealth(attrs));
+                    break;
+                case "Organ":
+                    mainbody.getOrganTab().put(mainbody.getOrganTab().size(), new OrganHealth(attrs));
+                    break;
+                default:
+                    mainbody.getLastFlow().getConnectibleTab().put(mainbody.getLastFlow().getConnectibleTab().size(), new ConnectibleHealth(qName, attrs));
+            }
         }
+        catch (IFT287Exception e)
+        {        
+            e.printStackTrace();
+        }        
     }
 
     public void endElement(String namespace, String lName, String qName)

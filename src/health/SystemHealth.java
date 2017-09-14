@@ -17,24 +17,25 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class System
+public class SystemHealth
 {
     // Attributes
     private String name;
     private int id;
     private int type;
-    private HashMap<Integer, Flow> flowTab;
+    private HashMap<Integer, FlowHealth> flowTab;
 
     // Comfort Constructor
 
     /**
      * Constructeur de confort pour XML -> JSON
-     * @param attrs 
+     * 
+     * @param attrs
      * @throws IFT287Exception
      */
-    public System(Attributes attrs) throws IFT287Exception
+    public SystemHealth(Attributes attrs) throws IFT287Exception
     {
-        flowTab = new HashMap<Integer, Flow>();
+        flowTab = new HashMap<Integer, FlowHealth>();
 
         if (attrs != null)
         {
@@ -54,9 +55,9 @@ public class System
      * @param jsonObject
      * @throws IFT287Exception
      */
-    public System(JsonObject jsonObject) throws IFT287Exception
+    public SystemHealth(JsonObject jsonObject) throws IFT287Exception
     {
-        flowTab = new HashMap<Integer, Flow>();
+        flowTab = new HashMap<Integer, FlowHealth>();
         JsonArray tempArray = jsonObject.getJsonArray("System");
 
         id = jsonObject.getInt("id");
@@ -65,7 +66,7 @@ public class System
 
         for (int boucle = 0; boucle < tempArray.size(); boucle++)
         {
-            flowTab.put(flowTab.size(), new Flow((JsonObject) flowTab.get(boucle)));
+            flowTab.put(flowTab.size(), new FlowHealth((JsonObject) flowTab.get(boucle)));
         }
     }
 
@@ -125,7 +126,7 @@ public class System
     /**
      * @return the flowTab
      */
-    public HashMap<Integer, Flow> getFlowTab()
+    public HashMap<Integer, FlowHealth> getFlowTab()
     {
         return flowTab;
     }
@@ -134,7 +135,7 @@ public class System
      * @param flowTab
      *            the flowTab to set
      */
-    public void setFlowTab(HashMap<Integer, Flow> flowTab)
+    public void setFlowTab(HashMap<Integer, FlowHealth> flowTab)
     {
         this.flowTab = flowTab;
     }
@@ -171,14 +172,14 @@ public class System
      */
     public void toXML(Document document, Node node)
     {
-        // Création de la balise System avec ses attributs
+        // Création de la balise SystemHealth avec ses attributs
         Node system = document.createElement("System");
         ((Element) system).setAttribute("type", String.valueOf(type));
         ((Element) system).setAttribute("id", String.valueOf(id));
         ((Element) system).setAttribute("name", name);
         node.appendChild(system);
 
-        // Création des balises enfants de System
+        // Création des balises enfants de SystemHealth
         for (int i = 0; i < flowTab.size(); i++)
         {
             flowTab.get(i).toXML(document, system);

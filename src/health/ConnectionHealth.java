@@ -17,11 +17,11 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class Connection
+public class ConnectionHealth
 {
     // Attributes
     private int id;
-    private HashMap<Integer, To> toTab;
+    private HashMap<Integer, ToHealth> toTab;
 
     // Comfort Constructor
 
@@ -30,9 +30,9 @@ public class Connection
      * @param attrs
      * @throws IFT287Exception
      */
-    public Connection(Attributes attrs) throws IFT287Exception
+    public ConnectionHealth(Attributes attrs) throws IFT287Exception
     {
-        toTab = new HashMap<Integer, To>();
+        toTab = new HashMap<Integer, ToHealth>();
 
         if (attrs != null)
         {
@@ -49,15 +49,15 @@ public class Connection
      * 
      * @param jsonObject
      */
-    public Connection(JsonObject jsonObject)
+    public ConnectionHealth(JsonObject jsonObject)
     {
         JsonArray tempTo = jsonObject.getJsonArray("to");
-        toTab = new HashMap<Integer, To>();
+        toTab = new HashMap<Integer, ToHealth>();
         id = jsonObject.getInt("id");
 
         for (int boucle = 0; boucle < tempTo.size(); boucle++)
         {
-            toTab.put(toTab.size(), new To((JsonObject) tempTo.get(boucle)));
+            toTab.put(toTab.size(), new ToHealth((JsonObject) tempTo.get(boucle)));
         }
     }
 
@@ -83,7 +83,7 @@ public class Connection
     /**
      * @return the toTab
      */
-    public HashMap<Integer, To> getToTab()
+    public HashMap<Integer, ToHealth> getToTab()
     {
         return toTab;
     }
@@ -92,7 +92,7 @@ public class Connection
      * @param toTab
      *            the toTab to set
      */
-    public void setToTab(HashMap<Integer, To> toTab)
+    public void setToTab(HashMap<Integer, ToHealth> toTab)
     {
         this.toTab = toTab;
     }
@@ -127,12 +127,12 @@ public class Connection
      */
     public void toXML(Document document, Node node)
     {
-        // Création de la balise Connection avec son attribut
+        // Création de la balise ConnectionHealth avec son attribut
         Node connection = document.createElement("Connection");
         ((Element) connection).setAttribute("id", String.valueOf(id));
         node.appendChild(connection);
 
-        // Création des balises enfants de Connection
+        // Création des balises enfants de ConnectionHealth
         for (int i = 0; i < toTab.size(); i++)
         {
             toTab.get(i).toXML(document, connection);

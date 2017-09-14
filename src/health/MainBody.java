@@ -25,8 +25,8 @@ public class MainBody
     // Attributes
     private String name;
     private int id;
-    private HashMap<Integer, System> systemTab;
-    private HashMap<Integer, Organ> organTab;
+    private HashMap<Integer, SystemHealth> systemTab;
+    private HashMap<Integer, OrganHealth> organTab;
 
     // Comfort Constructor
 
@@ -36,8 +36,8 @@ public class MainBody
      */
     public MainBody(Attributes attrs) throws IFT287Exception
     {
-        systemTab = new HashMap<Integer, System>();
-        organTab = new HashMap<Integer, Organ>();
+        systemTab = new HashMap<Integer, SystemHealth>();
+        organTab = new HashMap<Integer, OrganHealth>();
 
         if (attrs != null)
         {
@@ -54,45 +54,45 @@ public class MainBody
     {
         JsonArray tempSystems = jsonObject.getJsonArray("Systems");
         JsonArray tempOrgans = jsonObject.getJsonArray("Organs");
-        systemTab = new HashMap<Integer, System>();
-        organTab = new HashMap<Integer, Organ>();
+        systemTab = new HashMap<Integer, SystemHealth>();
+        organTab = new HashMap<Integer, OrganHealth>();
 
         name = jsonObject.getString("bodyName");
         id = jsonObject.getInt("bodyID");
 
         for (int boucle = 0; boucle < tempSystems.size(); boucle++)
         {
-            systemTab.put(systemTab.size(), new System((JsonObject) tempSystems.get(boucle)));
+            systemTab.put(systemTab.size(), new SystemHealth((JsonObject) tempSystems.get(boucle)));
         }
 
         for (int boucle = 0; boucle < tempOrgans.size(); boucle++)
         {
-            organTab.put(organTab.size(), new Organ((JsonObject) tempOrgans.get(boucle)));
+            organTab.put(organTab.size(), new OrganHealth((JsonObject) tempOrgans.get(boucle)));
         }
     }
 
     // Getters / Setters
 
     /**
-     * @return HashMap<Integer, System>
+     * @return HashMap<Integer, SystemHealth>
      */
-    public System getLastSystem()
+    public SystemHealth getLastSystem()
     {
         return systemTab.get(systemTab.size() - 1);
     }
 
     /**
-     * @return HashMap<Integer, Flow>
+     * @return HashMap<Integer, FlowHealth>
      */
-    public Flow getLastFlow()
+    public FlowHealth getLastFlow()
     {
         return getLastSystem().getFlowTab().get(getLastSystem().getFlowTab().size() - 1);
     }
 
     /**
-     * @return Connection
+     * @return ConnectionHealth
      */
-    public Connection getLastConnection()
+    public ConnectionHealth getLastConnection()
     {
         return getLastFlow().getConnectionTab().get(getLastFlow().getConnectionTab().size() - 1);
     }
@@ -168,7 +168,7 @@ public class MainBody
     /**
      * @return the systemsTab
      */
-    public HashMap<Integer, System> getSystemTab()
+    public HashMap<Integer, SystemHealth> getSystemTab()
     {
         return systemTab;
     }
@@ -177,7 +177,7 @@ public class MainBody
      * @param systemTab
      *            the systemsTab to set
      */
-    public void setSystemTab(HashMap<Integer, System> systemTab)
+    public void setSystemTab(HashMap<Integer, SystemHealth> systemTab)
     {
         this.systemTab = systemTab;
     }
@@ -185,7 +185,7 @@ public class MainBody
     /**
      * @return the organsTab
      */
-    public HashMap<Integer, Organ> getOrganTab()
+    public HashMap<Integer, OrganHealth> getOrganTab()
     {
         return organTab;
     }
@@ -194,7 +194,7 @@ public class MainBody
      * @param organTab
      *            the organsTab to set
      */
-    public void setOrganTab(HashMap<Integer, Organ> organTab)
+    public void setOrganTab(HashMap<Integer, OrganHealth> organTab)
     {
         this.organTab = organTab;
     }

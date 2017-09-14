@@ -14,7 +14,7 @@ import tp1.IFT287Exception;
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
 
-public class Organ
+public class OrganHealth
 {
     private String name;
     private int id;
@@ -28,7 +28,7 @@ public class Organ
      * @param attrs
      * @throws IFT287Exception
      */
-    public Organ(Attributes attrs) throws IFT287Exception
+    public OrganHealth(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
         {
@@ -48,7 +48,7 @@ public class Organ
      * @param jsonObject
      * @throws IFT287Exception
      */
-    public Organ(JsonObject jsonObject) throws IFT287Exception
+    public OrganHealth(JsonObject jsonObject) throws IFT287Exception
     {
         if (jsonObject != null)
         {
@@ -136,7 +136,7 @@ public class Organ
      */
     public void toXML(Document document, Node node)
     {
-        // Création de la balise Organ avec ses attributs
+        // Création de la balise OrganHealth avec ses attributs
         Node organ = document.createElement("Organ");
         ((Element) organ).setAttribute("name", name);
         ((Element) organ).setAttribute("id", String.valueOf(id));

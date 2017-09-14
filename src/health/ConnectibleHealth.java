@@ -15,7 +15,7 @@ import org.xml.sax.Attributes;
 /**
  * 
  */
-public class Connectible
+public class ConnectibleHealth
 {
     // Attributes
     private String type;
@@ -35,7 +35,7 @@ public class Connectible
      * @param id
      * @param name
      */
-    public Connectible(String type, String name, int id)
+    public ConnectibleHealth(String type, String name, int id)
     {
         this.type = type;
         this.name = name;
@@ -48,7 +48,7 @@ public class Connectible
      * @param type
      * @param attrs
      */
-    public Connectible(String type, Attributes attrs)
+    public ConnectibleHealth(String type, Attributes attrs)
     {
         this(type, attrs.getValue("name"), Integer.parseInt(attrs.getValue("id")));
 
@@ -73,7 +73,7 @@ public class Connectible
      * 
      * @param jsonObject
      */
-    public Connectible(JsonObject jsonObject)
+    public ConnectibleHealth(JsonObject jsonObject)
     {
         type = jsonObject.getString("type");
         id = jsonObject.getInt("id");
