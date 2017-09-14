@@ -160,11 +160,14 @@ public class FlowHealth
 
         // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Connectible");
+        jsonGenerator.writeStartObject();
+        
         for (int i = 0; i < this.connectibleTab.size(); i++)
-        {
+        {     
             // Parcours des noeuds enfants
             connectibleTab.get(i).toJSON(jsonGenerator);
         }
+        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
 
         // Ecrit le sous-menu et le parcours tant qu'il y a des données

@@ -202,14 +202,16 @@ public class MainBody
     // Methods
 
     /**
-     * >>>>>>> master Convertit l'objet actuel en JSON
+     * Convertit l'objet actuel en JSON
      * 
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
     {
         jsonGenerator.writeStartObject();
-
+        jsonGenerator.writeStartArray("MainBody");
+        jsonGenerator.writeStartObject();
+        
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("bodyID", this.id);
         jsonGenerator.write("bodyName", this.name);
@@ -247,6 +249,9 @@ public class MainBody
             jsonGenerator.writeEnd();
             jsonGenerator.writeEnd();
         }
+        
+        jsonGenerator.writeEnd();
+        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }

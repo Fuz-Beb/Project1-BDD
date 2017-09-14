@@ -228,10 +228,10 @@ public class ConnectibleHealth
     public void toJSON(JsonGenerator jsonGenerator)
     {
         // Ecrit l'objet actuel dans le générateur JSON
+        jsonGenerator.writeStartArray(type);
         jsonGenerator.writeStartObject();
-        jsonGenerator.write("id", this.getId());
-        jsonGenerator.write("type", this.getType());
         jsonGenerator.write("name", this.getName());
+        jsonGenerator.write("id", this.getId());
 
         if (volume != null)
         {
@@ -250,6 +250,7 @@ public class ConnectibleHealth
             jsonGenerator.write("length", this.getLength());
         }
 
+        jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }
 
