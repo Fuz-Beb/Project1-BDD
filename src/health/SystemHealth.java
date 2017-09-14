@@ -58,15 +58,16 @@ public class SystemHealth
     public SystemHealth(JsonObject jsonObject) throws IFT287Exception
     {
         flowTab = new HashMap<Integer, FlowHealth>();
-        JsonArray tempArray = jsonObject.getJsonArray("System");
 
         id = jsonObject.getInt("id");
         name = jsonObject.getString("name");
         type = jsonObject.getInt("type");
 
+        JsonArray tempArray = jsonObject.getJsonArray("Flow");
+        
         for (int boucle = 0; boucle < tempArray.size(); boucle++)
         {
-            flowTab.put(flowTab.size(), new FlowHealth((JsonObject) flowTab.get(boucle)));
+            flowTab.put(flowTab.size(), new FlowHealth((JsonObject) tempArray.get(boucle)));
         }
     }
 
