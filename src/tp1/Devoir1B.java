@@ -1,6 +1,7 @@
 package tp1;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 // Travail fait par :
@@ -11,6 +12,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.System;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -49,13 +54,16 @@ import health.MainBody;
 public class Devoir1B
 {
     /**
-     * La méthode principale
+     * <<<<<<< HEAD La méthode principale
+     * 
+     * ======= >>>>>>> master
      * 
      * @param args
      * @throws IOException
      * @throws SAXException
+     * @throws IFT287Exception 
      */
-    public static void main(String[] args) throws SAXException, IOException
+    public static void main(String[] args) throws SAXException, IOException, IFT287Exception
     {
         // Attributes
         MainBody mainbody;
@@ -72,9 +80,13 @@ public class Devoir1B
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
 
         try
-        {
-            // Lecture du JSON et affectation du mainbody
-            mainbody = lectureXML(nomFichierJSON);
+        { 
+            FileInputStream file = new FileInputStream(new File(nomFichierJSON));
+            JsonReader jsonReader =  Json.createReader(file);
+            
+            JsonObject obj = jsonReader.readObject();
+            mainbody = new MainBody(obj);
+
             ecritureXML(nomFichierXML, mainbody);
         }
         catch (ParserConfigurationException | FileNotFoundException | TransformerException e)
@@ -84,29 +96,7 @@ public class Devoir1B
 
         System.out.println("Conversion terminee.");
     }
-
-    /**
-     * Lecture du fichier XML avec SAXP
-     * 
-     * @param nomFichierJSON
-     * @return mainBody
-     * @throws SAXException
-     * @throws IOException
-     * @throws ParserConfigurationException
-     */
-    public static MainBody lectureXML(String nomFichierJSON)
-            throws SAXException, IOException, ParserConfigurationException
-    {
-        // Construction du parseur
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        factory.setValidating(true);
-        SAXParser parser = factory.newSAXParser();
-        DefaultHandler hdl = new ParserXMLToJSON();
-        parser.parse(new File(nomFichierJSON), hdl);
-
-        return ((ParserXMLToJSON) hdl).getMainbody();
-    }
-
+    
     /**
      * Permet d'écrire un fichier XML et de générer un fichier
      * 
