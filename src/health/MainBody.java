@@ -1,5 +1,9 @@
 package health;
 
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
+
 import java.util.HashMap;
 
 import javax.json.JsonArray;
@@ -13,24 +17,19 @@ import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
 /**
- * 
+ * Classe principale du modèle objets. Accès à l'ensemble de ses enfants (accès sous forme de cascades)
  */
 public class MainBody
 {
-    // Attributes
+    // Attributs
     private String name;
     private int id;
     private HashMap<Integer, SystemHealth> systemTab;
     private HashMap<Integer, OrganHealth> organTab;
 
-    // Comfort Constructor
-
     /**
+     * Constructeur de confort pour la lecture du fichier JSON
      * @param attrs
      * @throws IFT287Exception
      */
@@ -50,6 +49,11 @@ public class MainBody
         }
     }
 
+    /**
+     * Constructeur de confort pour la lecture du fichier XML
+     * @param jsonObject
+     * @throws IFT287Exception
+     */
     public MainBody(JsonObject jsonObject) throws IFT287Exception
     {
         // Récupération du bon JsonArray concernant "System"
@@ -206,8 +210,7 @@ public class MainBody
     // Methods
 
     /**
-     * Convertit l'objet actuel en JSON
-     * 
+     * Génération de l'objet MainBody dans le fichier JSON
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -261,6 +264,7 @@ public class MainBody
     }
 
     /**
+     * Génération de l'objet MainBody dans le fichier XML
      * @param document
      */
     public void toXML(Document document)

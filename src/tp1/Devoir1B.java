@@ -1,12 +1,12 @@
 package tp1;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 // Travail fait par :
 // Bobet Pierrick - 17 131 792
 // Bouteloup Remy - 17 132 265
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class Devoir1B
      */
     public static void main(String[] args) throws SAXException, IOException, IFT287Exception
     {
-        // Attributes
+        // Attribut
         MainBody mainbody;
 
         if (args.length < 2)
@@ -74,29 +74,44 @@ public class Devoir1B
         String nomFichierXML = args[1];
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
-
+        
         try
         {
-            FileInputStream file = new FileInputStream(new File(nomFichierJSON));
-            JsonReader jsonReader = Json.createReader(file);
-
-            JsonObject jsonObject = jsonReader.readObject();
-
-            // Récupération du bon JsonArray concernant "System"
-            JsonArray tempMainBody = jsonObject.getJsonArray("MainBody");
-            JsonObject mainBodyObjectJson = tempMainBody.getJsonObject(0);
-
-            mainbody = new MainBody(mainBodyObjectJson);
-
+            // Lecture du fichier JSON
+            mainbody = lectureJSON(nomFichierJSON);
+            
+            // Ecriture du fichier XML
             ecritureXML(nomFichierXML, mainbody);
         }
-        catch (ParserConfigurationException | FileNotFoundException | TransformerException e)
+        catch (ParserConfigurationException | TransformerException e)
         {
             e.printStackTrace();
         }
-
+        
         System.out.println("Conversion terminee.");
     }
+    
+    /**
+     * Lecture du fichier JSON
+     * @param nomFichierJSON
+     * @return MainBody
+     * @throws FileNotFoundException
+     * @throws IFT287Exception
+     */
+    public static MainBody lectureJSON(String nomFichierJSON) throws FileNotFoundException, IFT287Exception
+    {
+        FileInputStream file = new FileInputStream(new File(nomFichierJSON));
+        JsonReader jsonReader = Json.createReader(file);
+
+        JsonObject jsonObject = jsonReader.readObject();
+
+        // Récupération du bon JsonArray concernant "System"
+        JsonArray tempMainBody = jsonObject.getJsonArray("MainBody");
+        JsonObject mainBodyObjectJson = tempMainBody.getJsonObject(0);
+
+        return new MainBody(mainBodyObjectJson);
+    }
+        
 
     /**
      * Permet d'écrire un fichier XML et de générer un fichier
@@ -111,7 +126,6 @@ public class Devoir1B
     public static void ecritureXML(String nomFichierXML, MainBody mainbody)
             throws ParserConfigurationException, FileNotFoundException, TransformerException
     {
-
         // Construction et préparation du document de sortie XML
         DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
         Document document = f.newDocumentBuilder().newDocument();

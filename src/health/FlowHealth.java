@@ -1,5 +1,9 @@
 package health;
 
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
+
 import java.util.HashMap;
 
 import javax.json.JsonArray;
@@ -13,21 +17,19 @@ import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
+/**
+ * Classe permettant de représenter un objet Flow
+ */
 public class FlowHealth
 {
-    // Attributes
+    // Attributs
     private int id;
     private String name;
     private HashMap<Integer, ConnectibleHealth> connectibleTab;
     private HashMap<Integer, ConnectionHealth> connectionTab;
 
-    // Comfort Constructor
     /**
-     * 
+     * Constructeur de confort pour la lecture du fichier XML
      * @param attrs
      * @throws IFT287Exception
      */
@@ -48,13 +50,12 @@ public class FlowHealth
     }
 
     /**
-     * Constructeur de confort
-     * 
+     * Constructeur de confort pour la lecture du fichier JSON
      * @param objectJSON
      */
     public FlowHealth(JsonObject objectJSON)
     {
-
+        
         JsonArray tempConnectibles = objectJSON.getJsonArray("Connectible");
         JsonArray tempConnections = objectJSON.getJsonArray("Connections");
 
@@ -80,7 +81,6 @@ public class FlowHealth
     }
 
     // Getters / Setters
-
     /**
      * @return the id
      */
@@ -150,8 +150,8 @@ public class FlowHealth
     }
 
     // Methods
-
     /**
+     * Ajout des objets Flow dans le fichier JSON de sortie
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -193,6 +193,7 @@ public class FlowHealth
     }
 
     /**
+     * Ajout des objets Flow dans le fichier XML de sortie
      * @param document
      * @param node
      */

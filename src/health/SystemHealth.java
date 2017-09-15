@@ -1,5 +1,9 @@
 package health;
 
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
+
 import java.util.HashMap;
 
 import javax.json.JsonArray;
@@ -13,23 +17,19 @@ import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
+/**
+ * Classe qui represente un objet System
+ */
 public class SystemHealth
 {
-    // Attributes
+    // Attributs
     private String name;
     private int id;
     private int type;
     private HashMap<Integer, FlowHealth> flowTab;
 
-    // Comfort Constructor
-
     /**
-     * Constructeur de confort pour XML -> JSON
-     * 
+     * Constructeur de confort pour la lecture du fichier XML
      * @param attrs
      * @throws IFT287Exception
      */
@@ -50,8 +50,7 @@ public class SystemHealth
     }
 
     /**
-     * Constructeur de confort pour JSON -> XML
-     * 
+     * Constructeur de confort pour la lecture du fichier JSON
      * @param jsonObject
      * @throws IFT287Exception
      */
@@ -147,6 +146,7 @@ public class SystemHealth
     // Methods
 
     /**
+     * Génération des objets System dans le fichier JSON de sortie
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -171,6 +171,7 @@ public class SystemHealth
     }
 
     /**
+     * Génération des objets System dans le fichier XML de sortie
      * @param document
      * @param node
      */

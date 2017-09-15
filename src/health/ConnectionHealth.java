@@ -1,5 +1,9 @@
 package health;
 
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
+
 import java.util.HashMap;
 
 import javax.json.JsonArray;
@@ -13,20 +17,17 @@ import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
+/**
+ * Classe qui représente un objet Connections
+ */
 public class ConnectionHealth
 {
-    // Attributes
+    // Attributs
     private int id;
     private HashMap<Integer, ToHealth> toTab;
 
-    // Comfort Constructor
-
     /**
-     * 
+     * Constructeur de confort pour la lecture du fichier XML
      * @param attrs
      * @throws IFT287Exception
      */
@@ -45,8 +46,7 @@ public class ConnectionHealth
     }
 
     /**
-     * Constructeur de confort offrant comme argument un objet JSON
-     * 
+     * Constructeur de confort pour la lecture du fichier JSON
      * @param jsonObject
      */
     public ConnectionHealth(JsonObject jsonObject)
@@ -65,7 +65,6 @@ public class ConnectionHealth
     }
 
     // Getters / Setters
-
     /**
      * @return the id
      */
@@ -101,8 +100,9 @@ public class ConnectionHealth
     }
 
     // Methods
-
     /**
+     * Méthode permettant l'écriture des objets Connection dans le fichier JSON
+     * de sortie
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -114,9 +114,9 @@ public class ConnectionHealth
 
         jsonGenerator.writeStartArray("to");
 
+        // Parcours des noeuds enfants
         for (int i = 0; i < toTab.size(); i++)
         {
-            // Parcours des noeuds enfants
             toTab.get(i).toJSON(jsonGenerator);
         }
 
@@ -125,6 +125,9 @@ public class ConnectionHealth
     }
 
     /**
+     * Méthode permettant l'écriture des objets Connection dans le fichier XML
+     * de sortie
+     * 
      * @param document
      * @param node
      */

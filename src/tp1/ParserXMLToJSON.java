@@ -17,18 +17,31 @@ import health.OrganHealth;
 import health.SystemHealth;
 import health.ToHealth;
 
+/**
+ * Classe permettant l'affectation des données du fichiers aux objets (flow, systems, ...)
+ */
 public class ParserXMLToJSON extends DefaultHandler
 {
+    // Attribut
     MainBody mainbody;
 
+    /**
+     * Aucun traitement n'est nécessaire lors du démarrage de la lecture du fichier XML
+     */
     public void startDocument()
     {
     }
 
+    /**
+     * Aucun traitement n'est nécessaire lors de l'arrêt de la lecture du fichier XML
+     */
     public void endDocument()
     {
     }
 
+    /**
+     * Lorsqu'une balise d'entrée est lu. Affectation de la balise lu à l'objet (flow, organ, ...)
+     */
     public void startElement(String uri, String localName, String qName, Attributes attrs)
     {        
         try

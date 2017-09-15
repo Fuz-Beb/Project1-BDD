@@ -50,7 +50,7 @@ public class Devoir1A
      */
     public static void main(String[] args)
     {
-
+        // Attribut
         MainBody mainBody;
 
         if (args.length < 2)
@@ -80,7 +80,6 @@ public class Devoir1A
         }
     }
 
-    //
     /**
      * Lecture du fichier XML avec SAXP
      * 
@@ -104,6 +103,8 @@ public class Devoir1A
     }
 
     /**
+     * Ecriture du fichier JSON avec un generateur
+     * 
      * @param monFichierJSON
      * @param mainBody
      * @throws FileNotFoundException
@@ -117,6 +118,7 @@ public class Devoir1A
         JsonGeneratorFactory fact = Json.createGeneratorFactory(config);
         JsonGenerator jsonGenerator = fact.createGenerator(new FileOutputStream(new File(monFichierJSON)));
 
+        // Appel en cascades des enfants de mainBody pour la génération en JSON
         mainBody.toJSON(jsonGenerator);
 
         // Fermeture du générateur

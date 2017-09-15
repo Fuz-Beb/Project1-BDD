@@ -1,5 +1,9 @@
 package health;
 
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
+
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -8,16 +12,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
 /**
- * 
+ * Classe qui représente un objet Connectible
  */
 public class ConnectibleHealth
 {
-    // Attributes
+    // Attributs
     private String type;
     private String name;
     private int id;
@@ -25,8 +25,6 @@ public class ConnectibleHealth
     private Double length;
     private Double startRadius;
     private Double endRadius;
-
-    // Comfort Constructor
 
     /**
      * Constructeur de confort avec les attributs communs
@@ -50,8 +48,13 @@ public class ConnectibleHealth
      */
     public ConnectibleHealth(String type, Attributes attrs)
     {
+
+        // Appel du constructeur de comfort avec les attributs communs
         this(type, attrs.getValue("name"), Integer.parseInt(attrs.getValue("id")));
-        
+
+        // Recherche si la variable attrs possède certaines valeurs d'attributs
+        // (cela est du en fonction du type de balise qui est lue (Atrium, nose,
+        // ...))
         if (attrs.getValue("volume") != null)
         {
             volume = Double.parseDouble(attrs.getValue("volume"));
@@ -71,12 +74,13 @@ public class ConnectibleHealth
     }
 
     /**
-     * Constructeur de confort offrant comme argument un objet JSON
+     * Constructeur de confort offrant comme argument un objet JSON. Destiné à
+     * la lecture du fichier JSON
      * 
      * @param jsonObject
      */
     public ConnectibleHealth(JsonObject jsonObject)
-    {        
+    {
         id = jsonObject.getInt("id");
         name = jsonObject.getString("name");
         type = jsonObject.getString("type");
@@ -100,7 +104,6 @@ public class ConnectibleHealth
     }
 
     // Getters / Setters
-
     /**
      * @return the type
      */
@@ -221,9 +224,8 @@ public class ConnectibleHealth
     }
 
     // Methods
-
     /**
-     * Convertit l'objet actuel en JSON
+     * Génération des objets Connectible dans le fichier JSON de sortie
      * 
      * @param jsonGenerator
      */
@@ -251,11 +253,13 @@ public class ConnectibleHealth
         {
             jsonGenerator.write("length", this.getLength());
         }
-        
+
         jsonGenerator.writeEnd();
     }
 
     /**
+     * Génération des objets Connectible dans le fichier XML de sortie
+     * 
      * @param document
      * @param node
      */
@@ -266,7 +270,7 @@ public class ConnectibleHealth
         ((Element) connectible).setAttribute("name", name);
         ((Element) connectible).setAttribute("id", String.valueOf(id));
 
-        // Ajout
+        // Ajout d'attributs de balises
         if (volume != null)
         {
             ((Element) connectible).setAttribute("volume", String.valueOf(volume));

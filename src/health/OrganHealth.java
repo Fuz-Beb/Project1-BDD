@@ -1,5 +1,9 @@
 package health;
 
+//Travail fait par :
+//Bobet Pierrick - 17 131 792
+//Bouteloup Remy - 17 132 265
+
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
@@ -11,21 +15,18 @@ import org.xml.sax.Attributes;
 
 import tp1.IFT287Exception;
 
-// Travail fait par :
-// Bobet Pierrick - 17 131 792
-// Bouteloup Remy - 17 132 265
-
+/**
+ * Classe qui represente un objet Organ
+ */
 public class OrganHealth
 {
+    // Attributs
     private String name;
     private int id;
     private int systemID;
 
-    // Comfort Constructor
-
     /**
-     * Constructeur de confort pour XML -> JSON
-     * 
+     * Constructeur de confort pour la lecture du fichier XML
      * @param attrs
      * @throws IFT287Exception
      */
@@ -44,8 +45,7 @@ public class OrganHealth
     }
 
     /**
-     * Constructeur de confort pour JSON -> XML
-     * 
+     * Constructeur de confort pour la lecture du fichier JSON
      * @param jsonObject
      * @throws IFT287Exception
      */
@@ -120,8 +120,7 @@ public class OrganHealth
     }
 
     /**
-     * Convertit l'objet actuel en JSON
-     * 
+     * Génération des objets Organ dans le fichier JSON de sortie
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -135,6 +134,7 @@ public class OrganHealth
     }
 
     /**
+     * Génération des objets Organ dans le fichier XML de sortie
      * @param document
      * @param node
      */
