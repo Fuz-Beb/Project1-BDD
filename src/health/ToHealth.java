@@ -19,10 +19,8 @@ public class ToHealth
     // Attributes
     private int id;
 
-    // Comfort Constructor
-
     /**
-     * Comfort Constructor
+     * Constructeur de confort offrant comme argument un objet attribut
      * 
      * @param attrs
      * @throws IFT287Exception
@@ -30,13 +28,9 @@ public class ToHealth
     public ToHealth(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
-        {
             id = Integer.parseInt(attrs.getValue("id"));
-        }
         else
-        {
             throw new IFT287Exception("To : bad attributes");
-        }
     }
 
     /**
@@ -79,7 +73,6 @@ public class ToHealth
 
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", id);
-
         jsonGenerator.writeEnd();
     }
 
