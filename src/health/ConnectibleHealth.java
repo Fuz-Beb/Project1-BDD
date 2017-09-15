@@ -56,21 +56,13 @@ public class ConnectibleHealth
         // (cela est du en fonction du type de balise qui est lue (Atrium, nose,
         // ...))
         if (attrs.getValue("volume") != null)
-        {
             volume = Double.parseDouble(attrs.getValue("volume"));
-        }
         else if (attrs.getValue("length") != null)
-        {
             length = Double.parseDouble(attrs.getValue("length"));
-        }
         else if (attrs.getValue("startRadius") != null)
-        {
             startRadius = Double.parseDouble(attrs.getValue("startRadius"));
-        }
         else if (attrs.getValue("startRadius") != null)
-        {
             endRadius = Double.parseDouble(attrs.getValue("endRadius"));
-        }
     }
 
     /**
@@ -86,24 +78,17 @@ public class ConnectibleHealth
         type = jsonObject.getString("type");
 
         if (jsonObject.getJsonNumber("volume") != null)
-        {
             this.volume = jsonObject.getJsonNumber("volume").doubleValue();
-        }
         if (jsonObject.getJsonNumber("length") != null)
-        {
             this.length = jsonObject.getJsonNumber("length").doubleValue();
-        }
         if (jsonObject.getJsonNumber("startRadius") != null)
-        {
             this.startRadius = jsonObject.getJsonNumber("startRadius").doubleValue();
-        }
         if (jsonObject.getJsonNumber("endRadius") != null)
-        {
             this.endRadius = jsonObject.getJsonNumber("endRadius").doubleValue();
-        }
     }
 
     // Getters / Setters
+
     /**
      * @return the type
      */
@@ -238,21 +223,13 @@ public class ConnectibleHealth
         jsonGenerator.write("id", id);
 
         if (volume != null)
-        {
             jsonGenerator.write("volume", this.getVolume());
-        }
         if (startRadius != null)
-        {
             jsonGenerator.write("startRadius", this.getStartRadius());
-        }
         if (endRadius != null)
-        {
             jsonGenerator.write("endRadius", this.getEndRadius());
-        }
         if (length != null)
-        {
             jsonGenerator.write("length", this.getLength());
-        }
 
         jsonGenerator.writeEnd();
     }
@@ -272,21 +249,13 @@ public class ConnectibleHealth
 
         // Ajout d'attributs de balises
         if (volume != null)
-        {
             ((Element) connectible).setAttribute("volume", String.valueOf(volume));
-        }
         if (startRadius != null)
-        {
             ((Element) connectible).setAttribute("startRadius", String.valueOf(startRadius));
-        }
         if (endRadius != null)
-        {
             ((Element) connectible).setAttribute("endRadius", String.valueOf(endRadius));
-        }
         if (length != null)
-        {
             ((Element) connectible).setAttribute("length", String.valueOf(length));
-        }
 
         node.appendChild(connectible);
     }

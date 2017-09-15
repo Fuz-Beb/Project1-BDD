@@ -63,6 +63,8 @@ public class Devoir1B
     {
         // Attribut
         MainBody mainbody;
+        String nomFichierJSON;
+        String nomFichierXML;
 
         if (args.length < 2)
         {
@@ -70,8 +72,8 @@ public class Devoir1B
             return;
         }
 
-        String nomFichierJSON = args[0];
-        String nomFichierXML = args[1];
+        nomFichierJSON = args[0];
+        nomFichierXML = args[1];
 
         System.out.println("Debut de la conversion du fichier " + nomFichierJSON + " vers le fichier " + nomFichierXML);
         
@@ -102,14 +104,12 @@ public class Devoir1B
     {
         FileInputStream file = new FileInputStream(new File(nomFichierJSON));
         JsonReader jsonReader = Json.createReader(file);
-
         JsonObject jsonObject = jsonReader.readObject();
 
         // Récupération du bon JsonArray concernant "System"
         JsonArray tempMainBody = jsonObject.getJsonArray("MainBody");
-        JsonObject mainBodyObjectJson = tempMainBody.getJsonObject(0);
 
-        return new MainBody(mainBodyObjectJson);
+        return new MainBody(tempMainBody.getJsonObject(0));
     }
         
 

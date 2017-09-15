@@ -36,13 +36,9 @@ public class ConnectionHealth
         toTab = new HashMap<Integer, ToHealth>();
 
         if (attrs != null)
-        {
             id = Integer.parseInt(attrs.getValue("id"));
-        }
         else
-        {
             throw new IFT287Exception("Connection : bad attributes");
-        }
     }
 
     /**
@@ -54,14 +50,13 @@ public class ConnectionHealth
         JsonArray tempConnection = jsonObject.getJsonArray("Connection");
         JsonObject connectionObject = tempConnection.getJsonObject(0);
         JsonArray tempTo = connectionObject.getJsonArray("to");
+        int tempToSize = tempTo.size();
 
         toTab = new HashMap<Integer, ToHealth>();
         id = connectionObject.getInt("id");
 
-        for (int boucle = 0; boucle < tempTo.size(); boucle++)
-        {
+        for (int boucle = 0; boucle < tempToSize; boucle++)
             toTab.put(toTab.size(), new ToHealth((JsonObject) tempTo.get(boucle)));
-        }
     }
 
     // Getters / Setters
@@ -107,18 +102,15 @@ public class ConnectionHealth
      */
     public void toJSON(JsonGenerator jsonGenerator)
     {
+        int toTabSize = toTab.size();
         jsonGenerator.writeStartObject();
-
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", this.getId());
-
         jsonGenerator.writeStartArray("to");
 
         // Parcours des noeuds enfants
-        for (int i = 0; i < toTab.size(); i++)
-        {
+        for (int i = 0; i < toTabSize; i++)
             toTab.get(i).toJSON(jsonGenerator);
-        }
 
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
@@ -133,15 +125,14 @@ public class ConnectionHealth
      */
     public void toXML(Document document, Node node)
     {
+        int toTabSize = toTab.size();
         // Création de la balise ConnectionHealth avec son attribut
         Node connection = document.createElement("Connection");
         ((Element) connection).setAttribute("id", String.valueOf(id));
         node.appendChild(connection);
 
         // Création des balises enfants de ConnectionHealth
-        for (int i = 0; i < toTab.size(); i++)
-        {
+        for (int i = 0; i < toTabSize; i++)
             toTab.get(i).toXML(document, connection);
-        }
     }
 }

@@ -1,8 +1,8 @@
 package health;
 
-//Travail fait par :
-//Bobet Pierrick - 17 131 792
-//Bouteloup Remy - 17 132 265
+// Travail fait par :
+// Bobet Pierrick - 17 131 792
+// Bouteloup Remy - 17 132 265
 
 import java.util.HashMap;
 
@@ -30,6 +30,7 @@ public class FlowHealth
 
     /**
      * Constructeur de confort pour la lecture du fichier XML
+     * 
      * @param attrs
      * @throws IFT287Exception
      */
@@ -44,20 +45,21 @@ public class FlowHealth
             id = Integer.parseInt(attrs.getValue("id"));
         }
         else
-        {
             throw new IFT287Exception("Flow : bad attributes");
-        }
     }
 
     /**
      * Constructeur de confort pour la lecture du fichier JSON
+     * 
      * @param objectJSON
      */
     public FlowHealth(JsonObject objectJSON)
     {
-        
+
         JsonArray tempConnectibles = objectJSON.getJsonArray("Connectible");
         JsonArray tempConnections = objectJSON.getJsonArray("Connections");
+        int sizeTabTempConnectibles = tempConnectibles.size();
+        int sizeTabTempConnections = tempConnections.size();
 
         connectibleTab = new HashMap<Integer, ConnectibleHealth>();
         connectionTab = new HashMap<Integer, ConnectionHealth>();
@@ -66,18 +68,14 @@ public class FlowHealth
 
         // Lecture des connectibles
         if (tempConnectibles != null)
-            for (int boucle = 0; boucle < tempConnectibles.size(); boucle++)
-            {
+            for (int boucle = 0; boucle < sizeTabTempConnectibles; boucle++)
                 connectibleTab.put(connectibleTab.size(),
                         new ConnectibleHealth((JsonObject) tempConnectibles.get(boucle)));
-            }
 
         // Lecture des connections
         if (tempConnections != null)
-            for (int boucle = 0; boucle < tempConnections.size(); boucle++)
-            {
+            for (int boucle = 0; boucle < sizeTabTempConnections; boucle++)
                 connectionTab.put(connectionTab.size(), new ConnectionHealth((JsonObject) tempConnections.get(boucle)));
-            }
     }
 
     // Getters / Setters
@@ -152,6 +150,7 @@ public class FlowHealth
     // Methods
     /**
      * Ajout des objets Flow dans le fichier JSON de sortie
+     * 
      * @param jsonGenerator
      */
     public void toJSON(JsonGenerator jsonGenerator)
@@ -194,6 +193,7 @@ public class FlowHealth
 
     /**
      * Ajout des objets Flow dans le fichier XML de sortie
+     * 
      * @param document
      * @param node
      */
@@ -201,6 +201,13 @@ public class FlowHealth
     {
         // Création de la balise FlowHealth avec les attributs
         Node flow = document.createElement("Flow");
+
+        // Création de la balise Connections
+        Node connections = document.createElement("Connections");
+
+        // Création de la balise ConnectibleHealth
+        Node connectible = document.createElement("Connectible");
+
         ((Element) flow).setAttribute("id", String.valueOf(id));
         ((Element) flow).setAttribute("name", name);
         node.appendChild(flow);
@@ -208,29 +215,23 @@ public class FlowHealth
         // Test si des objets connectibles sont présents
         if (!connectibleTab.isEmpty())
         {
-            // Création de la balise ConnectibleHealth
-            Node connectible = document.createElement("Connectible");
             flow.appendChild(connectible);
 
             // Création des balises enfants de ConnectibleHealth
             for (int i = 0; i < connectibleTab.size(); i++)
-            {
                 connectibleTab.get(i).toXML(document, connectible);
-            }
         }
 
         // Test si des objets connections sont présents
         if (!connectionTab.isEmpty())
         {
             // Création de la balise Connections
-            Node connections = document.createElement("Connections");
+
             flow.appendChild(connections);
 
             // Création des balises enfants de Connections
             for (int i = 0; i < connectionTab.size(); i++)
-            {
                 connectionTab.get(i).toXML(document, connections);
-            }
         }
     }
 }
