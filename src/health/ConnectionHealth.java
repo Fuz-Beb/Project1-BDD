@@ -51,9 +51,12 @@ public class ConnectionHealth
      */
     public ConnectionHealth(JsonObject jsonObject)
     {
-        JsonArray tempTo = jsonObject.getJsonArray("to");
+        JsonArray tempConnection = jsonObject.getJsonArray("Connection");
+        JsonObject connectionObject = tempConnection.getJsonObject(0);
+        JsonArray tempTo = connectionObject.getJsonArray("to");
+
         toTab = new HashMap<Integer, ToHealth>();
-        id = jsonObject.getInt("id");
+        id = connectionObject.getInt("id");
 
         for (int boucle = 0; boucle < tempTo.size(); boucle++)
         {
