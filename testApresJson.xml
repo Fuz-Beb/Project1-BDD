@@ -1122,6 +1122,89 @@
         </Connections>
       </Flow>
     </System>
+    <System id="2" name="Digestive" type="2">
+      <Flow id="0" name="Food">
+        <Connectible>
+          <DigestiveTract id="0" name="Pharynx" volume="12.0"/>
+          <DigestiveTract id="1" name="Esophagus" volume="314.16"/>
+          <StomachTract id="2" name="Stomach" volume="12.0"/>
+          <DuodenumTract id="3" name="Duodenum" volume="10.0"/>
+          <DigestiveTract id="4" name="Small intestine" volume="5026.55"/>
+          <DigestiveTract id="5" name="Ascending colon" volume="477.5"/>
+          <DigestiveTract id="6" name="Transverse colon" volume="452.4"/>
+          <DigestiveTract id="7" name="Descending colon" volume="477.5"/>
+          <DigestiveTract id="8" name="Sigmoid colon" volume="314.16"/>
+          <RectumTract id="9" name="Rectum" volume="113.0"/>
+          <BiDuct id="10" name="Cystic duct"/>
+          <Duct id="11" name="Hepatic duct"/>
+          <DuctOverflowableJunction id="12" name="Bile duct junction"/>
+          <Duct id="13" name="Common bile duct"/>
+          <Duct id="14" name="Pancreatic duct"/>
+          <DeversingDuct id="15" name="Ampulla of Vater"/>
+          <InnerGallbladder id="16" name="Gallbladder duct"/>
+        </Connectible>
+        <Connections>
+          <Connection id="0">
+            <to id="1"/>
+          </Connection>
+          <Connection id="1">
+            <to id="2"/>
+          </Connection>
+          <Connection id="2">
+            <to id="3"/>
+          </Connection>
+          <Connection id="3">
+            <to id="4"/>
+          </Connection>
+          <Connection id="4">
+            <to id="5"/>
+          </Connection>
+          <Connection id="5">
+            <to id="6"/>
+          </Connection>
+          <Connection id="6">
+            <to id="7"/>
+          </Connection>
+          <Connection id="7">
+            <to id="8"/>
+          </Connection>
+          <Connection id="8">
+            <to id="9"/>
+          </Connection>
+          <Connection id="10">
+            <to id="12"/>
+          </Connection>
+          <Connection id="11">
+            <to id="12"/>
+          </Connection>
+          <Connection id="12">
+            <to id="13"/>
+          </Connection>
+          <Connection id="13">
+            <to id="15"/>
+          </Connection>
+          <Connection id="14">
+            <to id="15"/>
+          </Connection>
+          <Connection id="15">
+            <to id="3"/>
+          </Connection>
+          <Connection id="16">
+            <to id="10"/>
+          </Connection>
+        </Connections>
+      </Flow>
+      <Flow id="1" name="Salivary">
+        <Connectible>
+          <SalivaryDuct id="0" name="Left parotid duct" volume="1.0"/>
+          <SalivaryDuct id="1" name="Left submandibular duct" volume="1.0"/>
+          <SalivaryDuct id="2" name="Left sublingual duct" volume="1.0"/>
+          <SalivaryDuct id="3" name="Right parotid duct" volume="1.0"/>
+          <SalivaryDuct id="4" name="Right submandibular duct" volume="1.0"/>
+          <SalivaryDuct id="5" name="Right sublingual duct" volume="1.0"/>
+        </Connectible>
+      </Flow>
+    </System>
   </Systems>
   <Organs>
     <Organ id="0" name="Heart" systemID="0"/>
@@ -1135,5 +1218,6 @@
     <Organ id="5" name="Pancreas" systemID="2"/>
     <Organ id="6" name="Gallbladder" systemID="2"/>
     <Organ id="7" name="Large intestine" systemID="2"/>
+    <Organ id="8" name="Rectum" systemID="2"/>
   </Organs>
 </MainBody>

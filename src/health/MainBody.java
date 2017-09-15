@@ -64,12 +64,12 @@ public class MainBody
         name = jsonObject.getString("bodyName");
         id = jsonObject.getInt("bodyID");
 
-        for (int boucle = 0; boucle < tempSystems.size() - 1; boucle++)
+        for (int boucle = 0; boucle < tempSystems.size(); boucle++)
         {
             systemTab.put(systemTab.size(), new SystemHealth((JsonObject) tempSystems.get(boucle)));
         }
 
-        for (int boucle = 0; boucle < tempOrgans.size() - 1; boucle++)
+        for (int boucle = 0; boucle < tempOrgans.size(); boucle++)
         {
             organTab.put(organTab.size(), new OrganHealth((JsonObject) tempOrgans.get(boucle)));
         }
