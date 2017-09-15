@@ -57,13 +57,16 @@ public class SystemHealth
      */
     public SystemHealth(JsonObject jsonObject) throws IFT287Exception
     {
+        JsonArray arraySystem = jsonObject.getJsonArray("System");
+        JsonObject systemObject = arraySystem.getJsonObject(0);
+
         flowTab = new HashMap<Integer, FlowHealth>();
 
-        id = jsonObject.getInt("id");
-        name = jsonObject.getString("name");
-        type = jsonObject.getInt("type");
+        id = systemObject.getInt("id");
+        name = systemObject.getString("name");
+        type = systemObject.getInt("type");
 
-        JsonArray tempArray = jsonObject.getJsonArray("Flow");
+        JsonArray tempArray = systemObject.getJsonArray("Flow");
 
         for (int boucle = 0; boucle < tempArray.size(); boucle++)
         {
@@ -154,7 +157,7 @@ public class SystemHealth
         jsonGenerator.write("name", this.name);
         jsonGenerator.write("id", this.id);
         jsonGenerator.write("type", this.type);
-        
+
         // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Flow");
 

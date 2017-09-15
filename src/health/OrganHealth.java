@@ -1,5 +1,6 @@
 package health;
 
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonGenerator;
 
@@ -50,11 +51,14 @@ public class OrganHealth
      */
     public OrganHealth(JsonObject jsonObject) throws IFT287Exception
     {
-        if (jsonObject != null)
+        JsonArray arrayOrgan = jsonObject.getJsonArray("Organ");
+        JsonObject organObject = arrayOrgan.getJsonObject(0);
+
+        if (organObject != null)
         {
-            name = jsonObject.getString("name");
-            id = jsonObject.getInt("id");
-            systemID = jsonObject.getInt("systemID");
+            name = organObject.getString("name");
+            id = organObject.getInt("id");
+            systemID = organObject.getInt("systemID");
         }
         else
         {

@@ -1061,8 +1061,79 @@
         </Connectible>
       </Flow>
     </System>
+    <System id="1" name="Respiratory" type="1">
+      <Flow id="0" name="Air">
+        <Connectible>
+          <Nose id="0" name="Nose"/>
+          <AirConnectible id="1" length="5.0" name="Pharynx"/>
+          <AirConnectible id="2" length="5.0" name="Larynx"/>
+          <AirConnectible id="3" length="5.0" name="Trachea"/>
+          <AirConnectible id="4" length="5.0" name="Left bronchi"/>
+          <AirConnectible id="5" length="5.0" name="Right bronchi"/>
+          <AirConnectible id="6" length="2.0" name="Superior left lobar bronchi"/>
+          <AirConnectible id="7" length="2.0" name="Inferior left lobar bronchi"/>
+          <AirConnectible id="8" length="2.0" name="Superior right lobar bronchi"/>
+          <AirConnectible id="9" length="2.0" name="Medium right lobar bronchi"/>
+          <AirConnectible id="10" length="2.0" name="Inferior right lobar bronchi"/>
+          <Alveoli id="11" name="Right superior alveoli" volume="400.0"/>
+          <Alveoli id="12" name="Right average alveoli" volume="400.0"/>
+          <Alveoli id="13" name="Right inferior alveoli" volume="400.0"/>
+          <Alveoli id="14" name="Left superior alveoli" volume="600.0"/>
+          <Alveoli id="15" name="Left inferior alveoli" volume="600.0"/>
+        </Connectible>
+        <Connections>
+          <Connection id="0">
+            <to id="1"/>
+          </Connection>
+          <Connection id="1">
+            <to id="2"/>
+          </Connection>
+          <Connection id="2">
+            <to id="3"/>
+          </Connection>
+          <Connection id="3">
+            <to id="4"/>
+            <to id="5"/>
+          </Connection>
+          <Connection id="4">
+            <to id="6"/>
+            <to id="7"/>
+          </Connection>
+          <Connection id="5">
+            <to id="8"/>
+            <to id="9"/>
+            <to id="10"/>
+          </Connection>
+          <Connection id="6">
+            <to id="14"/>
+          </Connection>
+          <Connection id="7">
+            <to id="15"/>
+          </Connection>
+          <Connection id="8">
+            <to id="11"/>
+          </Connection>
+          <Connection id="9">
+            <to id="12"/>
+          </Connection>
+          <Connection id="10">
+            <to id="13"/>
+          </Connection>
+        </Connections>
+      </Flow>
+    </System>
   </Systems>
   <Organs>
     <Organ id="0" name="Heart" systemID="0"/>
+    <Organ id="0" name="Left lung" systemID="1"/>
+    <Organ id="1" name="Right lung" systemID="1"/>
+    <Organ id="0" name="Mouth" systemID="2"/>
+    <Organ id="1" name="Esophagus" systemID="2"/>
+    <Organ id="2" name="Stomach" systemID="2"/>
+    <Organ id="3" name="Small intestine" systemID="2"/>
+    <Organ id="4" name="Liver" systemID="2"/>
+    <Organ id="5" name="Pancreas" systemID="2"/>
+    <Organ id="6" name="Gallbladder" systemID="2"/>
+    <Organ id="7" name="Large intestine" systemID="2"/>
   </Organs>
 </MainBody>
