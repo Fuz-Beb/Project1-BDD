@@ -58,6 +58,8 @@ public class SystemHealth
     {
         JsonArray arraySystem = jsonObject.getJsonArray("System");
         JsonObject systemObject = arraySystem.getJsonObject(0);
+        JsonArray tempArray = systemObject.getJsonArray("Flow");
+        int sizeTempArray = tempArray.size();
 
         flowTab = new HashMap<Integer, FlowHealth>();
 
@@ -65,12 +67,8 @@ public class SystemHealth
         name = systemObject.getString("name");
         type = systemObject.getInt("type");
 
-        JsonArray tempArray = systemObject.getJsonArray("Flow");
-
-        for (int boucle = 0; boucle < tempArray.size(); boucle++)
-        {
+        for (int boucle = 0; boucle < sizeTempArray; boucle++)
             flowTab.put(flowTab.size(), new FlowHealth((JsonObject) tempArray.get(boucle)));
-        }
     }
 
     // Getters / Setters
@@ -151,6 +149,8 @@ public class SystemHealth
      */
     public void toJSON(JsonGenerator jsonGenerator)
     {
+        int sizeFlowTab = flowTab.size();
+
         jsonGenerator.writeStartObject();
 
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
@@ -161,11 +161,10 @@ public class SystemHealth
         // Ecrit le sous-menu et le parcours tant qu'il y a des données
         jsonGenerator.writeStartArray("Flow");
 
-        for (int i = 0; i < this.flowTab.size(); i++)
-        {
-            // Parcours des noeuds enfants
-            flowTab.get(i).toJSON(jsonGenerator);
-        }
+        // Parcours des noeuds enfants
+        for (int boucle = 0; boucle < sizeFlowTab; boucle++)
+            flowTab.get(boucle).toJSON(jsonGenerator);
+
         jsonGenerator.writeEnd();
         jsonGenerator.writeEnd();
     }
@@ -186,8 +185,6 @@ public class SystemHealth
 
         // Création des balises enfants de SystemHealth
         for (int i = 0; i < flowTab.size(); i++)
-        {
             flowTab.get(i).toXML(document, system);
-        }
     }
 }

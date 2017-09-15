@@ -46,7 +46,7 @@ public class MainBody
         else
         {
             throw new IFT287Exception("MainBody : bad attributes");
-        }
+        }                
     }
 
     /**
@@ -58,25 +58,22 @@ public class MainBody
     {
         // Récupération du bon JsonArray concernant "System"
         JsonArray tempSystems = jsonObject.getJsonArray("Systems");
-
         // Récupération du bon JsonArray concernant "Organ"
         JsonArray tempOrgans = jsonObject.getJsonArray("Organs");
-
+        int sizeTempSystems = tempSystems.size();
+        int sizeTempOrgans = tempOrgans.size();        
+        
         systemTab = new HashMap<Integer, SystemHealth>();
         organTab = new HashMap<Integer, OrganHealth>();
 
         name = jsonObject.getString("bodyName");
         id = jsonObject.getInt("bodyID");
 
-        for (int boucle = 0; boucle < tempSystems.size(); boucle++)
-        {
+        for (int boucle = 0; boucle < sizeTempSystems; boucle++)
             systemTab.put(systemTab.size(), new SystemHealth((JsonObject) tempSystems.get(boucle)));
-        }
 
-        for (int boucle = 0; boucle < tempOrgans.size(); boucle++)
-        {
+        for (int boucle = 0; boucle < sizeTempOrgans; boucle++)
             organTab.put(organTab.size(), new OrganHealth((JsonObject) tempOrgans.get(boucle)));
-        }
     }
 
     // Getters / Setters
@@ -270,29 +267,29 @@ public class MainBody
     public void toXML(Document document)
     {
         // Création de la balise MainBody avec ses attributs
-        Node racine = document.createElement("MainBody");
+        Node racine = document.createElement("MainBody");        
+        // Création de la balise Systems
+        Node systems = document.createElement("Systems");
+        // Création de la balise Organs
+        Node organs = document.createElement("Organs");
+        
+        int sizeSystemTab = systemTab.size();
+        int sizeOrganTab = organTab.size();
+        
         ((Element) racine).setAttribute("bodyName", name);
         ((Element) racine).setAttribute("bodyID", String.valueOf(id));
         document.appendChild(racine);
 
-        // Création de la balise Systems
-        Node systems = document.createElement("Systems");
         racine.appendChild(systems);
 
         // Création des balises enfants de Systems
-        for (int i = 0; i < systemTab.size(); i++)
-        {
-            systemTab.get(i).toXML(document, systems);
-        }
-
-        // Création de la balise Organs
-        Node organs = document.createElement("Organs");
+        for (int boucle = 0; boucle < sizeSystemTab; boucle++)
+            systemTab.get(boucle).toXML(document, systems);
+                
         racine.appendChild(organs);
 
         // Création des balises enfants de Organs
-        for (int i = 0; i < organTab.size(); i++)
-        {
-            organTab.get(i).toXML(document, organs);
-        }
+        for (int boucle = 0; boucle < sizeOrganTab; boucle++)
+            organTab.get(boucle).toXML(document, organs);
     }
 }

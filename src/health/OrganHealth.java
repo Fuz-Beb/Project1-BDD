@@ -39,9 +39,7 @@ public class OrganHealth
             systemID = Integer.parseInt(attrs.getValue("systemID"));
         }
         else
-        {
             throw new IFT287Exception("Organ : bad attributes");
-        }
     }
 
     /**
@@ -61,9 +59,7 @@ public class OrganHealth
             systemID = organObject.getInt("systemID");
         }
         else
-        {
             throw new IFT287Exception("Organ : bad attributes");
-        }
     }
 
     // Getters / Setters

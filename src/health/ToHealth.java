@@ -30,13 +30,9 @@ public class ToHealth
     public ToHealth(Attributes attrs) throws IFT287Exception
     {
         if (attrs != null)
-        {
             id = Integer.parseInt(attrs.getValue("id"));
-        }
         else
-        {
             throw new IFT287Exception("To : bad attributes");
-        }
     }
 
     /**
@@ -79,7 +75,6 @@ public class ToHealth
 
         // Ecrit les attributs de l'objet actuel dans le générateur JSON
         jsonGenerator.write("id", id);
-
         jsonGenerator.writeEnd();
     }
 
